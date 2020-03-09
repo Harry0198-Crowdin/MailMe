@@ -4,12 +4,10 @@ import me.harry0198.mailme.mail.Mail;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.*;
-import java.util.Date;
 
 public final class MailMessages extends Mail implements Serializable {
 
     private String message;
-    private Date date;
 
     public MailMessages(ItemStack icon, String message) {
         super(icon);

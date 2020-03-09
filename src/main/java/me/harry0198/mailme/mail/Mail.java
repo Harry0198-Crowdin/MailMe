@@ -1,17 +1,13 @@
 package me.harry0198.mailme.mail;
 
-import me.harry0198.mailme.utility.Utils;
 import me.mattstudios.mfgui.gui.GuiItem;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Base64;
 import java.util.Date;
-import java.util.Map;
 
 public abstract class Mail {
 
@@ -20,6 +16,7 @@ public abstract class Mail {
 
     public Mail(ItemStack icon) {
         this.icon = icon;
+        this.date = new Date();
     }
 
     public abstract MailType getMailType();
