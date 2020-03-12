@@ -2,8 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ec5341-1790-4a07-8304-bed2c1e3223a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/components/IncompleteBuilderException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerDataHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/events/MailSentEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/events/listeners/EntityEvents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/MailDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__me_mattstudios_utils_matt_framework_gui_1_0_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__me_mattstudios_utils_matt_framework_gui_1_0_111.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailMe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MailMe.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/command/MailCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/command/MailCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/conversations/InputPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/conversations/InputPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/database/playerdata/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/Mail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/MailBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/MailBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/types/MailItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/types/MailItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/types/MailMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/mail/types/MailMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/GuiHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/GuiHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/PaginatedGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/PaginatedGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/send/IconGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/send/MailGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/send/SendGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/InputPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/InputPrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/database/playerdata/PlayerData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail$MailType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail$MailType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailMessages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/GuiHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/GuiHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/PaginatedGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/PaginatedGui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/send/IconGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/send/MailGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/send/SendGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +84,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/database" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MF-GUI" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -90,55 +137,93 @@
       <option name="presentableId" value="Default" />
       <updated>1583609160195</updated>
     </task>
+    <task id="LOCAL-00001" summary="Cleanup">
+      <created>1583792299597</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583792299598</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser" timestamp="1583612085913">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state x="440" y="163" key="#Inspections" timestamp="1583877980847">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser/0.23.1680.954@0.23.1680.954" timestamp="1583612085913" />
+    <state x="440" y="163" key="#Inspections/0.23.1680.952@0.23.1680.952" timestamp="1583877980847" />
+    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser" timestamp="1584007570926">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser/0.23.1680.952@0.23.1680.952" timestamp="1583928764287" />
+    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser/0.23.1680.954@0.23.1680.954" timestamp="1583997488310" />
+    <state x="653" y="216" key="#com.intellij.ide.util.MemberChooser/0.23.1680.956@0.23.1680.956" timestamp="1584007570926" />
     <state x="688" y="396" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583609168989">
       <screen x="0" y="23" width="1680" height="954" />
     </state>
     <state x="688" y="396" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1680.954@0.23.1680.954" timestamp="1583609168989" />
-    <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583786812967">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state x="578" y="253" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583847012732">
+      <screen x="0" y="23" width="1680" height="954" />
     </state>
+    <state x="578" y="253" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.954@0.23.1680.954" timestamp="1583847012732" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1583622972759" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.958@0.23.1680.958" timestamp="1583786812967" />
     <state x="459" y="102" key="CommitChangelistDialog2" timestamp="1583792299164">
       <screen x="0" y="23" width="1680" height="956" />
     </state>
     <state x="459" y="102" key="CommitChangelistDialog2/0.23.1680.956@0.23.1680.956" timestamp="1583792299164" />
-    <state width="1638" height="253" key="GridCell.Tab.0.bottom" timestamp="1583791409850">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state x="628" y="259" key="FileChooserDialogImpl" timestamp="1583939051130">
+      <screen x="0" y="23" width="1680" height="954" />
     </state>
-    <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1583622432336" />
-    <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1583698626831" />
-    <state width="1638" height="253" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1583791409850" />
-    <state width="1638" height="253" key="GridCell.Tab.0.center" timestamp="1583791409847">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state x="628" y="259" key="FileChooserDialogImpl/0.23.1680.954@0.23.1680.954" timestamp="1583939051130" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom" timestamp="1584008953428">
+      <screen x="0" y="23" width="1680" height="956" />
     </state>
-    <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1583622432335" />
-    <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1583698626830" />
-    <state width="1638" height="253" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1583791409847" />
-    <state width="1638" height="253" key="GridCell.Tab.0.left" timestamp="1583791409832">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1583875599637" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1583949436109" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1583997656145" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1584008953428" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1583959542337" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center" timestamp="1584008953426">
+      <screen x="0" y="23" width="1680" height="956" />
     </state>
-    <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1583622432335" />
-    <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1583698626829" />
-    <state width="1638" height="253" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1583791409832" />
-    <state width="1638" height="253" key="GridCell.Tab.0.right" timestamp="1583791409848">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1583875599637" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1583949436108" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1583997656144" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1584008953426" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1583959542336" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left" timestamp="1584008953424">
+      <screen x="0" y="23" width="1680" height="956" />
     </state>
-    <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1583622432336" />
-    <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1583698626830" />
-    <state width="1638" height="253" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1583791409848" />
-    <state x="505" y="230" width="670" height="679" key="run.anything.popup" timestamp="1583791196527">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1583875599636" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1583949436108" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1583997656144" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1584008953424" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1583959542335" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right" timestamp="1584008953426">
+      <screen x="0" y="23" width="1680" height="956" />
     </state>
-    <state x="505" y="230" width="670" height="675" key="run.anything.popup/0.23.1680.954@0.23.1680.954" timestamp="1583622432353" />
-    <state x="505" y="230" width="670" height="677" key="run.anything.popup/0.23.1680.956@0.23.1680.956" timestamp="1583698406903" />
-    <state x="505" y="230" width="670" height="679" key="run.anything.popup/0.23.1680.958@0.23.1680.958" timestamp="1583791196527" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1583875599637" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1583949436109" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1583997656144" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1584008953426" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1583959542337" />
+    <state x="510" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1583996283187">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state x="510" y="329" key="com.intellij.ide.util.TipDialog/0.23.1680.954@0.23.1680.954" timestamp="1583996283187" />
+    <state x="510" y="330" key="com.intellij.ide.util.TipDialog/0.23.1680.958@0.23.1680.958" timestamp="1583956227843" />
+    <state x="505" y="230" width="670" height="677" key="run.anything.popup" timestamp="1584008898337">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state x="505" y="229" width="670" height="672" key="run.anything.popup/0.23.1680.949@0.23.1680.949" timestamp="1583875599658" />
+    <state x="505" y="230" width="670" height="674" key="run.anything.popup/0.23.1680.952@0.23.1680.952" timestamp="1583949436119" />
+    <state x="505" y="230" width="670" height="675" key="run.anything.popup/0.23.1680.954@0.23.1680.954" timestamp="1583997656171" />
+    <state x="505" y="230" width="670" height="677" key="run.anything.popup/0.23.1680.956@0.23.1680.956" timestamp="1584008898337" />
+    <state x="505" y="230" width="670" height="679" key="run.anything.popup/0.23.1680.958@0.23.1680.958" timestamp="1583959494683" />
   </component>
 </project>

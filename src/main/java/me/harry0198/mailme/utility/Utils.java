@@ -1,14 +1,16 @@
 package me.harry0198.mailme.utility;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.mail.Mail;
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.ItemStack;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.Base64;
-import java.util.Map;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Utils {
 
@@ -16,24 +18,32 @@ public class Utils {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
-    public static Mail mailObjFromString(String s ) {
+    public static TreeMap<Date, Mail> readJson(File file) {
         try {
-            byte[] data = Base64.getDecoder().decode(s);
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
-            Mail o = (Mail) ois.readObject();
-            ois.close();
-            return o;
-        } catch (IOException | ClassNotFoundException io) {
+            Type dtoListType = new TypeToken<TreeMap<Date, Mail>>() {
+            }.getType();
+            FileReader fr = new FileReader(file);
+            TreeMap<Date, Mail> list = MailMe.GSON.fromJson(fr, dtoListType);
+            fr.close();
+
+            return list == null ? new TreeMap<>() : list;
+        } catch (IOException io) {
             io.printStackTrace();
         }
-        return null;
+        return new TreeMap<>();
     }
 
-    public static Map<String, Object> serializeItemStack(ItemStack stack) {
-        return stack.serialize();
+
+    public static void writeJson(File file, TreeMap<Date, Mail> list) {
+        try {
+
+            FileWriter writer = new FileWriter(file);
+            MailMe.GSON.toJson(list, writer);
+            writer.close();
+        } catch (IOException io) {
+            io.printStackTrace();
+        }
     }
 
-    public static ItemStack deserializeItemStack(Map<String, Object> serializedMap) {
-        return ItemStack.deserialize(serializedMap);
-    }
+
 }

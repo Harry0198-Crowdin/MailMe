@@ -1,5 +1,6 @@
 package me.harry0198.mailme.mail;
 
+import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.mail.types.MailItems;
 import me.harry0198.mailme.mail.types.MailMessages;
 import org.bukkit.OfflinePlayer;
@@ -56,9 +57,13 @@ public final class MailBuilder {
             return this;
         }
 
-        public Mail build() {
+        public List<OfflinePlayer> getRecipients() {
+            return recipients;
+        }
 
-            if (!(message != null && icon != null)); //TODO throw error
+        public Mail build() throws IncompleteBuilderException {
+
+            if (!(message != null && icon != null)) throw new IncompleteBuilderException();
 
             mailDrafts.remove(sender);
 
@@ -66,7 +71,7 @@ public final class MailBuilder {
                 case MAIL_ITEM:
                     return new MailItems(icon);
                 case MAIL_MESSAGE:
-                    return new MailMessages(icon, message);
+                    return new MailMessages(icon, message, recipients);
             }
             return null;
         }

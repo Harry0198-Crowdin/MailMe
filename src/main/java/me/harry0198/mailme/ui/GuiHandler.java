@@ -1,36 +1,25 @@
 package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
-import me.harry0198.mailme.ui.send.IconGui;
-import me.harry0198.mailme.ui.send.MailGui;
-import me.harry0198.mailme.ui.send.SendGui;
+import me.mattstudios.mfgui.gui.GuiItem;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
-public final class GuiHandler {
+import java.util.ArrayList;
+import java.util.List;
 
-    private final MailGui gui;
-    private final IconGui iconGui;
-    private final SendGui sendGui;
-    private final PaginatedGui paginatedGui;
+public class GuiHandler {
+
+    private PaginatedGui paginatedGui;
 
     public GuiHandler(MailMe plugin) {
-        gui = new MailGui(plugin);
-        iconGui = new IconGui(plugin);
-        sendGui = new SendGui(plugin);
-        paginatedGui = new PaginatedGui(plugin);
+        List<GuiItem> items = new ArrayList<>();
+        for (int i = 0; i < 62; i++) {
+            items.add(new GuiItem(new ItemStack(Material.CYAN_BANNER)));
+        }
+        //paginatedGui = new PaginatedGui(30, items);
     }
 
+    public PaginatedGui getPaginatedGui() { return paginatedGui; }
 
-    public MailGui getMailGui() {
-        return gui;
-    }
-
-    public IconGui getIconGui() { return iconGui; }
-
-    public SendGui getSendGui() {
-        return sendGui;
-    }
-
-    public PaginatedGui getPaginatedGui() {
-        return paginatedGui;
-    }
 }

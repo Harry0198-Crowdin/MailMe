@@ -1,7 +1,7 @@
 package me.harry0198.mailme.mail.types;
 
 import me.harry0198.mailme.mail.Mail;
-import me.harry0198.mailme.utility.Utils;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.Serializable;
@@ -10,7 +10,7 @@ import java.util.Date;
 public final class MailItems extends Mail implements Serializable {
 
     public MailItems(ItemStack icon) {
-        super(icon);
+        super(icon, new Date());
     }
 
     @Override
@@ -21,6 +21,11 @@ public final class MailItems extends Mail implements Serializable {
     @Override
     public void getMail() {
 
+    }
+
+    @Override
+    public TextComponent[] getMailAsText() {
+        return null;
     }
 
 }

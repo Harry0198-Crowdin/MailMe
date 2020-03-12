@@ -3,37 +3,74 @@ package me.harry0198.mailme.ui;
 import me.harry0198.mailme.MailMe;
 import me.mattstudios.mfgui.gui.GUI;
 import me.mattstudios.mfgui.gui.GuiItem;
-import org.bukkit.entity.Player;
 
-import java.util.HashMap;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class PaginatedGui {
 
-    private GUI gui;
-    private static Map<Player, Integer> page = new HashMap<>();
-    private final static int SLOT_SIZE = 7;
+    private final List<GuiItem> items;
+    private final Map<Integer, GUI> gui = new HashMap<>();
 
-    public PaginatedGui(final MailMe plugin) {
-        gui = new GUI(plugin, 5, "");
+    public PaginatedGui(int rowFrom, int colFrom, int rowTo, int colTo, List<GuiItem> items, int rows) {
+        this.items = items;
+
+        int min = getSlotFromRowCol( Math.min(rowFrom, rowTo), Math.min(colFrom, colTo) );
+        int max = getSlotFromRowCol( Math.max(rowFrom, rowTo), Math.max(colFrom, colTo) );
+
+        int pageSize = max - min;
+        Pagination pagination = new Pagination(pageSize, items);
+
     }
 
-    public GUI getGui(final List<GuiItem> items, final Player player, int page) {
-        if (page == 0) page = 1;
-        PaginatedGui.page.putIfAbsent(player, page);
-        GUI tmpGui = gui;
+    private int getSlotFromRowCol(final int row, final int col) {
+        return (col + (row - 1) * 9) - 1;
+    }
 
-        int neededInvs = ((int) Math.ceil(items.size() / (double) SLOT_SIZE));
 
-        int index = (page * SLOT_SIZE) - 1; // Array starts at 0
-        if (index > items.size()) return tmpGui;
+    private class Pagination extends ArrayList<GuiItem> {
+        private int pageSize;
 
-        int startPos = 10; // Where to put the GuiItems
-        for (int i = index; i <= index + SLOT_SIZE; i++) {
-            if (items.size() < i + 1) return tmpGui;
-            tmpGui.setItem(startPos, items.get(i));
+        public Pagination(int pageSize) {
+            this(pageSize, new ArrayList<>());
         }
-        return tmpGui;
+
+        public Pagination(int pageSize, GuiItem... objects) {
+            this(pageSize, Arrays.asList(objects));
+        }
+
+        public Pagination(int pageSize, List<GuiItem> objects) {
+            this.pageSize = pageSize;
+            addAll(objects);
+        }
+
+        public int pageSize() {
+            return pageSize;
+        }
+
+        public int totalPages() {
+            return (int) Math.ceil((double) size() / pageSize);
+        }
+
+        public boolean exists(int page) {
+            return page >= 0 && page < totalPages();
+        }
+
+        public List<GuiItem> getPage(int page) {
+            if (page < 0 || page >= totalPages())
+                throw new IndexOutOfBoundsException("Page: " + page + ", Total: " + totalPages());
+
+            List<GuiItem> objects = new ArrayList<>();
+
+            int min = page * pageSize;
+            int max = ((page * pageSize) + pageSize);
+
+            if (max > size()) max = size();
+
+            for (int i = min; max > i; i++) objects.add(get(i));
+
+            return objects;
+        }
     }
 }

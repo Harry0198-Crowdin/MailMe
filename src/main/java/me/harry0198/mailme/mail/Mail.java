@@ -1,6 +1,8 @@
 package me.harry0198.mailme.mail;
 
 import me.mattstudios.mfgui.gui.GuiItem;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.ByteArrayOutputStream;
@@ -8,19 +10,24 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Mail {
 
-    private transient ItemStack icon;
+    private ItemStack icon;
     private Date date;
+    private List<OfflinePlayer> recipients;
+    private boolean read = false;
+    private boolean reply = false;
 
-    public Mail(ItemStack icon) {
+    public Mail(ItemStack icon, Date date) {
         this.icon = icon;
-        this.date = new Date();
+        this.date = date;
     }
 
     public abstract MailType getMailType();
     public abstract void getMail();
+    public abstract TextComponent[] getMailAsText();
 
     /* Getters */
 
@@ -30,6 +37,13 @@ public abstract class Mail {
         return new GuiItem(icon, e -> e.getWhoClicked().sendMessage("Todo, send to next category"));
     }
 
+    public boolean isRead() {
+        return read;
+    }
+
+    public boolean isReply() {
+        return reply;
+    }
 
     /* Setters */
 
@@ -37,9 +51,16 @@ public abstract class Mail {
         this.icon = icon;
     }
 
+    public void setRead(boolean read) { this.read = read; }
+
+    public void setReply(boolean reply) {
+        this.reply = reply;
+    }
+
     @Override
     public String toString() {
         try {
+            //TODO gson each field
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this);
@@ -48,9 +69,9 @@ public abstract class Mail {
 
             return Base64.getEncoder().encodeToString(baos.toByteArray());
         } catch (IOException io) {
-            System.out.println("io exception");
+            io.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 
