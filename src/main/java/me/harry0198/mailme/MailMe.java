@@ -28,8 +28,6 @@ public final class MailMe extends JavaPlugin {
                     .setPrettyPrinting()
                     .registerTypeAdapter(Mail.class, new MailDeserializer())
                     .registerTypeAdapter(ItemStack.class, new ItemStackSerializer())
-                    .registerTypeAdapter(byte[].class, (JsonSerializer<byte[]>) (src, typeOfSrc, context) -> new JsonPrimitive(Base64.getEncoder().encodeToString(src)))
-                    .registerTypeAdapter(byte[].class, (JsonDeserializer<byte[]>) (json, typeOfT, context) -> Base64.getDecoder().decode(json.getAsString()))
                     .create();
     private Locale locale;
     private GuiHandler uiHandler;

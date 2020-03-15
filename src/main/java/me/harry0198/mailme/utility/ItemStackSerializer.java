@@ -19,7 +19,8 @@ public class ItemStackSerializer implements JsonDeserializer<ItemStack>, JsonSer
     @Override
     public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
-        byte[] stack = json.toString().getBytes();
+
+        byte[] stack = MailMe.GSON.fromJson(json, byte[].class);
         try {
             return fromByteArrayItemStackArray(stack, 1)[0];
         } catch (IOException | ClassNotFoundException e) {
@@ -35,7 +36,8 @@ public class ItemStackSerializer implements JsonDeserializer<ItemStack>, JsonSer
 
         try {
             byte[] is = toByteArrayItemStackArray(new ItemStack[]{src});
-            return new JsonPrimitive(Arrays.toString(is));
+
+            return new JsonPrimitive(MailMe.GSON.toJson(is));
         } catch (IOException io ) {
 
         }
