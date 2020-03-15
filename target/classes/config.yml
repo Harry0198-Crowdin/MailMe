@@ -1,9 +1,1 @@
-# If you have a MySql database you can set this to true and insert values. Otherwise ignore this.
-database:
-  mysql: false
-  name: "MailMe"
-  host: "localhost"
-  user: "root"
-  password: ""
-  port: "3306"
-  use-ssl: false
+lang: "EN"

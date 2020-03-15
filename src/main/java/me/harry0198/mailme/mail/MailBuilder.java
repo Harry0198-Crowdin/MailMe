@@ -7,10 +7,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class MailBuilder {
 
@@ -25,11 +22,13 @@ public final class MailBuilder {
         private String message;
         private ItemStack icon;
         private List<OfflinePlayer> recipients;
+        private List<ItemStack> items;
 
         public Builder(Mail.MailType type, Player sender) {
             this.sender = sender;
             this.mailType = type;
             this.recipients = new ArrayList<>();
+            this.items = new ArrayList<>();
             mailDrafts.put(sender, this);
         }
 
@@ -57,27 +56,39 @@ public final class MailBuilder {
             return this;
         }
 
+        public Builder addItems(List<ItemStack> items) {
+            this.items.addAll(items);
+            mailDrafts.put(sender, this);
+            return this;
+        }
+
+        public Builder addItem(ItemStack item) {
+            this.items.add(item);
+            mailDrafts.put(sender, this);
+            return this;
+        }
+
         public List<OfflinePlayer> getRecipients() {
             return recipients;
         }
 
         public Mail build() throws IncompleteBuilderException {
 
-            if (!(message != null && icon != null)) throw new IncompleteBuilderException();
+            if (icon == null) throw new IncompleteBuilderException("Icon has not been set!");
 
             mailDrafts.remove(sender);
 
             switch (mailType) {
                 case MAIL_ITEM:
-                    return new MailItems(icon);
+
+                    return new MailItems(icon, recipients, items, sender.getUniqueId());
                 case MAIL_MESSAGE:
-                    return new MailMessages(icon, message, recipients);
+                    return new MailMessages(icon, recipients, message, sender.getUniqueId());
+
             }
             return null;
         }
     }
-    //Fields omitted for brevity.
-    private MailBuilder() {
-        //Constructor is now private.
-    }
+
+    private MailBuilder() {}
 }

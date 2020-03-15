@@ -1,8 +1,7 @@
 package me.harry0198.mailme;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import me.harry0198.mailme.command.MailCmd;
 import me.harry0198.mailme.conversations.ConversationAbandonedListener;
 import me.harry0198.mailme.conversations.ConversationPrefix;
@@ -11,21 +10,26 @@ import me.harry0198.mailme.datastore.PlayerDataHandler;
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.mail.MailDeserializer;
 import me.harry0198.mailme.ui.GuiHandler;
+import me.harry0198.mailme.utility.ItemStackSerializer;
 import me.harry0198.mailme.utility.Locale;
 
 import me.mattstudios.mf.base.CommandManager;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.conversations.ConversationFactory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
+import java.util.Base64;
 
 public final class MailMe extends JavaPlugin {
 
     public static final Gson GSON = new GsonBuilder()
-                    .setDateFormat("dd-M-yyyy hh:mm:ss")
+                    .setDateFormat("dd-MM-yyyy hh:mm:ss")
                     .enableComplexMapKeySerialization()
                     .setPrettyPrinting()
                     .registerTypeAdapter(Mail.class, new MailDeserializer())
+                    .registerTypeAdapter(ItemStack.class, new ItemStackSerializer())
+                    .registerTypeAdapter(byte[].class, (JsonSerializer<byte[]>) (src, typeOfSrc, context) -> new JsonPrimitive(Base64.getEncoder().encodeToString(src)))
+                    .registerTypeAdapter(byte[].class, (JsonDeserializer<byte[]>) (json, typeOfT, context) -> Base64.getDecoder().decode(json.getAsString()))
                     .create();
     private Locale locale;
     private GuiHandler uiHandler;
@@ -49,7 +53,7 @@ public final class MailMe extends JavaPlugin {
     @Override
     public void onEnable() {
         new File(getDataFolder() + "/playerdata/").mkdir();
-        this.locale = new Locale(YamlConfiguration.loadConfiguration(new File(getDataFolder() + "messages.yml")));
+        this.locale = new Locale();
         this.uiHandler = new GuiHandler(this);
         saveDefaultConfig();
 
