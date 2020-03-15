@@ -1,0 +1,17 @@
+T: "EN"
+VER: 1.0
+
+prefix: "&8[&eMailMe&8]&r"
+
+text:
+  format:
+    - "&8<    &eMail    &8>"
+    - "&7Mail From: &b%sender%"
+    - "&7Received at: &b%time%"
+    - "&7Contents:"
+    - "&7T: &b%contents%"
+  hover: "&cClick to Reply!"
+  prev-page: "&e<<< Previous Page"
+  prev-page-hover: "&cClick for the previous page!"
+  next-page: "&eNext Page >>>"
+  next-page-hover: "&cClick for the next page!"
