@@ -8,10 +8,14 @@ text:
     - "&8<    &eMail    &8>"
     - "&7Mail From: &b%sender%"
     - "&7Received at: &b%time%"
-    - "&7Contents:"
-    - "&7T: &b%contents%"
+    - "&7Contents: %contents%"
   hover: "&cClick to Reply!"
   prev-page: "&e<<< Previous Page"
   prev-page-hover: "&cClick for the previous page!"
   next-page: "&eNext Page >>>"
   next-page-hover: "&cClick for the next page!"
+
+
+notify:
+  received: "@prefix &eYou received some mail from %s"
+  sent: "@prefix &eYou sent some mail to %s"

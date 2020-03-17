@@ -2,12 +2,17 @@ package me.harry0198.mailme.command;
 
 import com.google.gson.reflect.TypeToken;
 import me.harry0198.mailme.MailMe;
+import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.mail.Mail;
+import me.harry0198.mailme.mail.MailBuilder;
 import me.harry0198.mailme.utility.ItemStackSerializer;
 import me.harry0198.mailme.utility.Pagination;
 import me.mattstudios.mf.annotations.*;
 import me.mattstudios.mf.annotations.Optional;
 import me.mattstudios.mf.base.CommandBase;
+import me.mattstudios.mfgui.gui.guis.BaseGui;
+import me.mattstudios.mfgui.gui.guis.GUI;
+import me.mattstudios.mfgui.gui.guis.GuiItem;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -18,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.Map;
 
 
@@ -27,6 +33,7 @@ import java.util.Map;
 public class MailCmd extends CommandBase {
 
     private MailMe plugin;
+    private BaseGui gui;
 
     public MailCmd(MailMe plugin) {
         this.plugin = plugin;
@@ -35,22 +42,19 @@ public class MailCmd extends CommandBase {
     @Default
     public void execute(Player player) {
 
-        // new GUI(plugin, 5, "").fillBetweenPoints(2,2,4,8, Collections.singletonList(new GuiItem(new ItemStack(Material.EMERALD)))).open(player);
+        gui = new GUI(plugin, 5, "").fillBetweenPoints(2,2,4,8, Collections.singletonList(new GuiItem(new ItemStack(Material.EMERALD))))
+                .setAutoUpdating(true, 20);
+        gui.open(player);
     }
 
     @SubCommand("read")
-    public void execute2(Player player) throws IOException, ClassNotFoundException {
-
-        ItemStack stack = new ItemStack(Material.STONE);
-        byte[] json = ItemStackSerializer.toByteArrayItemStackArray(new ItemStack[]{stack});
-        System.out.println(json);
-        ItemStack[] sta = ItemStackSerializer.fromByteArrayItemStackArray(json, 1);
-        System.out.println(sta);
+    public void execute2(Player player) {
+        gui.setAutoUpdating(false, 0);
     }
 
     @SubCommand("send")
-    public void execute3(Player player) {
-
+    public void execute3(Player player) throws IncompleteBuilderException {
+        new MailBuilder.Builder(Mail.MailType.MAIL_ITEM, player).addRecipient(player).setIcon(new ItemStack(Material.BLACK_BANNER)).addItem(new ItemStack(Material.FEATHER)).build();
     }
 
     @SubCommand("text")

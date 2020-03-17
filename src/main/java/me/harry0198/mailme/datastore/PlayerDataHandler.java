@@ -17,8 +17,11 @@ public final class PlayerDataHandler {
     }
 
     public PlayerData getPlayerData(OfflinePlayer player) {
-        UUID uuid = player.getUniqueId();
-        if (!exists(uuid)) playerData.put(uuid, new PlayerData(plugin, player.getUniqueId()));
+        return getPlayerData(player.getUniqueId());
+    }
+
+    public PlayerData getPlayerData(UUID uuid) {
+        if (!exists(uuid)) playerData.put(uuid, new PlayerData(plugin, uuid));
         return playerData.get(uuid);
     }
 

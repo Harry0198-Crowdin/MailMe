@@ -3,7 +3,6 @@ package me.harry0198.mailme.mail.types;
 import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.mail.Mail;
 import net.md_5.bungee.api.chat.*;
-import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 
@@ -62,6 +61,7 @@ public final class MailMessages extends Mail {
         this.message = message;
         recipients.forEach(r -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(r).addMail(this));
         super.setSender(sender);
+        super.sendMail(this);
     }
 
     /* Getters */

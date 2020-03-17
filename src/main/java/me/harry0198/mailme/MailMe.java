@@ -18,16 +18,16 @@ import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
-import java.util.Base64;
 
 public final class MailMe extends JavaPlugin {
 
     public static final Gson GSON = new GsonBuilder()
-                    .setDateFormat("dd-MM-yyyy hh:mm:ss")
+                    .setDateFormat("dd-MM-yyyy hh:mm:ss.SSS")
                     .enableComplexMapKeySerialization()
                     .setPrettyPrinting()
                     .registerTypeAdapter(Mail.class, new MailDeserializer())
                     .registerTypeAdapter(ItemStack.class, new ItemStackSerializer())
+                    .serializeSpecialFloatingPointValues()
                     .create();
     private Locale locale;
     private GuiHandler uiHandler;

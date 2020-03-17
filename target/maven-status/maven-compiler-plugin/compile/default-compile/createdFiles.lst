@@ -1,4 +1,5 @@
 me/harry0198/mailme/utility/Locale.class
+me/harry0198/mailme/mail/types/MailSound.class
 me/harry0198/mailme/mail/MailBuilder.class
 me/harry0198/mailme/ui/PaginatedGui$Pagination.class
 me/harry0198/mailme/utility/Utils$1.class

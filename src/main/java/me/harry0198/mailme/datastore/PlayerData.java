@@ -1,16 +1,13 @@
 package me.harry0198.mailme.datastore;
 
 import me.harry0198.mailme.MailMe;
-import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.mail.Mail;
 
-import me.harry0198.mailme.mail.MailBuilder;
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +19,11 @@ public final class PlayerData {
     private final MailMe plugin;
     private final File jsonData;
     private Locale.LANG lang;
+    private UUID uuid;
 
     public PlayerData(final MailMe plugin, final UUID uuid) {
         this.plugin = plugin;
+        this.uuid = uuid;
         jsonData = new File(plugin.getDataFolder() + "/playerdata/" + uuid.toString() + ".json");
 
         try {
@@ -34,12 +33,6 @@ public final class PlayerData {
         }
 
         this.mail.putAll(Utils.readJson(jsonData));
-
-        try {
-            addMail(new MailBuilder.Builder(Mail.MailType.MAIL_ITEM, Bukkit.getPlayer(uuid)).setIcon(new ItemStack(Material.BLACK_STAINED_GLASS_PANE)).addItem(new ItemStack(Material.BLACK_BANNER)).build());
-        } catch (IncompleteBuilderException e) {
-            e.printStackTrace();
-        }
     }
 
     /* Getters */
@@ -76,5 +69,10 @@ public final class PlayerData {
     public void addMail(Mail mail) {
         this.mail.put(mail.getDate(), mail);
         Utils.writeJson(jsonData, this.mail);
+        OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+        if (player.isOnline()) {
+            Player p = (Player) player;
+            p.sendMessage(String.format(plugin.getLocale().getMessage("notify.received"), Bukkit.getOfflinePlayer(mail.getSender()).getName()));
+        }
     }
 }

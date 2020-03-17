@@ -26,7 +26,8 @@ public final class Locale {
     }
 
     public String getMessage(String string) {
-        return Utils.colour(this.yaml.get(serverLang).getString(string));
+        String msg = this.yaml.get(serverLang).getString(string);
+        return Utils.colour(msg.replaceAll("@prefix", this.yaml.get(serverLang).getString("prefix")));
     }
 
     public List<String> getMessages(String string) {

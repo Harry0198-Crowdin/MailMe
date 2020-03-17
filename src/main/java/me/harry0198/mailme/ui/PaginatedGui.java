@@ -1,8 +1,9 @@
 package me.harry0198.mailme.ui;
 
-import me.harry0198.mailme.MailMe;
-import me.mattstudios.mfgui.gui.GUI;
-import me.mattstudios.mfgui.gui.GuiItem;
+
+
+import me.mattstudios.mfgui.gui.guis.GUI;
+import me.mattstudios.mfgui.gui.guis.GuiItem;
 
 import java.awt.*;
 import java.util.*;

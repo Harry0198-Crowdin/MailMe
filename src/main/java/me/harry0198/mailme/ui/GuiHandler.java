@@ -1,7 +1,8 @@
 package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
-import me.mattstudios.mfgui.gui.GuiItem;
+
+import me.mattstudios.mfgui.gui.guis.GuiItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

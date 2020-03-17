@@ -85,7 +85,7 @@
         <dependency>
             <groupId>me.mattstudios.utils</groupId>
             <artifactId>matt-framework-gui</artifactId>
-            <version>1.0.111</version>
+            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

@@ -1,7 +1,8 @@
 package me.harry0198.mailme.mail;
 
 import me.harry0198.mailme.MailMe;
-import me.mattstudios.mfgui.gui.GuiItem;
+
+import me.mattstudios.mfgui.gui.guis.GuiItem;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -14,13 +15,10 @@ public abstract class Mail {
 
     private ItemStack icon;
     private Date date;
-    private List<UUID> recipients;
+    private List<UUID> recipients = new ArrayList<>();
     private boolean read = false;
     private boolean reply = false;
     private UUID sender;
-    private transient TextComponent prevPage;
-    private transient TextComponent nextPage;
-
 
     public Mail(ItemStack icon, Date date) {
         this.icon = icon;
@@ -31,6 +29,7 @@ public abstract class Mail {
     public abstract MailType getMailType();
     public abstract void getMail();
     public abstract BaseComponent[] getContentsAsText();
+
 
     /* Getters */
 
@@ -72,23 +71,38 @@ public abstract class Mail {
         recipients.remove(player.getUniqueId());
     }
 
-    public TextComponent getMailAsText() {
+    protected void sendMail(Mail mail) {
+        for (UUID player : recipients) {
+            MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(mail);
+        }
+        if (sender.toString().length() != 36) return;
+        Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage("notify.sent"), recipients.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList()).toString()));
+    }
+
+
+    public BaseComponent[] getMailAsText() {
         List<String> msgs = MailMe.getInstance().getLocale().getMessages("text.format");
         String sender = getSender() != null ? Bukkit.getOfflinePlayer(getSender()).getName() : "???";
-        TextComponent message = new TextComponent();
-        message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply " + sender));
-        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage("text.hover")).create()));
-        String fullMsg = "";
+        ComponentBuilder builder = new ComponentBuilder("");
+
+        builder.event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply " + sender));
+        builder.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage("text.hover")).create()));
 
         for (String each : msgs) {
-            String t = each;
+            String t = each + "\n";
             t = t.replaceAll("%time%", getDate().toString());
             t = t.replaceAll("%sender%", sender);
-            t = t.replaceAll("%contents%", Arrays.toString(getContentsAsText()));
-            fullMsg = fullMsg + t + "\n";
+            if (!t.contains("%contents%")) {
+                builder.append(new TextComponent(t));
+                continue;
+            }
+            t = t.replaceAll("%contents%", "");
+            builder.append(new TextComponent(t));
+
+            builder.append(getContentsAsText());
         }
-        message.setText(fullMsg);
-        return message;
+
+        return builder.create();
     }
 
     @Override
@@ -98,7 +112,7 @@ public abstract class Mail {
 
 
     public enum MailType {
-        MAIL_ITEM, MAIL_MESSAGE
+        MAIL_ITEM, MAIL_MESSAGE, MAIL_SOUND
     }
 }
 

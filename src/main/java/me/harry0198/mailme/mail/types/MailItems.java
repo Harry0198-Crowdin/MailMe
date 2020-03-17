@@ -2,10 +2,12 @@ package me.harry0198.mailme.mail.types;
 
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.utility.NMSReflection;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
@@ -76,6 +78,11 @@ public final class MailItems extends Mail implements Serializable {
         super.setSender(sender);
         items = stacks;
         if (!recipients.isEmpty()) super.addRecipients(recipients);
+        super.sendMail(this);
+    }
+
+    public List<ItemStack> getItems() {
+        return items;
     }
 
 
@@ -92,12 +99,13 @@ public final class MailItems extends Mail implements Serializable {
     @Override
     public BaseComponent[] getContentsAsText() {
         ComponentBuilder builder = new ComponentBuilder("");
-        for (ItemStack item : items) {
-            TextComponent txt = new TextComponent("§b" + item.getAmount() + " §e* " + "§b" + item.getType() + "\n");
+        for (ItemStack item : getItems()) {
+            TextComponent txt = new TextComponent(item.getAmount() + " * " + item.getType());
+            txt.setColor(ChatColor.AQUA);
             txt.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new ComponentBuilder(NMSReflection.convertItemStackToJson(item)).create()));
             builder.append(txt);
         }
-
+        Bukkit.getPlayer(getSender()).spigot().sendMessage(builder.create());
         return builder.create();
     }
 }

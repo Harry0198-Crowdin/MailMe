@@ -3,7 +3,9 @@ package me.harry0198.mailme.mail;
 import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.mail.types.MailItems;
 import me.harry0198.mailme.mail.types.MailMessages;
+import me.harry0198.mailme.mail.types.MailSound;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,6 +25,7 @@ public final class MailBuilder {
         private ItemStack icon;
         private List<OfflinePlayer> recipients;
         private List<ItemStack> items;
+        private Sound sound;
 
         public Builder(Mail.MailType type, Player sender) {
             this.sender = sender;
@@ -68,6 +71,12 @@ public final class MailBuilder {
             return this;
         }
 
+        public Builder setSound(Sound sound) {
+            this.sound = sound;
+            mailDrafts.put(sender, this);
+            return this;
+        }
+
         public List<OfflinePlayer> getRecipients() {
             return recipients;
         }
@@ -84,6 +93,9 @@ public final class MailBuilder {
                     return new MailItems(icon, recipients, items, sender.getUniqueId());
                 case MAIL_MESSAGE:
                     return new MailMessages(icon, recipients, message, sender.getUniqueId());
+                case MAIL_SOUND:
+                    if (sound == null) throw new IncompleteBuilderException("Sound is null for Sound Mail!");
+                    return new MailSound(icon, recipients, sound, message);
 
             }
             return null;
