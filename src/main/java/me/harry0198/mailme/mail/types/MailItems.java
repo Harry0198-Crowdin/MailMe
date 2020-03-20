@@ -2,6 +2,7 @@ package me.harry0198.mailme.mail.types;
 
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.utility.NMSReflection;
+import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public final class MailItems extends Mail implements Serializable {
 
     @SuppressWarnings({"unused"})
-    private final String type = "MailItems"; // For deserializer
+    private String type = "MailItems"; // For deserializer
     private List<ItemStack> items;
 
     /**
@@ -78,7 +79,6 @@ public final class MailItems extends Mail implements Serializable {
         super.setSender(sender);
         items = stacks;
         if (!recipients.isEmpty()) super.addRecipients(recipients);
-        super.sendMail(this);
     }
 
     public List<ItemStack> getItems() {
@@ -88,12 +88,12 @@ public final class MailItems extends Mail implements Serializable {
 
     @Override
     public MailType getMailType() {
-        return null;
+        return MailType.MAIL_ITEM;
     }
 
     @Override
-    public void getMail() {
-
+    public Gui getMail() {
+return null;
     }
 
     @Override

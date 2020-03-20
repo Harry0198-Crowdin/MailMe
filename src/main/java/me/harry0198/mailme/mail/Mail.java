@@ -2,7 +2,8 @@ package me.harry0198.mailme.mail;
 
 import me.harry0198.mailme.MailMe;
 
-import me.mattstudios.mfgui.gui.guis.GuiItem;
+import me.harry0198.mailme.datastore.PlayerData;
+import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -19,15 +20,16 @@ public abstract class Mail {
     private boolean read = false;
     private boolean reply = false;
     private UUID sender;
+    private final int delay;
 
     public Mail(ItemStack icon, Date date) {
         this.icon = icon;
         this.date = date;
-
+        delay = MailMe.getInstance().getConfig().getInt("delay");
     }
 
     public abstract MailType getMailType();
-    public abstract void getMail();
+    public abstract Gui getMail();
     public abstract BaseComponent[] getContentsAsText();
 
 
@@ -35,8 +37,8 @@ public abstract class Mail {
 
     public Date getDate() { return date; }
 
-    public GuiItem getIcon() {
-        return new GuiItem(icon, e -> e.getWhoClicked().sendMessage("Todo, send to next category"));
+    public ItemStack getIcon() {
+        return icon;
     }
 
     public boolean isRead() {
@@ -48,6 +50,8 @@ public abstract class Mail {
     }
 
     public UUID getSender() { return sender; }
+
+    public List<UUID> getRecipients() { return recipients; }
 
     /* Setters */
 
@@ -71,12 +75,28 @@ public abstract class Mail {
         recipients.remove(player.getUniqueId());
     }
 
-    protected void sendMail(Mail mail) {
+    public void sendMail() {
+        UUID sender = getSender();
+        List<UUID> recipients = getRecipients();
+
+        PlayerData senderData = MailMe.getInstance().getPlayerDataHandler().getPlayerData(sender);
         for (UUID player : recipients) {
-            MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(mail);
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.MINUTE, -delay);
+            Date timeTravel = cal.getTime();
+            PlayerData data = MailMe.getInstance().getPlayerDataHandler().getPlayerData(player);
+            List<Mail> dataMail = data.getMail().stream().filter(r -> r.getDate().getTime() > timeTravel.getTime()).filter(r -> r.getSender().equals(sender)).collect(Collectors.toList());
+            if (dataMail.isEmpty())
+                data.addMail(this);
+            else {
+                Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.could-not-send"), Bukkit.getOfflinePlayer(player).getName()));
+                recipients.remove(player);
+            }
         }
         if (sender.toString().length() != 36) return;
-        Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage("notify.sent"), recipients.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList()).toString()));
+        Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), recipients.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList()).toString()));
+
+        recipients.forEach(player -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(this));
     }
 
 
@@ -105,14 +125,8 @@ public abstract class Mail {
         return builder.create();
     }
 
-    @Override
-    public String toString() {
-        return MailMe.GSON.toJson(this);
-    }
-
-
     public enum MailType {
-        MAIL_ITEM, MAIL_MESSAGE, MAIL_SOUND
+        MAIL_ITEM, MAIL_MESSAGE, MAIL_SOUND, MAIL_LOCATION
     }
 }
 

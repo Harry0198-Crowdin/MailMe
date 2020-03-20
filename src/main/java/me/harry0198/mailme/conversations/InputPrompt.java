@@ -1,8 +1,8 @@
 package me.harry0198.mailme.conversations;
 
 import me.harry0198.mailme.MailMe;
+import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.MailBuilder;
-import me.harry0198.mailme.utility.Utils;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.conversations.Prompt;
 import org.bukkit.conversations.StringPrompt;
@@ -11,7 +11,8 @@ import org.bukkit.entity.Player;
 public class InputPrompt extends StringPrompt {
 
     public String getPromptText(ConversationContext context) {
-        return "What would you like it to say?";
+        PlayerData data = MailMe.getInstance().getPlayerDataHandler().getPlayerData((Player) context.getForWhom());
+        return MailMe.getInstance().getLocale().getMessage(data.getLang(), "mail.message");
     }
 
     @Override

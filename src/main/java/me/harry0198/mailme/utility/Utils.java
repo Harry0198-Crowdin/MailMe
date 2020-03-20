@@ -2,8 +2,13 @@ package me.harry0198.mailme.utility;
 
 import com.google.gson.reflect.TypeToken;
 import me.harry0198.mailme.MailMe;
+import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.Mail;
+import me.mattstudios.mfgui.gui.components.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.*;
@@ -21,29 +26,56 @@ public class Utils {
         return string.stream().map(Utils::colour).collect(Collectors.toList());
     }
 
-    public static TreeMap<Date, Mail> readJson(File file) {
+    public static PlayerData readJson(File file) {
         try {
-            Type dtoListType = new TypeToken<TreeMap<Date, Mail>>() {}.getType();
+            Type token = new TypeToken<PlayerData>() {}.getType();
             FileReader fr = new FileReader(file);
-            TreeMap<Date, Mail> list = MailMe.GSON.fromJson(fr, dtoListType);
+            PlayerData data = MailMe.GSON.fromJson(fr, token);
             fr.close();
 
-            return list == null ? new TreeMap<>() : list;
+            return data;
         } catch (IOException io) {
             io.printStackTrace();
         }
-        return new TreeMap<>();
+        return null;
     }
 
 
-    public static void writeJson(File file, TreeMap<Date, Mail> list) {
+    public static void writeJson(File file, PlayerData data) {
         try {
 
             FileWriter writer = new FileWriter(file);
-            MailMe.GSON.toJson(list, writer);
+            MailMe.GSON.toJson(data, writer);
             writer.close();
         } catch (IOException io) {
             io.printStackTrace();
         }
     }
+
+    public static ItemStack getItemStack(ConfigurationSection section) {
+        ItemBuilder builder = new ItemBuilder(Material.valueOf(section.getString("material")))
+                .setName(colour(section.getString("title")))
+                .setLore(colourList(section.getStringList("lore")).toArray(new String[]{}))
+                .setAmount(section.getInt("amount"));
+
+        if (Material.valueOf(section.getString("material")).equals(Material.PLAYER_HEAD))
+            builder.setSkullTexture(section.getString("skull-texture"));
+        if (section.getBoolean("glow"))
+            builder.glow();
+
+        return builder.build();
+    }
+
+    public static String applyPlaceHolders(Mail mail, String string) {
+        string = string.replaceAll("@time", mail.getDate().toString());
+        string = string.replaceAll("@sender", Bukkit.getOfflinePlayer(mail.getSender()).getName());
+        string = string.replaceAll("@type", mail.getMailType().toString());
+        string = string.replaceAll("@read", String.valueOf(mail.isRead()));
+        return string;
+    }
+
+    public static List<String> applyPlaceHolders(Mail mail, List<String> string) {
+        return string.stream().map(str -> applyPlaceHolders(mail, str)).collect(Collectors.toList());
+    }
+
 }

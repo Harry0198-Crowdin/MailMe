@@ -2,8 +2,10 @@ package me.harry0198.mailme.mail;
 
 import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.mail.types.MailItems;
+import me.harry0198.mailme.mail.types.MailLocation;
 import me.harry0198.mailme.mail.types.MailMessages;
 import me.harry0198.mailme.mail.types.MailSound;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -26,6 +28,7 @@ public final class MailBuilder {
         private List<OfflinePlayer> recipients;
         private List<ItemStack> items;
         private Sound sound;
+        private Location location;
 
         public Builder(Mail.MailType type, Player sender) {
             this.sender = sender;
@@ -77,6 +80,12 @@ public final class MailBuilder {
             return this;
         }
 
+        public Builder setLocation(Location location) {
+            this.location = location;
+            mailDrafts.put(sender, this);
+            return this;
+        }
+
         public List<OfflinePlayer> getRecipients() {
             return recipients;
         }
@@ -84,6 +93,7 @@ public final class MailBuilder {
         public Mail build() throws IncompleteBuilderException {
 
             if (icon == null) throw new IncompleteBuilderException("Icon has not been set!");
+            if (recipients.isEmpty()) throw new IncompleteBuilderException("You must add recipients!");
 
             mailDrafts.remove(sender);
 
@@ -95,7 +105,11 @@ public final class MailBuilder {
                     return new MailMessages(icon, recipients, message, sender.getUniqueId());
                 case MAIL_SOUND:
                     if (sound == null) throw new IncompleteBuilderException("Sound is null for Sound Mail!");
-                    return new MailSound(icon, recipients, sound, message);
+                    return new MailSound(icon, recipients, sound, message, sender.getUniqueId());
+                case MAIL_LOCATION:
+                    if (location == null) throw new IncompleteBuilderException("Location is null for Location Mail!");
+                    return new MailLocation(icon, recipients, location, sender.getUniqueId());
+
 
             }
             return null;

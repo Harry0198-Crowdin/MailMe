@@ -3,7 +3,9 @@ package me.harry0198.mailme.mail.types;
 import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.mail.Mail;
 import me.mattstudios.mfgui.gui.guis.Gui;
-import net.md_5.bungee.api.chat.*;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 
@@ -11,11 +13,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public final class MailMessages extends Mail {
+public final class MailLocation extends Mail {
 
-    @SuppressWarnings({"unused"})
-    private final String type = "MailMessages"; // For deserializer
-    private String message;
+    private final String type = "MailLocation"; // For deserializer
+    private Location location;
 
     /**
      *
@@ -23,7 +24,7 @@ public final class MailMessages extends Mail {
      * @param message Message mail
      * @param recipients List of OfflinePlayers
      */
-    public MailMessages(ItemStack icon, List<OfflinePlayer> recipients, String message) {
+    public MailLocation(ItemStack icon, List<OfflinePlayer> recipients, Location message) {
         this(icon, recipients, message, null);
     }
 
@@ -31,11 +32,11 @@ public final class MailMessages extends Mail {
      *
      * @param icon Icon ItemStack
      * @param recipients List of OfflinePlayers
-     * @param message Message mail
+     * @param loc Message mail
      * @param sender Sender of Mail
      */
-    public MailMessages(ItemStack icon,  List<OfflinePlayer> recipients, String message, UUID sender) {
-        this(icon, new Date(), recipients, message, sender);
+    public MailLocation(ItemStack icon,  List<OfflinePlayer> recipients, Location loc, UUID sender) {
+        this(icon, new Date(), recipients, loc, sender);
     }
 
     /**
@@ -43,10 +44,10 @@ public final class MailMessages extends Mail {
      * @param icon Icon ItemStack
      * @param date Date to stamp onto mail
      * @param recipients List of OfflinePlayers
-     * @param message Message mail
+     * @param loc Message mail
      */
-    public MailMessages(ItemStack icon, Date date, List<OfflinePlayer> recipients, String message) {
-        this(icon, date, recipients, message,null);
+    public MailLocation(ItemStack icon, Date date, List<OfflinePlayer> recipients, Location loc) {
+        this(icon, date, recipients, loc,null);
     }
 
     /**
@@ -54,40 +55,28 @@ public final class MailMessages extends Mail {
      * @param icon Icon ItemStack
      * @param date Date to stamp onto mail
      * @param recipients List of OfflinePlayers
-     * @param message Message mail
+     * @param loc Message mail
      * @param sender Sender of Mail
      */
-    public MailMessages(ItemStack icon, Date date, List<OfflinePlayer> recipients, String message, UUID sender) {
+    public MailLocation(ItemStack icon, Date date, List<OfflinePlayer> recipients, Location loc, UUID sender) {
         super(icon, date);
-        this.message = message;
         recipients.forEach(r -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(r).addMail(this));
         super.setSender(sender);
+        location = loc;
     }
-
-    /* Getters */
-
-    public String getMessage() {
-        return message;
-    }
-
+    
     @Override
     public MailType getMailType() {
-        return MailType.MAIL_MESSAGE;
-    }
-
-    @Override
-    public BaseComponent[] getContentsAsText() {
-        return new ComponentBuilder(getMessage()).create();
+        return MailType.MAIL_LOCATION;
     }
 
     @Override
     public Gui getMail() {
-        return null;
+return null;
     }
 
-    /* Setters */
-
-    public void setMessage(String message) {
-        this.message = message;
+    @Override
+    public BaseComponent[] getContentsAsText() {
+        return new ComponentBuilder(location.toString()).create();
     }
 }

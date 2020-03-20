@@ -2,25 +2,52 @@ package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
 
-import me.mattstudios.mfgui.gui.guis.GuiItem;
-import org.bukkit.Material;
+import me.harry0198.mailme.utility.Locale;
+import me.harry0198.mailme.utility.Utils;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiHandler {
+public final class GuiHandler {
 
-    private PaginatedGui paginatedGui;
+    private final MailMe plugin;
+    private final ChooseTypeGui chooseTypeGui;
+    List<ItemStack> icons = new ArrayList<>();
 
     public GuiHandler(MailMe plugin) {
-        List<GuiItem> items = new ArrayList<>();
-        for (int i = 0; i < 62; i++) {
-            items.add(new GuiItem(new ItemStack(Material.CYAN_BANNER)));
+        this.plugin = plugin;
+        this.chooseTypeGui = new ChooseTypeGui(plugin);
+
+        ConfigurationSection section = plugin.getConfig().getConfigurationSection("icons");
+        for (String key : section.getKeys(false)) {
+            icons.add(section.getItemStack(key));
         }
-        //paginatedGui = new PaginatedGui(30, items);
     }
 
-    public PaginatedGui getPaginatedGui() { return paginatedGui; }
+    public IconGui getIconGui(Player player) {
+        return new IconGui(plugin, player, icons, 0);
+    }
 
+    public static ItemStack getPrevious(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.back-button"));
+    }
+
+    public static ItemStack getNext(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.forward-button"));
+    }
+
+    public static ItemStack getSearchIcon(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.search-button"));
+    }
+
+    public static ItemStack getNoResults(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.no-results"));
+    }
+
+    public ChooseTypeGui getChooseTypeGui() {
+        return chooseTypeGui;
+    }
 }

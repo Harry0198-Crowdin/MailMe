@@ -3,12 +3,11 @@ package me.harry0198.mailme;
 
 import com.google.gson.*;
 import me.harry0198.mailme.command.MailCmd;
-import me.harry0198.mailme.conversations.ConversationAbandonedListener;
-import me.harry0198.mailme.conversations.ConversationPrefix;
 import me.harry0198.mailme.conversations.InputPrompt;
+import me.harry0198.mailme.conversations.SearchInput;
 import me.harry0198.mailme.datastore.PlayerDataHandler;
 import me.harry0198.mailme.mail.Mail;
-import me.harry0198.mailme.mail.MailDeserializer;
+import me.harry0198.mailme.mail.MailSerializer;
 import me.harry0198.mailme.ui.GuiHandler;
 import me.harry0198.mailme.utility.ItemStackSerializer;
 import me.harry0198.mailme.utility.Locale;
@@ -25,7 +24,7 @@ public final class MailMe extends JavaPlugin {
                     .setDateFormat("dd-MM-yyyy hh:mm:ss.SSS")
                     .enableComplexMapKeySerialization()
                     .setPrettyPrinting()
-                    .registerTypeAdapter(Mail.class, new MailDeserializer())
+                    .registerTypeAdapter(Mail.class, new MailSerializer())
                     .registerTypeAdapter(ItemStack.class, new ItemStackSerializer())
                     .serializeSpecialFloatingPointValues()
                     .create();
@@ -35,6 +34,7 @@ public final class MailMe extends JavaPlugin {
 
     /* Conversation Factory */
     private ConversationFactory conversationFactory;
+    private ConversationFactory searchFactory;
 
     /**
      * Class constructor -- loads the conversation factory
@@ -42,10 +42,13 @@ public final class MailMe extends JavaPlugin {
     public MailMe() {
 
         this.conversationFactory = new ConversationFactory(this).withModality(true)
-                .withPrefix(new ConversationPrefix()).withFirstPrompt(new InputPrompt())
+                .withFirstPrompt(new InputPrompt())
                 .withEscapeSequence("cancel").withTimeout(60)
-                .thatExcludesNonPlayersWithMessage("Console is not supported by this command")
-                .addConversationAbandonedListener(new ConversationAbandonedListener());
+                .thatExcludesNonPlayersWithMessage("Console is not supported by this command");
+        this.searchFactory = new ConversationFactory(this).withModality(true)
+                .withFirstPrompt(new SearchInput())
+                .withEscapeSequence("cancel").withTimeout(60)
+                .thatExcludesNonPlayersWithMessage("Console is not supported by this command");
     }
 
     @Override
@@ -60,6 +63,7 @@ public final class MailMe extends JavaPlugin {
         CommandManager commandManager = new CommandManager(this);
         commandManager.register(new MailCmd(this));
         commandManager.hideTabComplete(true);
+
     }
 
     @Override
@@ -79,6 +83,10 @@ public final class MailMe extends JavaPlugin {
 
     public ConversationFactory getConversationFactory() {
         return conversationFactory;
+    }
+
+    public ConversationFactory getSearchFactory() {
+        return searchFactory;
     }
 
     public static MailMe getInstance() {

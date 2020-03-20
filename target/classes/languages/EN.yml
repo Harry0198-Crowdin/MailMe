@@ -3,6 +3,10 @@ VER: 1.0
 
 prefix: "&8[&eMailMe&8]&r"
 
+cmd:
+  lang-change: "@prefix &eLanguage changed!"
+  notify-change: "@prefix &eNotification Settings updated!"
+
 text:
   format:
     - "&8<    &eMail    &8>"
@@ -18,4 +22,125 @@ text:
 
 notify:
   received: "@prefix &eYou received some mail from %s"
-  sent: "@prefix &eYou send some mail to %s"
+  sent: "@prefix &eYou sent some mail to %s"
+  could-not-send: "@prefix &cWarning! &eCould not send mail to %s. Please try again later."
+
+mail:
+  message: "@prefix What would you like the message to say?"
+
+gui:
+  read-title: "Read Mail"
+
+  search: "Write the name of the player you'd like to find"
+  mail:
+    title: "&7From: &bHarolds"
+    lore:
+      - ""
+      - "&7Received at: &b@time"
+      - "&7Mail Type: &b@type"
+      - "&7Read: &b@read"
+      - ""
+      - "&bPro Tip: &7Click to open the mail!"
+  back-button:
+    title: "&8[&ePrevious Page&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Click to go to"
+      - "&7the previous page!"
+    glow: true
+    skull-texture: ""
+  forward-button:
+    title: "&8[&eNext Page&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Click to go to"
+      - "&7the next page!"
+    glow: true
+    skull-texture: ""
+  exit-button:
+    title: "&8[&eExit Page&8]"
+    material: BARRIER
+    amount: 1
+    lore:
+      - "&7Click to close"
+      - "&7the gui!"
+    glow: true
+    skull-texture: ""
+  search-button:
+    title: "&8[&eSearch&8]"
+    material: BOOK
+    amount: 1
+    lore:
+      - "&7Click to search by"
+      - "&7player name!"
+    glow: true
+    skull-texture: ""
+  no-results:
+    title: "&cNo Results :("
+    material: GLASS_BOTTLE
+    amount: 1
+    lore:
+      - "&7Try searching with a"
+      - "&7different criteria"
+    glow: true
+    skull-texture: ""
+  choose:
+    message:
+      title: "&8[&eMessage Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a message mail!"
+      glow: true
+      skull-texture: ""
+    item:
+      title: "&8[&eItem Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7an item mail!"
+      glow: true
+      skull-texture: ""
+    sound:
+      title: "&8[&eSound Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a sound mail!"
+      glow: true
+      skull-texture: ""
+    location:
+      title: "&8[&eLocation Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a location mail!"
+      glow: true
+      skull-texture: ""
+  icon-custom:
+    title: "&8[&cCustom&8]"
+    material: YELLOW_STAINED_GLASS_PANE
+    amount: 1
+    lore:
+      - "&7Click with item to have as icon"
+      - "&7You won't lose this item."
+    glow: true
+    skull-texture: ""
+  remove-filter:
+    title: "&8[&dRemove Filter&8]"
+    material: IRON_BARS
+    amount: 1
+    lore:
+      - "&7Click to remove any filters"
+      - "&7on the menu!"
+    glow: true
+    skull-texture: ""
+
+
+
