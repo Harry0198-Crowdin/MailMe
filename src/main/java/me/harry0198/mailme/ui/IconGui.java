@@ -27,13 +27,17 @@ public final class IconGui extends PaginationGui {
         GuiItem gi = new GuiItem(stack, event -> {
             event.setCancelled(true);
             MailBuilder.getMailDraft(getPlayer()).setIcon(event.getCursor());
-            //TODO next gui
+            plugin.getGuiHandler().getChoosePlayerGui(getPlayer()).open();
         });
         List<GuiItem> iconList = new ArrayList<>();
 
         getPage(getCurrentPage()).forEach(it -> {
             ItemStack item = (ItemStack) it;
-            iconList.add(new GuiItem(item, event -> event.setCancelled(true)));
+            iconList.add(new GuiItem(item, event -> {
+                event.setCancelled(true);
+                MailBuilder.getMailDraft(getPlayer()).setIcon(item);
+                plugin.getGuiHandler().getChoosePlayerGui(getPlayer()).open();
+            }));
         });
 
         getGui().setItem(3,5,gi);

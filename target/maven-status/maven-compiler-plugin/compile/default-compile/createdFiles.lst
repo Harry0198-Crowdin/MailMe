@@ -1,4 +1,5 @@
 me/harry0198/mailme/ui/IconGui.class
+me/harry0198/mailme/conversations/PlayerSearch.class
 me/harry0198/mailme/utility/Locale.class
 me/harry0198/mailme/mail/types/MailSound.class
 me/harry0198/mailme/ui/ChooseTypeGui.class
@@ -10,6 +11,7 @@ me/harry0198/mailme/datastore/PlayerDataHandler.class
 me/harry0198/mailme/utility/Utils.class
 me/harry0198/mailme/mail/MailBuilder$Builder.class
 me/harry0198/mailme/mail/types/MailMessages.class
+me/harry0198/mailme/ui/ChoosePlayerGui$1.class
 me/harry0198/mailme/mail/Mail$MailType.class
 me/harry0198/mailme/mail/MailBuilder$1.class
 me/harry0198/mailme/mail/types/MailItems.class
@@ -22,10 +24,13 @@ me/harry0198/mailme/mail/Mail.class
 me/harry0198/mailme/MailMe.class
 me/harry0198/mailme/utility/Locale$LANG.class
 me/harry0198/mailme/datastore/PlayerData.class
+me/harry0198/mailme/ui/ItemInputGui.class
+me/harry0198/mailme/ui/ChoosePlayerGui.class
 me/harry0198/mailme/utility/ItemStackSerializer.class
 me/harry0198/mailme/conversations/InputPrompt.class
 me/harry0198/mailme/mail/MailSerializer.class
 me/harry0198/mailme/ui/PaginationGui.class
 me/harry0198/mailme/events/MailSentEvent.class
+me/harry0198/mailme/conversations/ConversationAbandonedListener.class
 me/harry0198/mailme/events/listeners/EntityEvents.class
 me/harry0198/mailme/command/MailCmd.class

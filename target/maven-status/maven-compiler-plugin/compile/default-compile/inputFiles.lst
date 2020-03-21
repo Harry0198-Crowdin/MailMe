@@ -4,6 +4,8 @@
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/utility/NMSReflection.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/PaginationGui.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/MailGui.java
+/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/ItemInputGui.java
+/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/conversations/PlayerSearch.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/MailSerializer.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/events/MailSentEvent.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/types/MailLocation.java
@@ -17,7 +19,9 @@
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/datastore/PlayerDataHandler.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/command/MailCmd.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/types/MailItems.java
+/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/conversations/ConversationAbandonedListener.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/conversations/SearchInput.java
+/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/ChoosePlayerGui.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/Mail.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/ChooseTypeGui.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/MailBuilder.java

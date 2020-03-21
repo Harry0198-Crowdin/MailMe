@@ -4,6 +4,8 @@ import me.harry0198.mailme.MailMe;
 
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Utils;
+import me.mattstudios.mfgui.gui.guis.GuiItem;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +17,7 @@ public final class GuiHandler {
 
     private final MailMe plugin;
     private final ChooseTypeGui chooseTypeGui;
-    List<ItemStack> icons = new ArrayList<>();
+    private List<ItemStack> icons = new ArrayList<>();
 
     public GuiHandler(MailMe plugin) {
         this.plugin = plugin;
@@ -29,6 +31,10 @@ public final class GuiHandler {
 
     public IconGui getIconGui(Player player) {
         return new IconGui(plugin, player, icons, 0);
+    }
+
+    public ChoosePlayerGui getChoosePlayerGui(Player player) {
+        return new ChoosePlayerGui(plugin, player, new ArrayList<>(Bukkit.getOnlinePlayers()), 0);
     }
 
     public static ItemStack getPrevious(Locale locale, Locale.LANG lang) {
@@ -47,7 +53,24 @@ public final class GuiHandler {
         return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.no-results"));
     }
 
+    public static GuiItem getLoading(Locale locale, Locale.LANG lang) {
+        return new GuiItem(Utils.getItemStack(locale.getConfigurationSection(lang, "gui.loading")), event -> event.setCancelled(true));
+    }
+
+    public static ItemStack getTextButton(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.text-button"));
+    }
+
+    public static ItemStack getContinue(Locale locale, Locale.LANG lang) {
+        return Utils.getItemStack(locale.getConfigurationSection(lang, "gui.continue"));
+    }
+
+
     public ChooseTypeGui getChooseTypeGui() {
         return chooseTypeGui;
+    }
+
+    public ItemInputGui getItemInputGui(Player player) {
+        return new ItemInputGui(plugin, player);
     }
 }

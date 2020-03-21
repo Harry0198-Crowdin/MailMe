@@ -1,7 +1,9 @@
 package me.harry0198.mailme.conversations;
 
 import me.harry0198.mailme.MailMe;
+import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.datastore.PlayerData;
+import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.mail.MailBuilder;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.conversations.Prompt;
@@ -23,7 +25,13 @@ public class InputPrompt extends StringPrompt {
         }
 
         Player player = (Player) context.getForWhom();
-        MailBuilder.getMailDraft(player).setMessage(s);
+        try {
+            Mail mail = MailBuilder.getMailDraft(player).setMessage(s).build();
+            assert mail != null;
+            context.setSessionData("mail", mail);
+        } catch (IncompleteBuilderException ibe) {
+            ibe.printStackTrace();
+        }
         return Prompt.END_OF_CONVERSATION;
     }
 }

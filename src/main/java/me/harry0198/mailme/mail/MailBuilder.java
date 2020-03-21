@@ -86,6 +86,10 @@ public final class MailBuilder {
             return this;
         }
 
+        public Mail.MailType getMailType() {
+            return mailType;
+        }
+
         public List<OfflinePlayer> getRecipients() {
             return recipients;
         }
@@ -94,7 +98,6 @@ public final class MailBuilder {
 
             if (icon == null) throw new IncompleteBuilderException("Icon has not been set!");
             if (recipients.isEmpty()) throw new IncompleteBuilderException("You must add recipients!");
-
             mailDrafts.remove(sender);
 
             switch (mailType) {

@@ -3,7 +3,9 @@ package me.harry0198.mailme;
 
 import com.google.gson.*;
 import me.harry0198.mailme.command.MailCmd;
+import me.harry0198.mailme.conversations.ConversationAbandonedListener;
 import me.harry0198.mailme.conversations.InputPrompt;
+import me.harry0198.mailme.conversations.PlayerSearch;
 import me.harry0198.mailme.conversations.SearchInput;
 import me.harry0198.mailme.datastore.PlayerDataHandler;
 import me.harry0198.mailme.mail.Mail;
@@ -31,10 +33,12 @@ public final class MailMe extends JavaPlugin {
     private Locale locale;
     private GuiHandler uiHandler;
     private PlayerDataHandler playerDataHandler;
+    private MailCmd mailCmds;
 
     /* Conversation Factory */
     private ConversationFactory conversationFactory;
     private ConversationFactory searchFactory;
+    private ConversationFactory searchPlayerFactory;
 
     /**
      * Class constructor -- loads the conversation factory
@@ -44,9 +48,14 @@ public final class MailMe extends JavaPlugin {
         this.conversationFactory = new ConversationFactory(this).withModality(true)
                 .withFirstPrompt(new InputPrompt())
                 .withEscapeSequence("cancel").withTimeout(60)
+                .addConversationAbandonedListener(new ConversationAbandonedListener())
                 .thatExcludesNonPlayersWithMessage("Console is not supported by this command");
         this.searchFactory = new ConversationFactory(this).withModality(true)
                 .withFirstPrompt(new SearchInput())
+                .withEscapeSequence("cancel").withTimeout(60)
+                .thatExcludesNonPlayersWithMessage("Console is not supported by this command");
+        this.searchPlayerFactory = new ConversationFactory(this).withModality(true)
+                .withFirstPrompt(new PlayerSearch())
                 .withEscapeSequence("cancel").withTimeout(60)
                 .thatExcludesNonPlayersWithMessage("Console is not supported by this command");
     }
@@ -61,7 +70,8 @@ public final class MailMe extends JavaPlugin {
         this.playerDataHandler = new PlayerDataHandler(this);
 
         CommandManager commandManager = new CommandManager(this);
-        commandManager.register(new MailCmd(this));
+        this.mailCmds = new MailCmd(this);
+        commandManager.register(mailCmds);
         commandManager.hideTabComplete(true);
 
     }
@@ -87,6 +97,12 @@ public final class MailMe extends JavaPlugin {
 
     public ConversationFactory getSearchFactory() {
         return searchFactory;
+    }
+
+    public ConversationFactory getSearchPlayerFactory() { return searchPlayerFactory; }
+
+    public MailCmd getCmds() {
+        return mailCmds;
     }
 
     public static MailMe getInstance() {

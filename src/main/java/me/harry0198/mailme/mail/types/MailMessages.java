@@ -1,6 +1,5 @@
 package me.harry0198.mailme.mail.types;
 
-import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.mail.Mail;
 import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.chat.*;
@@ -60,8 +59,8 @@ public final class MailMessages extends Mail {
     public MailMessages(ItemStack icon, Date date, List<OfflinePlayer> recipients, String message, UUID sender) {
         super(icon, date);
         this.message = message;
-        recipients.forEach(r -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(r).addMail(this));
         super.setSender(sender);
+        super.addRecipients(recipients);
     }
 
     /* Getters */

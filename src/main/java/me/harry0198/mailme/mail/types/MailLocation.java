@@ -1,6 +1,5 @@
 package me.harry0198.mailme.mail.types;
 
-import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.mail.Mail;
 import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -15,8 +14,10 @@ import java.util.UUID;
 
 public final class MailLocation extends Mail {
 
+    @SuppressWarnings("unused")
     private final String type = "MailLocation"; // For deserializer
-    private Location location;
+    private double x,y,z;
+    private String world;
 
     /**
      *
@@ -60,9 +61,12 @@ public final class MailLocation extends Mail {
      */
     public MailLocation(ItemStack icon, Date date, List<OfflinePlayer> recipients, Location loc, UUID sender) {
         super(icon, date);
-        recipients.forEach(r -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(r).addMail(this));
         super.setSender(sender);
-        location = loc;
+        super.addRecipients(recipients);
+        this.x = loc.getX();
+        this.y = loc.getY();
+        this.z = loc.getZ();
+        this.world = loc.getWorld().getName();
     }
     
     @Override
@@ -77,6 +81,6 @@ return null;
 
     @Override
     public BaseComponent[] getContentsAsText() {
-        return new ComponentBuilder(location.toString()).create();
+        return new ComponentBuilder("§bWorld: §f" + world + "\n" + "§bX: §f" + x + "\n" + "§bY: §f" + y + "\n" + "§bZ: §f" + z).create();
     }
 }

@@ -17,12 +17,10 @@ public final class PlayerData {
     private final TreeMap<Date,Mail> mail = new TreeMap<>(Collections.reverseOrder());
     private Locale.LANG lang;
     private UUID uuid;
-    private final File jsonData;
     private boolean notify = true;
 
-    public PlayerData(final UUID uuid, final File file, final Locale.LANG lang) {
+    public PlayerData(final UUID uuid, final Locale.LANG lang) {
         this.uuid = uuid;
-        this.jsonData = file;
         this.lang = lang;
     }
 
@@ -48,15 +46,6 @@ public final class PlayerData {
     }
 
     /**
-     * Gets JsonData file
-     *
-     * @return File of player's data origin
-     */
-    public File getFile() {
-        return jsonData;
-    }
-
-    /**
      * Gets the language the player has set
      *
      * @return Locale Language player is using
@@ -70,7 +59,7 @@ public final class PlayerData {
 
     public void setNotifySettings(boolean notify) {
         this.notify = notify;
-        Utils.writeJson(jsonData, this);
+        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
     }
 
     /**
@@ -80,7 +69,7 @@ public final class PlayerData {
      */
     public void addMail(Mail mail) {
         this.mail.put(mail.getDate(), mail);
-        Utils.writeJson(jsonData, this);
+        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
 
         OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
         if (player.isOnline() && notify) {
@@ -91,6 +80,6 @@ public final class PlayerData {
 
     public void setLang(Locale.LANG lang) {
         this.lang = lang;
-        Utils.writeJson(jsonData, this);
+        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
     }
 }

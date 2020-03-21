@@ -78,6 +78,7 @@ public abstract class Mail {
     public void sendMail() {
         UUID sender = getSender();
         List<UUID> recipients = getRecipients();
+        List<UUID> newList = new ArrayList<>(recipients);
 
         PlayerData senderData = MailMe.getInstance().getPlayerDataHandler().getPlayerData(sender);
         for (UUID player : recipients) {
@@ -86,17 +87,14 @@ public abstract class Mail {
             Date timeTravel = cal.getTime();
             PlayerData data = MailMe.getInstance().getPlayerDataHandler().getPlayerData(player);
             List<Mail> dataMail = data.getMail().stream().filter(r -> r.getDate().getTime() > timeTravel.getTime()).filter(r -> r.getSender().equals(sender)).collect(Collectors.toList());
-            if (dataMail.isEmpty())
-                data.addMail(this);
-            else {
+            if (!dataMail.isEmpty()) {
                 Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.could-not-send"), Bukkit.getOfflinePlayer(player).getName()));
-                recipients.remove(player);
+                newList.remove(player);
             }
         }
         if (sender.toString().length() != 36) return;
-        Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), recipients.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList()).toString()));
-
-        recipients.forEach(player -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(this));
+        Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), newList.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList()).toString()));
+        newList.forEach(player -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(this));
     }
 
 
@@ -105,7 +103,7 @@ public abstract class Mail {
         String sender = getSender() != null ? Bukkit.getOfflinePlayer(getSender()).getName() : "???";
         ComponentBuilder builder = new ComponentBuilder("");
 
-        builder.event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply " + sender));
+        builder.event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply"));
         builder.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage("text.hover")).create()));
 
         for (String each : msgs) {

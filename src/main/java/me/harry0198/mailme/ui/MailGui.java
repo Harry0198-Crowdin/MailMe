@@ -16,6 +16,12 @@ public final class MailGui extends PaginationGui {
         super(plugin, player, items, page);
         updateTitlePath(getPlugin().getLocale().getMessage(getPlayerData().getLang(), "gui.read-title"));
         applyNavBut(page);
+
+        getGui().setItem(3,1,new GuiItem(GuiHandler.getTextButton(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
+            event.setCancelled(true);
+            getGui().close(player);
+            plugin.getCmds().readAsText(player, 0);
+        }));
     }
 
     @Override

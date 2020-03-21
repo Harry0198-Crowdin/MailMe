@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 abstract class PaginationGui {
@@ -40,7 +41,7 @@ abstract class PaginationGui {
         }));
     }
 
-    protected PaginationGui applyNavBut(int page) {
+    protected void applyNavBut(int page) {
         if ((page - 1) >= 0)
             gui.setItem(2,1, new GuiItem(GuiHandler.getPrevious(plugin.getLocale(), data.getLang()), event -> {
                 event.setCancelled(true);
@@ -53,8 +54,6 @@ abstract class PaginationGui {
                 newInstance(page + 1).open();
 
             }));
-
-        return this;
     }
 
 
@@ -87,7 +86,7 @@ abstract class PaginationGui {
     }
 
     protected void addBetweenPoints(List<GuiItem> guiItems) {
-
+        Collections.reverse(guiItems);
         int marker = 0;
 
         for (int row = 1; row <= rows; row++) {
@@ -118,6 +117,7 @@ abstract class PaginationGui {
     private int getSlotFromRowCol(final int row, final int col) {
         return (col + (row - 1) * 9) - 1;
     }
+
 
     public abstract void open();
     public abstract PaginationGui newInstance(int page);

@@ -4,7 +4,7 @@ import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.Mail;
-import me.harry0198.mailme.ui.ChooseTypeGui;
+import me.harry0198.mailme.mail.MailBuilder;
 import me.harry0198.mailme.ui.MailGui;
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Pagination;
@@ -16,7 +16,9 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 @Command("mailme")
 @Alias("mail")
@@ -30,8 +32,8 @@ public class MailCmd extends CommandBase {
     }
 
     @Default
-    public void execute(Player player) {
-
+    public void execute(Player player) throws IncompleteBuilderException {
+        new MailBuilder.Builder(Mail.MailType.MAIL_ITEM, player).setIcon(new ItemStack(Material.BLACK_BANNER)).addRecipient(player).addItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE)).build().sendMail();
     }
 
     @SubCommand("lang")
@@ -53,17 +55,18 @@ public class MailCmd extends CommandBase {
     }
 
     @SubCommand("read")
-    public void execute2(Player player) {
+    public void read(Player player) {
         new MailGui(plugin, player, plugin.getPlayerDataHandler().getPlayerData(player.getUniqueId()).getMail(), 0).open();
     }
 
     @SubCommand("send")
-    public void execute3(Player player) throws IncompleteBuilderException {
+    @Alias("reply")
+    public void send(Player player) {
         plugin.getGuiHandler().getChooseTypeGui().open(player);
     }
 
     @SubCommand("text")
-    public void execute4(Player player, @Optional Integer page) {
+    public void readAsText(Player player, @Optional Integer page) {
 
         PlayerData data = plugin.getPlayerDataHandler().getPlayerData(player.getUniqueId());
         Locale.LANG lang = data.getLang();

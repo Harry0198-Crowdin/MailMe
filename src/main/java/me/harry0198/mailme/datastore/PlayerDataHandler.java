@@ -46,7 +46,7 @@ public final class PlayerDataHandler {
             return;
         }
 
-        PlayerData newData = new PlayerData(uuid, jsonData, Locale.LANG.valueOf(plugin.getConfig().getString("lang")));
+        PlayerData newData = new PlayerData(uuid, Locale.LANG.valueOf(plugin.getConfig().getString("lang")));
         Utils.writeJson(jsonData, newData);
         this.playerData.put(uuid, newData);
     }

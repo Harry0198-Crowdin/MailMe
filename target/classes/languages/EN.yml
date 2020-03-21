@@ -30,10 +30,11 @@ mail:
 
 gui:
   read-title: "Read Mail"
+  choose-player-title: "Choose Recipients"
 
   search: "Write the name of the player you'd like to find"
   mail:
-    title: "&7From: &bHarolds"
+    title: "&7From: &b@sender"
     lore:
       - ""
       - "&7Received at: &b@time"
@@ -141,6 +142,33 @@ gui:
       - "&7on the menu!"
     glow: true
     skull-texture: ""
+  loading:
+    title: "&cLoading..."
+    material: SKELETON_SKULL
+    amount: 1
+    lore:
+      - ""
+    glow: true
+    skull-texture: ""
+  continue:
+    title: "&8[&eContinue >&8]"
+    material: EMERALD_BLOCK
+    amount: 1
+    lore:
+      - "&7Click to continue to"
+      - "&7The next page!"
+    glow: true
+    skull-texture: ""
+  text-button:
+    title: "&8[&eRead as Text&8]"
+    material: MAP
+    amount: 1
+    lore:
+      - "&7Click to"
+      - "&7read your mail as text"
+    glow: true
+    skull-texture: ""
+
 
 
 
