@@ -1,3 +1,19 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
@@ -11,7 +27,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 abstract class PaginationGui {
@@ -38,6 +53,7 @@ abstract class PaginationGui {
         gui.setItem(5,5,new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.exit-button")), e -> {
             e.setCancelled(true);
             gui.close(player);
+            GuiHandler.playCloseSound(player);
         }));
     }
 
@@ -86,7 +102,6 @@ abstract class PaginationGui {
     }
 
     protected void addBetweenPoints(List<GuiItem> guiItems) {
-        Collections.reverse(guiItems);
         int marker = 0;
 
         for (int row = 1; row <= rows; row++) {

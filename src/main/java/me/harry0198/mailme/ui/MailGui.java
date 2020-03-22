@@ -1,3 +1,19 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
@@ -21,6 +37,7 @@ public final class MailGui extends PaginationGui {
             event.setCancelled(true);
             getGui().close(player);
             plugin.getCmds().readAsText(player, 0);
+            GuiHandler.playUISound(player);
         }));
     }
 
@@ -31,11 +48,13 @@ public final class MailGui extends PaginationGui {
             event.setCancelled(true);
             getPlugin().getSearchFactory().buildConversation(getPlayer()).begin();
             getGui().close(getPlayer());
+            GuiHandler.playUISound(getPlayer());
         }));
 
         getGui().setItem(4,9, new GuiItem(removeFilter(), event -> {
             event.setCancelled(true);
             new MailGui(getPlugin(), getPlayer(), getPlayerData().getMail(), 0).open();
+            GuiHandler.playUISound(getPlayer());
         }));
 
         if (getAllItems().size() == 0) {
@@ -54,15 +73,20 @@ public final class MailGui extends PaginationGui {
             String[] stockArr = new String[lore.size()];
             stockArr = lore.toArray(stockArr);
 
-            ItemBuilder itemBuilder = new ItemBuilder(mail.getIcon())
+            ItemBuilder itemBuilder = new ItemBuilder(mail.getIcon().getType())
                     .setName(Utils.applyPlaceHolders(mail, getPlugin().getLocale().getMessage(super.getPlayerData().getLang(), "gui.mail.title")))
                     .setLore(stockArr);
 
-            if (!mail.isRead())
+            if (!mail.isRead()) {
                 itemBuilder.glow();
+            }
             mailList.add(new GuiItem(itemBuilder.build(), event -> {
                 event.setCancelled(true);
-                mail.getMail().open(getPlayer());
+                Player player = (Player) event.getWhoClicked();
+                mail.onClick(player);
+                mail.setRead(true, player);
+                newInstance(getCurrentPage()).open();
+                GuiHandler.playDingSound(getPlayer());
             }));
         }
 

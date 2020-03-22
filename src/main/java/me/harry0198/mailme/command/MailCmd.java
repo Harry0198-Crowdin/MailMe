@@ -1,10 +1,24 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.command;
 
 import me.harry0198.mailme.MailMe;
-import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.Mail;
-import me.harry0198.mailme.mail.MailBuilder;
 import me.harry0198.mailme.ui.MailGui;
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Pagination;
@@ -16,14 +30,15 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+
 
 @Command("mailme")
 @Alias("mail")
 @SuppressWarnings({"unused"})
-public class MailCmd extends CommandBase {
+public final class MailCmd extends CommandBase {
+
+    private final static String BASE_PERM = "mailme.base";
 
     private MailMe plugin;
 
@@ -31,12 +46,15 @@ public class MailCmd extends CommandBase {
         this.plugin = plugin;
     }
 
+    @Permission(BASE_PERM)
     @Default
-    public void execute(Player player) throws IncompleteBuilderException {
-        new MailBuilder.Builder(Mail.MailType.MAIL_ITEM, player).setIcon(new ItemStack(Material.BLACK_BANNER)).addRecipient(player).addItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE)).build().sendMail();
+    public void execute(Player player) {
+        player.sendMessage(plugin.getLocale().getLore(plugin.getPlayerDataHandler().getPlayerData(player).getLang(), "help"));
     }
 
+    @Permission(BASE_PERM)
     @SubCommand("lang")
+    @Completion("#locale")
     public void setLanguage(Player player, String lang) {
         lang = lang.toUpperCase();
         try {
@@ -47,24 +65,29 @@ public class MailCmd extends CommandBase {
         player.sendMessage(plugin.getLocale().getMessage(Locale.LANG.valueOf(lang), "cmd.lang-change"));
     }
 
+    @Permission(BASE_PERM)
     @SubCommand("notify")
+    @Completion("#boolean")
     public void setNotifySetting(Player player, Boolean bool) {
         PlayerData data = plugin.getPlayerDataHandler().getPlayerData(player);
         data.setNotifySettings(bool);
         player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "cmd.notify-change"));
     }
 
+    @Permission(BASE_PERM)
     @SubCommand("read")
     public void read(Player player) {
         new MailGui(plugin, player, plugin.getPlayerDataHandler().getPlayerData(player.getUniqueId()).getMail(), 0).open();
     }
 
+    @Permission(BASE_PERM)
     @SubCommand("send")
     @Alias("reply")
     public void send(Player player) {
         plugin.getGuiHandler().getChooseTypeGui().open(player);
     }
 
+    @Permission(BASE_PERM)
     @SubCommand("text")
     public void readAsText(Player player, @Optional Integer page) {
 

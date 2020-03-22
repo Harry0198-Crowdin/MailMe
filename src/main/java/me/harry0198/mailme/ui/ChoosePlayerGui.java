@@ -1,3 +1,19 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
@@ -28,17 +44,21 @@ public final class ChoosePlayerGui extends PaginationGui {
             event.setCancelled(true);
             getPlugin().getSearchPlayerFactory().buildConversation(getPlayer()).begin();
             getGui().close(getPlayer());
+            GuiHandler.playUISound(getPlayer());
         }));
 
         getGui().setItem(4,9, new GuiItem(removeFilter(), event -> {
             event.setCancelled(true);
             getPlugin().getGuiHandler().getChoosePlayerGui(getPlayer()).open();
+            GuiHandler.playUISound(getPlayer());
         }));
 
         getGui().setItem(5,9,new GuiItem(GuiHandler.getContinue(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
             event.setCancelled(true);
-            if (!MailBuilder.getMailDraft(getPlayer()).getRecipients().isEmpty())
+            if (!MailBuilder.getMailDraft(getPlayer()).getRecipients().isEmpty()) {
                 openSpecificInputGui();
+                GuiHandler.playUISound(getPlayer());
+            }
         }));
     }
 
@@ -63,13 +83,15 @@ public final class ChoosePlayerGui extends PaginationGui {
                     heads.add(new GuiItem(builder.build(), event -> {
                         event.setCancelled(true);
                         if (draft.getRecipients().contains(p)) {
-                            draft.removeRecipient(getPlayer());
+                            draft.removeRecipient(p);
                             getGui().setItem(finalSlot, new GuiItem(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build(), e -> e.setCancelled(true)));
                         } else {
-                            draft.addRecipient(getPlayer());
+                            draft.addRecipient(p);
                             getGui().setItem(finalSlot, new GuiItem(new ItemBuilder(Material.EMERALD).glow().build(), e -> e.setCancelled(true)));
                         }
+                        GuiHandler.playDingSound(getPlayer());
                         getGui().update();
+
 
                     }));
                     slot++;
@@ -101,7 +123,8 @@ public final class ChoosePlayerGui extends PaginationGui {
                     getPlugin().getGuiHandler().getItemInputGui(getPlayer()).open();
                     break;
                 case MAIL_SOUND:
-                    getPlugin().getGuiHandler();
+                    getPlayer().closeInventory();
+                    getPlugin().getSoundInputFactory().buildConversation(getPlayer()).begin();
                     break;
                 case MAIL_LOCATION:
                     getPlayer().closeInventory();

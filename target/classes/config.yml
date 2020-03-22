@@ -1,16 +1,44 @@
+#     ___      ___       __        __    ___       ___      ___   _______
+#    |"  \    /"  |     /""\      |" \  |"  |     |"  \    /"  | /"     "|
+#     \   \  //   |    /    \     ||  | ||  |      \   \  //   |(: ______)
+#     /\\  \/.    |   /' /\  \    |:  | |:  |      /\\  \/.    | \/    |
+#    |: \.        |  //  __'  \   |.  |  \  |___  |: \.        | // ___)_
+#    |.  \    /:  | /   /  \\  \  /\  |\( \_|:  \ |.  \    /:  |(:      "|
+#    |___|\__/|___|(___/    \___)(__\_|_)\_______)|___|\__/|___| \_______)
 
+# @Author Harry0198 / Harolds
 
-# This is the default global language that is used across the server if one is not selected
+#
+# ◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥
+#                     How to use the plugin
+#   Most of this plugin should be self explanatory. Lots of values
+#           Are commented out for your ease of use.
+#
+#   Alternatively, see plugin page for more help!
+#
+# ◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥
+#
+
+#                              Global Modifiers
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+
+  # This is the default global language that is used across the server if one is not selected
 # Default "EN"
 lang: "EN"
 
 # This is the delay before you can send another mail to the recipient in minutes
-# Default 10
-delay: 10
+# Default 1
+delay: 1
+
+#                              Icons for usage
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
 
 # Default icons:
 # There is no limit to these so you can just add more and it will make new pages like normal.
 # If a mistake is made an error will be thrown.
+# To add more, simply copy and paste one path below and edit the "type" to a valid Material.
 
 icons:
   item1:

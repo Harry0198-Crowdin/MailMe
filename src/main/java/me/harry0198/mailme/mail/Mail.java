@@ -1,17 +1,34 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.mail;
 
 import me.harry0198.mailme.MailMe;
 
 import me.harry0198.mailme.datastore.PlayerData;
-import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unused")
 public abstract class Mail {
 
     private ItemStack icon;
@@ -28,53 +45,138 @@ public abstract class Mail {
         delay = MailMe.getInstance().getConfig().getInt("delay");
     }
 
+    /**
+     * Gets Type of Mail
+     *
+     * @return MailType
+     */
     public abstract MailType getMailType();
-    public abstract Gui getMail();
+
+    /**
+     * Gets Content as Text Form
+     * @return BaseComponent
+     */
     public abstract BaseComponent[] getContentsAsText();
+
+    /**
+     * Click action in GUI
+     *
+     * @param player Player
+     */
+    public abstract void onClick(Player player);
 
 
     /* Getters */
 
+    /**
+     * Gets Date sent
+     *
+     * @return Date
+     */
     public Date getDate() { return date; }
 
+    /**
+     * Gets Icon set
+     *
+     * @return ItemStack ICON
+     */
     public ItemStack getIcon() {
         return icon;
     }
 
+    /**
+     * If this mail has been read before or not
+     *
+     * @return if read or not
+     */
     public boolean isRead() {
         return read;
     }
 
+    /**
+     * Has mail be replied to
+     *
+     * @return if been replied to
+     */
+    @Deprecated
     public boolean isReply() {
         return reply;
     }
 
+    /**
+     * Gets the sender of the mail
+     *
+     * @return UUID of sender
+     */
     public UUID getSender() { return sender; }
 
+    /**
+     * List of recipients
+     *
+     * @return List of UUIDs of recipients
+     */
     public List<UUID> getRecipients() { return recipients; }
 
     /* Setters */
 
+    /**
+     * Sets icon of Mail
+     *
+     * @param icon ItemStack
+     */
     public void setIcon(ItemStack icon) {
         this.icon = icon;
     }
 
-    public void setRead(boolean read) { this.read = read; }
+    /**
+     * Sets the read status
+     *
+     * @param read status to set to
+     * @param player Player to set
+     */
+    public void setRead(boolean read, Player player) {
+        this.read = read;
+        MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).update();
+    }
 
+    /**
+     * Sets reply status
+     *
+     * @param reply Status to set to
+     */
+    @Deprecated
     public void setReply(boolean reply) {
         this.reply = reply;
     }
 
+    /**
+     * Sets sender of mail
+     *
+     * @param uuid UUID of sender
+     */
     public void setSender(UUID uuid) { this.sender = uuid; }
 
+    /**
+     * Adds recipients
+     *
+     * @param players List of Players
+     */
     public void addRecipients(List<OfflinePlayer> players) {
         recipients.addAll(players.stream().map(OfflinePlayer::getUniqueId).collect(Collectors.toList()));
     }
 
+    /**
+     * Recipient to remove from list
+     *
+     * @param player Player to remove
+     */
     public void removeRecipient(OfflinePlayer player) {
         recipients.remove(player.getUniqueId());
     }
 
+    /**
+     * Sends the mail
+     */
     public void sendMail() {
         UUID sender = getSender();
         List<UUID> recipients = getRecipients();
@@ -97,7 +199,12 @@ public abstract class Mail {
         newList.forEach(player -> MailMe.getInstance().getPlayerDataHandler().getPlayerData(player).addMail(this));
     }
 
-
+    /**
+     * Gets the mail in its text form
+     * Send using player.spigot().sendMessage();
+     *
+     * @return BaseComponent
+     */
     public BaseComponent[] getMailAsText() {
         List<String> msgs = MailMe.getInstance().getLocale().getMessages("text.format");
         String sender = getSender() != null ? Bukkit.getOfflinePlayer(getSender()).getName() : "???";
@@ -123,6 +230,9 @@ public abstract class Mail {
         return builder.create();
     }
 
+    /**
+     * Mail Types
+     */
     public enum MailType {
         MAIL_ITEM, MAIL_MESSAGE, MAIL_SOUND, MAIL_LOCATION
     }

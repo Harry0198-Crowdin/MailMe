@@ -23,14 +23,26 @@ text:
 notify:
   received: "@prefix &eYou received some mail from %s"
   sent: "@prefix &eYou sent some mail to %s"
-  could-not-send: "@prefix &cWarning! &eCould not send mail to %s. Please try again later."
+  could-not-send: "@prefix &cWarning! &eCould not send mail to %s. You have recently sent mail. Please try again later."
 
 mail:
   message: "@prefix What would you like the message to say?"
+  sound-input: "@prefix What sound would you like to play? Find valid sounds here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+
+help:
+  - "&8[&eMailMe&8]"
+  - "&e/mailme lang <language> &7Switches Language"
+  - "&e/mailme notify <true/false> &7Switches notification settings"
+  - "&e/mailme read &7Read your mail"
+  - "&e/mailme send &7Send your mail"
+  - "&e/mailme text &7Read mail as text"
 
 gui:
   read-title: "Read Mail"
   choose-player-title: "Choose Recipients"
+  item-input-title: "Input Items to send"
+  choose-icon-title: "Choose Icon"
+
 
   search: "Write the name of the player you'd like to find"
   mail:
@@ -41,7 +53,7 @@ gui:
       - "&7Mail Type: &b@type"
       - "&7Read: &b@read"
       - ""
-      - "&bPro Tip: &7Click to open the mail!"
+      - "&bPro Tip: &7Click to receive mail!"
   back-button:
     title: "&8[&ePrevious Page&8]"
     material: REDSTONE_TORCH
@@ -168,7 +180,11 @@ gui:
       - "&7read your mail as text"
     glow: true
     skull-texture: ""
-
+  read-mail:
+    title: "&eMail"
+    lore:
+      - "&7Click to"
+      - "&7receive the mail"
 
 
 

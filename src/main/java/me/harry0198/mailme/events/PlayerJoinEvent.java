@@ -14,17 +14,24 @@
  *    limitations under the License.
  */
 
-package me.harry0198.mailme.conversations;
+package me.harry0198.mailme.events;
 
-import me.harry0198.mailme.mail.Mail;
-import org.bukkit.conversations.ConversationAbandonedEvent;
+import me.harry0198.mailme.MailMe;
+import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
-public final class ConversationAbandonedListener implements org.bukkit.conversations.ConversationAbandonedListener {
+public class PlayerJoinEvent implements Listener {
 
-    @Override
-    public void conversationAbandoned(ConversationAbandonedEvent abandonedEvent) {
-        Mail mail = (Mail) abandonedEvent.getContext().getSessionData("mail");
-        if (mail != null)
-            mail.sendMail();
+    private final MailMe plugin;
+
+    public PlayerJoinEvent(MailMe plugin) {
+        this.plugin = plugin;
+    }
+
+    @EventHandler
+    public void onJoin(org.bukkit.event.player.PlayerJoinEvent e) {
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () ->
+            plugin.getPlayerDataHandler().makeData(e.getPlayer().getUniqueId()));
     }
 }

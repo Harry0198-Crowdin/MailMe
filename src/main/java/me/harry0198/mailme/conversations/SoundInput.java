@@ -21,33 +21,37 @@ import me.harry0198.mailme.components.IncompleteBuilderException;
 import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.mail.MailBuilder;
+import org.bukkit.Sound;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.conversations.Prompt;
 import org.bukkit.conversations.StringPrompt;
 import org.bukkit.entity.Player;
 
-public final class InputPrompt extends StringPrompt {
+public final class SoundInput extends StringPrompt {
 
     public String getPromptText(ConversationContext context) {
         PlayerData data = MailMe.getInstance().getPlayerDataHandler().getPlayerData((Player) context.getForWhom());
-        return MailMe.getInstance().getLocale().getMessage(data.getLang(), "mail.message");
+        return MailMe.getInstance().getLocale().getMessage(data.getLang(), "mail.sound-input");
     }
 
     @Override
     public Prompt acceptInput(ConversationContext context, String s) {
-
         if (s.equals("cancel")) {
             return Prompt.END_OF_CONVERSATION;
+        }
+        Sound sound;
+        try {
+            sound = Sound.valueOf(s.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return new SoundInput();
         }
 
         Player player = (Player) context.getForWhom();
         try {
-            Mail mail = MailBuilder.getMailDraft(player).setMessage(s).build();
+            Mail mail = MailBuilder.getMailDraft(player).setSound(sound).build();
             assert mail != null;
             context.setSessionData("mail", mail);
-        } catch (IncompleteBuilderException ibe) {
-            ibe.printStackTrace();
-        }
+        } catch (IncompleteBuilderException ignored) { }
         return Prompt.END_OF_CONVERSATION;
     }
 }

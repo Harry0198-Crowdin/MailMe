@@ -1,3 +1,19 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.datastore;
 
 import me.harry0198.mailme.MailMe;
@@ -14,7 +30,7 @@ import java.util.*;
 
 public final class PlayerData {
 
-    private final TreeMap<Date,Mail> mail = new TreeMap<>(Collections.reverseOrder());
+    private final TreeMap<Date,Mail> mail = new TreeMap<>();
     private Locale.LANG lang;
     private UUID uuid;
     private boolean notify = true;
@@ -33,7 +49,7 @@ public final class PlayerData {
      * @return List<Mail> Player's mail newest to oldest
      */
     public List<Mail> getMail() {
-        return new ArrayList<>(mail.values());
+        return new ArrayList<>(mail.descendingMap().values());
     }
 
     /**
@@ -42,7 +58,7 @@ public final class PlayerData {
      * @return Integer Amount of Mail player has
      */
     public Integer getMailCount() {
-        return mail.values().size();
+        return mail.descendingMap().values().size();
     }
 
     /**
@@ -52,14 +68,24 @@ public final class PlayerData {
      */
     public Locale.LANG getLang() { return this.lang; }
 
+    /**
+     * Gets the current notification preference
+     *
+     * @return True if allowed notifications
+     */
     public boolean getNotifySetting() { return notify; }
 
 
     /* Setters */
 
+    /**
+     * Sets the player's notification preference
+     *
+     * @param notify if wants to receive notifications
+     */
     public void setNotifySettings(boolean notify) {
         this.notify = notify;
-        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
+        update();
     }
 
     /**
@@ -69,7 +95,7 @@ public final class PlayerData {
      */
     public void addMail(Mail mail) {
         this.mail.put(mail.getDate(), mail);
-        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
+        update();
 
         OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
         if (player.isOnline() && notify) {
@@ -78,8 +104,21 @@ public final class PlayerData {
         }
     }
 
+    /**
+     * Sets Player's preferred language
+     *
+     * @param lang Locale Language
+     */
     public void setLang(Locale.LANG lang) {
         this.lang = lang;
-        Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this);
+        update();
+    }
+
+    /**
+     * Writes data to file.
+     */
+    public void update() {
+        Bukkit.getScheduler().runTaskAsynchronously(MailMe.getInstance(), () ->
+            Utils.writeJson(new File(MailMe.getInstance().getDataFolder() + "/playerdata/" + uuid.toString() + ".json"), this));
     }
 }

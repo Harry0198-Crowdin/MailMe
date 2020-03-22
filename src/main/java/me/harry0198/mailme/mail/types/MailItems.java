@@ -1,26 +1,39 @@
+/*
+ *   Copyright [2020] [Harry0198]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package me.harry0198.mailme.mail.types;
 
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.utility.NMSReflection;
-import me.mattstudios.mfgui.gui.guis.Gui;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
+@SuppressWarnings({"unused"})
 public final class MailItems extends Mail implements Serializable {
 
-    @SuppressWarnings({"unused"})
     private String type = "MailItems"; // For deserializer
     private List<ItemStack> items;
 
@@ -78,22 +91,30 @@ public final class MailItems extends Mail implements Serializable {
         super(icon, date);
         super.setSender(sender);
         items = stacks;
-        if (!recipients.isEmpty()) super.addRecipients(recipients);
+        if (!recipients.isEmpty()) // Prevents duplicating items
+            super.addRecipients(Collections.singletonList(recipients.get(0)));
     }
 
+    /**
+     * Gets all items in Mail
+     *
+     * @return List of ItemStack
+     */
     public List<ItemStack> getItems() {
         return items;
+    }
+
+    @Override
+    public void onClick(Player player) {
+        if (!isRead()) {
+            items.forEach(item -> player.getInventory().addItem(item));
+        }
     }
 
 
     @Override
     public MailType getMailType() {
         return MailType.MAIL_ITEM;
-    }
-
-    @Override
-    public Gui getMail() {
-return null;
     }
 
     @Override
@@ -105,7 +126,6 @@ return null;
             txt.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new ComponentBuilder(NMSReflection.convertItemStackToJson(item)).create()));
             builder.append(txt);
         }
-        Bukkit.getPlayer(getSender()).spigot().sendMessage(builder.create());
         return builder.create();
     }
 }
