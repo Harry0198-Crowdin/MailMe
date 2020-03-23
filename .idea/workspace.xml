@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ec5341-1790-4a07-8304-bed2c1e3223a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/languages/PT.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/command/MailCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/command/MailCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/events/PlayerJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/events/EntityEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/IconGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/IconGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/ItemInputGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/ItemInputGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Locale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Locale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/utility/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/DE.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/EN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/EN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DE.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/languages/DE.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/languages/EN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/languages/EN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/languages/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/languages/FR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerDataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerDataHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/events/PlayerJoinEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/IconGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/IconGui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ItemInputGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ItemInputGui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Locale$LANG.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Locale$LANG.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584900412483</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added Mailboxes">
+      <created>1584959448096</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584959448096</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -198,7 +170,8 @@
     <MESSAGE value="Multiple additions&#10;+ Added Player personal languages&#10;+ Better GUI Handling&#10;+ Added IconGui.java&#10;+ Added ChooseTypeGui.java&#10;+ Added abstract PaginationGui.java&#10;+ Much more" />
     <MESSAGE value="Mail sending in progress" />
     <MESSAGE value="Finished plugin&#10;+ More Languages&#10;&#10;TODO - Override /mail from other plugins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished plugin&#10;+ More Languages&#10;&#10;TODO - Override /mail from other plugins" />
+    <MESSAGE value="Added Mailboxes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Mailboxes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="163" key="#Inspections" timestamp="1583877980847">
@@ -230,10 +203,10 @@
     <state x="578" y="253" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.954@0.23.1680.954" timestamp="1584889212388" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1584554124415" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.958@0.23.1680.958" timestamp="1584012295780" />
-    <state x="317" y="74" key="CommitChangelistDialog2" timestamp="1584900411908">
+    <state x="317" y="74" key="CommitChangelistDialog2" timestamp="1584959447359">
       <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="317" y="74" key="CommitChangelistDialog2/0.23.1680.952@0.23.1680.952" timestamp="1584900411908" />
+    <state x="317" y="74" key="CommitChangelistDialog2/0.23.1680.952@0.23.1680.952" timestamp="1584959447359" />
     <state x="317" y="74" key="CommitChangelistDialog2/0.23.1680.954@0.23.1680.954" timestamp="1584895159606" />
     <state x="317" y="102" key="CommitChangelistDialog2/0.23.1680.956@0.23.1680.956" timestamp="1584009023809" />
     <state x="628" y="259" key="FileChooserDialogImpl" timestamp="1584461442845">

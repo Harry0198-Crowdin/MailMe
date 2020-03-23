@@ -1,0 +1,194 @@
+T: "PT"
+VER: 1.0
+
+prefix: "&8[&eMailMe&8]&r"
+
+cmd:
+  lang-change: "@prefix &eIdioma alterado!"
+  notify-change: "@prefix &eConfigurações de notificação atualizadas!"
+  mail-unread: "@prefix Você tem cartas não lidos!"
+
+text:
+  format:
+    - "&8<    &eCarta   &8>"
+    - "&7Carta de: &b%sender%"
+    - "&7Recebido em: &b%time%"
+    - "&7Conteúdo: %contents%"
+  hover: "&cClique para responder!"
+  prev-page: "&e<<< Página Anterior"
+  prev-page-hover: "&cClique para a página anterior!"
+  next-page: "&ePágina Seguinte >>>"
+  next-page-hover: "&cClique para a página seguinte!"
+
+
+notify:
+  received: "@prefix &eVocê recebeu algumas cartas de %s"
+  sent: "@prefix &eVocê enviou uma carta para %s"
+  could-not-send: "@prefix &cAtenção! &eNão foi possível enviar carta para %s. Por favor, tente novamente mais tarde."
+
+mail:
+  message: "@prefix O que você gostaria que a carta dissesse?"
+  sound-input: "@prefix Que som você gostaria de tocar? Encontre sons válidos aqui: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+
+mailbox:
+  not-chest: "@prefix Sua caixa de correio deve ser um baú!"
+  mailbox-set: "@prefix Sua caixa de correio foi configurada!"
+  mailbox-removed: "@prefix Sua caixa de correio foi removida!"
+
+help:
+  - "&8[&eMailMe&8]"
+  - "&e/mailme lang <language> &7SMuda o idioma"
+  - "&e/mailme notify <true/false> &7Muda as configurações de notificação"
+  - "&e/mailme read &7Leia suas cartas"
+  - "&e/mailme send &7Envie sua carta"
+  - "&e/mailme text &7Ler sua carta como texto"
+  - "&e/mailme mailbox <set/remove>"
+
+gui:
+  read-title: "Ler carta"
+  choose-player-title: "Escolha Destinatários"
+  item-input-title: "Itens de entrada para enviar"
+  choose-icon-title: "Escolha o ícone"
+
+
+  search: "Escreva o nome do jogador que você gostaria de encontrar"
+  mail:
+    title: "&7De: &b@sender"
+    lore:
+      - ""
+      - "&7Recebido em: &b@time"
+      - "&7Tipo de carta: &b@type"
+      - "&7Ler: &b@read"
+      - ""
+      - "&bDica: &7Clique para receber a carta!"
+  back-button:
+    title: "&8[&ePágina Anterior&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Clique para ir para"
+      - "&7a página anterior!"
+    glow: true
+    skull-texture: ""
+  forward-button:
+    title: "&8[&ePágina Seguinte&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Clique para ir para"
+      - "&7a página seguinte!"
+    glow: true
+    skull-texture: ""
+  exit-button:
+    title: "&8[&eFechar a página&8]"
+    material: BARRIER
+    amount: 1
+    lore:
+      - "&7Clique para fechar"
+      - "&7o gui!"
+    glow: true
+    skull-texture: ""
+  search-button:
+    title: "&8[&eProcurar&8]"
+    material: BOOK
+    amount: 1
+    lore:
+      - "&7Clique para pesquisar por"
+      - "&7um jogador!"
+    glow: true
+    skull-texture: ""
+  no-results:
+    title: "&cSem resultados :("
+    material: GLASS_BOTTLE
+    amount: 1
+    lore:
+      - "&7Tente pesquisar com"
+      - "&7critérios diferentes"
+    glow: true
+    skull-texture: ""
+  choose:
+    message:
+      title: "&8[&eCarta&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Clique para enviar a carta"
+        - "&7para alguém!"
+      glow: true
+      skull-texture: ""
+    item:
+      title: "&8[&eCarta de item&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Clique para enviar a carta de item"
+        - "&7para alguém!"
+      glow: true
+      skull-texture: ""
+    sound:
+      title: "&8[&eCarta de som&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Clique para enviar a carta de som"
+        - "&7para alguém!"
+      glow: true
+      skull-texture: ""
+    location:
+      title: "&8[&eCarta de localização&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Clique para enviar a carta de localização"
+        - "&7para alguém!"
+      glow: true
+      skull-texture: ""
+  icon-custom:
+    title: "&8[&cPersonalizadas&8]"
+    material: YELLOW_STAINED_GLASS_PANE
+    amount: 1
+    lore:
+      - "&7Clique no item para ter como ícone"
+      - "&7Você não perderá este item."
+    glow: true
+    skull-texture: ""
+  remove-filter:
+    title: "&8[&dRemover filtro&8]"
+    material: IRON_BARS
+    amount: 1
+    lore:
+      - "&7Clique para remover qualquer filtro"
+      - "&7do menu!"
+    glow: true
+    skull-texture: ""
+  loading:
+    title: "&cCarregando..."
+    material: SKELETON_SKULL
+    amount: 1
+    lore:
+      - ""
+    glow: true
+    skull-texture: ""
+  continue:
+    title: "&8[&eContinuar >&8]"
+    material: EMERALD_BLOCK
+    amount: 1
+    lore:
+      - "&7Clique para continuar para"
+      - "&7a próxima página!"
+    glow: true
+    skull-texture: ""
+  text-button:
+    title: "&8[&eLer como texto&8]"
+    material: MAP
+    amount: 1
+    lore:
+      - "&7Clique para"
+      - "&7ler sua carta como texto"
+    glow: true
+    skull-texture: ""
+  read-mail:
+    title: "&eMail"
+    lore:
+      - "&7Clique para"
+      - "&7receber carta"
