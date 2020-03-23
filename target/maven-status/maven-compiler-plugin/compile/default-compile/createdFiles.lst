@@ -4,7 +4,6 @@ me/harry0198/mailme/utility/Locale.class
 me/harry0198/mailme/mail/types/MailSound.class
 me/harry0198/mailme/ui/ChooseTypeGui.class
 me/harry0198/mailme/mail/types/MailLocation.class
-me/harry0198/mailme/events/PlayerJoinEvent.class
 me/harry0198/mailme/mail/MailBuilder.class
 me/harry0198/mailme/ui/MailGui.class
 me/harry0198/mailme/utility/Utils$1.class
@@ -12,6 +11,7 @@ me/harry0198/mailme/datastore/PlayerDataHandler.class
 me/harry0198/mailme/utility/Utils.class
 me/harry0198/mailme/mail/MailBuilder$Builder.class
 me/harry0198/mailme/mail/types/MailMessages.class
+me/harry0198/mailme/events/EntityEvents.class
 me/harry0198/mailme/ui/ChoosePlayerGui$1.class
 me/harry0198/mailme/mail/Mail$MailType.class
 me/harry0198/mailme/mail/MailBuilder$1.class

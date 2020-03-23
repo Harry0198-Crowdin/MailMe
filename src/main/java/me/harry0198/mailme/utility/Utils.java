@@ -21,11 +21,11 @@ import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.mail.Mail;
 import me.mattstudios.mfgui.gui.components.ItemBuilder;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -92,6 +92,11 @@ public class Utils {
 
     public static List<String> applyPlaceHolders(Mail mail, List<String> string) {
         return string.stream().map(str -> applyPlaceHolders(mail, str)).collect(Collectors.toList());
+    }
+
+    public static void playNoteEffect(Player player, Location location) {
+        double note = 6 / 24D; // 6 is the value of the red note
+        player.spawnParticle(Particle.NOTE, location, 0, note, 0, 0, 1);
     }
 
 }

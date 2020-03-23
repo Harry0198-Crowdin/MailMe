@@ -20,20 +20,30 @@ package me.harry0198.mailme;
 import com.google.gson.*;
 import me.harry0198.mailme.command.MailCmd;
 import me.harry0198.mailme.conversations.*;
+import me.harry0198.mailme.datastore.PlayerData;
 import me.harry0198.mailme.datastore.PlayerDataHandler;
-import me.harry0198.mailme.events.PlayerJoinEvent;
+import me.harry0198.mailme.events.EntityEvents;
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.mail.MailSerializer;
 import me.harry0198.mailme.ui.GuiHandler;
 import me.harry0198.mailme.utility.ItemStackSerializer;
 import me.harry0198.mailme.utility.Locale;
 
+import me.harry0198.mailme.utility.Utils;
 import me.mattstudios.mf.base.CommandManager;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.conversations.ConversationFactory;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 public final class MailMe extends JavaPlugin {
@@ -56,6 +66,8 @@ public final class MailMe extends JavaPlugin {
     private ConversationFactory searchFactory;
     private ConversationFactory searchPlayerFactory;
     private ConversationFactory soundInputFactory;
+
+    public static final List<Player> playerList = new ArrayList<>();
 
     private void loadConversations() {
 
@@ -83,26 +95,57 @@ public final class MailMe extends JavaPlugin {
     public void onEnable() {
         loadConversations();
         saveDefaultConfig();
+        debug("Creating playerdata folder");
         new File(getDataFolder() + "/playerdata").mkdir();
+        debug("Loading locale");
         this.locale = new Locale();
+        debug("Loading GuiHandler");
         this.uiHandler = new GuiHandler(this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinEvent(this), this);
-
+        debug("Registering events");
+        getServer().getPluginManager().registerEvents(new EntityEvents(this), this);
+        debug("Loading playerdata handler");
         this.playerDataHandler = new PlayerDataHandler(this);
-
+        debug("Loading commands");
         CommandManager commandManager = new CommandManager(this);
         commandManager.getCompletionHandler().register("#locale", val -> Arrays.stream(Locale.LANG.values()).map(Enum::toString).collect(Collectors.toList()));
         commandManager.getCompletionHandler().register("#boolean", val -> Arrays.asList("true", "false"));
+        commandManager.getCompletionHandler().register("#mailbox", val -> Arrays.asList("remove", "set"));
         this.mailCmds = new MailCmd(this);
         commandManager.register(mailCmds);
         commandManager.hideTabComplete(true);
 
+        runMailBoxTask();
+    }
 
+    public BukkitTask runMailBoxTask() {
+
+        return Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
+            // Iterate through players with mailbox
+            for (Player player : playerList) {
+
+                if (!player.isOnline()) continue;
+
+                PlayerData data = getPlayerDataHandler().getPlayerData(player);
+                if (data.getMailBox() == null) continue;
+
+                Location loc = data.getMailBox();
+                loc.add(0.5,1.2,0.5);
+
+                List<Mail> unread = data.getMail().stream().filter(mail -> !mail.isRead()).collect(Collectors.toList());
+                if (unread.size() > 0)
+                    Utils.playNoteEffect(player, loc);
+            }
+        },0L,80L);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    private void debug(String msg) {
+        if (getConfig().getBoolean("debug"))
+            getServer().getLogger().log(Level.INFO, msg);
     }
 
     public Locale getLocale() {

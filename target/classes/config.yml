@@ -31,6 +31,10 @@ lang: "EN"
 # Default 1
 delay: 1
 
+# Turns debug mode on / off
+# Default false (off)
+debug: false
+
 #                              Icons for usage
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #

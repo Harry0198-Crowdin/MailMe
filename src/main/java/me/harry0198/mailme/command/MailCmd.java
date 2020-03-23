@@ -30,6 +30,10 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 
@@ -52,7 +56,7 @@ public final class MailCmd extends CommandBase {
         player.sendMessage(plugin.getLocale().getLore(plugin.getPlayerDataHandler().getPlayerData(player).getLang(), "help"));
     }
 
-    @Permission(BASE_PERM)
+    @Permission(BASE_PERM + "lang")
     @SubCommand("lang")
     @Completion("#locale")
     public void setLanguage(Player player, String lang) {
@@ -65,7 +69,7 @@ public final class MailCmd extends CommandBase {
         player.sendMessage(plugin.getLocale().getMessage(Locale.LANG.valueOf(lang), "cmd.lang-change"));
     }
 
-    @Permission(BASE_PERM)
+    @Permission(BASE_PERM + "notify")
     @SubCommand("notify")
     @Completion("#boolean")
     public void setNotifySetting(Player player, Boolean bool) {
@@ -74,20 +78,20 @@ public final class MailCmd extends CommandBase {
         player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "cmd.notify-change"));
     }
 
-    @Permission(BASE_PERM)
+    @Permission(BASE_PERM + "read")
     @SubCommand("read")
     public void read(Player player) {
         new MailGui(plugin, player, plugin.getPlayerDataHandler().getPlayerData(player.getUniqueId()).getMail(), 0).open();
     }
 
-    @Permission(BASE_PERM)
+    @Permission(BASE_PERM + "send")
     @SubCommand("send")
     @Alias("reply")
     public void send(Player player) {
         plugin.getGuiHandler().getChooseTypeGui().open(player);
     }
 
-    @Permission(BASE_PERM)
+    @Permission(BASE_PERM + "text")
     @SubCommand("text")
     public void readAsText(Player player, @Optional Integer page) {
 
@@ -113,5 +117,31 @@ public final class MailCmd extends CommandBase {
             player.spigot().sendMessage(m);
         }
     }
+
+    @Permission(BASE_PERM + "mailbox")
+    @SubCommand("mailbox")
+    @Completion("#mailbox")
+    public void mailBox(Player player, String string) {
+
+        PlayerData data = plugin.getPlayerDataHandler().getPlayerData(player);
+
+        if (string.equalsIgnoreCase("set")) {
+            Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                Block chest = player.getTargetBlock(null, 10);
+                if (!chest.getType().equals(Material.CHEST)) {
+                    player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
+                    return;
+                }
+                Location loc = chest.getLocation();
+
+                Bukkit.getScheduler().runTask(plugin, () -> plugin.getPlayerDataHandler().getPlayerData(player).setMailBox(loc));
+                player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-set"));
+            });
+        } else if (string.equalsIgnoreCase("remove")) {
+            data.setMailBox(null);
+            player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-removed"));
+        }
+    }
+
 
 }

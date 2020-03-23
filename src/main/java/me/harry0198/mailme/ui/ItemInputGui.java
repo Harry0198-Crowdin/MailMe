@@ -35,7 +35,7 @@ public final class ItemInputGui {
     private List<ItemStack> items = new ArrayList<>();
 
     public ItemInputGui(MailMe plugin, Player player) {
-        this.gui = new Gui(plugin, 2, "MailMe // " + plugin.getLocale().getMessages(plugin.getPlayerDataHandler().getPlayerData(player).getLang(), "mail.item-input-title"));
+        this.gui = new Gui(plugin, 2, "MailMe // " + plugin.getLocale().getMessage(plugin.getPlayerDataHandler().getPlayerData(player).getLang(), "gui.item-input-title"));
         this.player = player;
         gui.fillBottom(new GuiItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE), event -> event.setCancelled(true)));
         gui.setItem(2,9, new GuiItem(GuiHandler.getContinue(plugin.getLocale(), plugin.getPlayerDataHandler().getPlayerData(player).getLang()), event -> {

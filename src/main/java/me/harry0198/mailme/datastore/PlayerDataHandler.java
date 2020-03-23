@@ -47,6 +47,11 @@ public final class PlayerDataHandler {
         return playerData.get(uuid);
     }
 
+    public void removePlayerData(UUID uuid) {
+        if (exists(uuid))
+            playerData.remove(uuid);
+    }
+
     public void makeData(UUID uuid) {
 
         final File jsonData = new File(plugin.getDataFolder() + "/playerdata/" + uuid.toString() + ".json");

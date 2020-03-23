@@ -22,6 +22,7 @@ import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -34,6 +35,8 @@ public final class PlayerData {
     private Locale.LANG lang;
     private UUID uuid;
     private boolean notify = true;
+    public int x,y,z;
+    public String world;
 
     public PlayerData(final UUID uuid, final Locale.LANG lang) {
         this.uuid = uuid;
@@ -75,6 +78,17 @@ public final class PlayerData {
      */
     public boolean getNotifySetting() { return notify; }
 
+    /**
+     * Gets the player's mailbox location
+     *
+     * @return MailBox location
+     */
+    public Location getMailBox() {
+        if (world != null)
+            return new Location(Bukkit.getWorld(world), x, y, z);
+        return null;
+    }
+
 
     /* Setters */
 
@@ -86,6 +100,23 @@ public final class PlayerData {
     public void setNotifySettings(boolean notify) {
         this.notify = notify;
         update();
+    }
+
+    /**
+     * Sets the player's mailbox location
+     */
+    public void setMailBox(Location location) {
+        if (location == null) {
+            this.world = null;
+            return;
+        }
+        this.x = location.getBlockX();
+        this.y = location.getBlockY();
+        this.z = location.getBlockZ();
+        this.world = location.getWorld().getName();
+        update();
+
+        tryAddToTask(Bukkit.getPlayer(uuid));
     }
 
     /**
@@ -102,6 +133,16 @@ public final class PlayerData {
             Player p = (Player) player;
             p.sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(getLang(), "notify.received"), Bukkit.getOfflinePlayer(mail.getSender()).getName()));
         }
+
+        tryAddToTask(player);
+    }
+
+    private void tryAddToTask(OfflinePlayer player) {
+        if (player.isOnline()) {
+            if (!MailMe.playerList.contains(player)) {
+                MailMe.playerList.add((Player) player);
+            }
+        }
     }
 
     /**
@@ -113,6 +154,7 @@ public final class PlayerData {
         this.lang = lang;
         update();
     }
+
 
     /**
      * Writes data to file.

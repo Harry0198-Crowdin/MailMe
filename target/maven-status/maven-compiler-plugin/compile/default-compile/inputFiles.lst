@@ -10,7 +10,6 @@
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/types/MailLocation.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/components/IncompleteBuilderException.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/utility/Utils.java
-/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/events/PlayerJoinEvent.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/ui/GuiHandler.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/utility/Pagination.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/types/MailMessages.java
@@ -27,5 +26,6 @@
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/mail/MailBuilder.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/utility/ItemStackSerializer.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/conversations/SoundInput.java
+/Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/events/EntityEvents.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/datastore/PlayerData.java
 /Users/harrydrummond/eclipse-workspace/MailMe/src/main/java/me/harry0198/mailme/utility/Locale.java

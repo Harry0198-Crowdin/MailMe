@@ -1,4 +1,4 @@
-T: "EN"
+T: "FR"
 VER: 1.0
 
 prefix: "&8[&eMailMe&8]&r"
@@ -6,6 +6,7 @@ prefix: "&8[&eMailMe&8]&r"
 cmd:
   lang-change: "@prefix &eLa langue a changé !"
   notify-change: "@prefix &eParamètres de notification mis à jour!"
+  mail-unread: "@prefix Vous avez du courrier non lu!"
 
 text:
   format:
@@ -29,6 +30,11 @@ mail:
   message: "@prefix Qu’aimeriez-vous que le message dise??"
   sound-input: "@prefix Quel son aimeriez-vous jouer ? Trouvez des sons valides ici: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
 
+mailbox:
+  not-chest: "@prefix Votre boîte aux lettres doit être un coffre!"
+  mailbox-set: "@prefix Votre boîte aux lettres est configurée!"
+  mailbox-removed: "@prefix Votre boîte aux lettres a été supprimée!"
+
 help:
   - "&8[&eMailMe&8]"
   - "&e/mailme lang <language> &7Change de langue"
@@ -36,6 +42,7 @@ help:
   - "&e/mailme read &7Lisez votre courrier"
   - "&e/mailme send &7Envoyez votre courrier"
   - "&e/mailme text &7Lire le courrier comme texte"
+  - "&e/mailme mailbox <set/remove>"
 
 gui:
   read-title: "Lire Mail"
