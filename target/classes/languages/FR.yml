@@ -37,7 +37,7 @@ mailbox:
 
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mailme lang <language> &7Change de langue"
+  - "&e/mailme lang <language> &7Changement de langue"
   - "&e/mailme notify <true/false> &7Modifier les paramètres de notification"
   - "&e/mailme read &7Lisez votre courrier"
   - "&e/mailme send &7Envoyez votre courrier"

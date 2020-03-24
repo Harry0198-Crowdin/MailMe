@@ -20,10 +20,11 @@ import me.harry0198.mailme.MailMe;
 
 import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Utils;
+import me.mattstudios.mfgui.gui.components.ItemBuilder;
 import me.mattstudios.mfgui.gui.guis.GuiItem;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -40,10 +41,8 @@ public final class GuiHandler {
         this.plugin = plugin;
         this.chooseTypeGui = new ChooseTypeGui(plugin);
 
-        ConfigurationSection section = plugin.getConfig().getConfigurationSection("icons");
-        for (String key : section.getKeys(false)) {
-            icons.add(section.getItemStack(key));
-        }
+        List<String> section = plugin.getConfig().getStringList("icons");
+        section.forEach(icon -> icons.add(new ItemBuilder(new ItemStack(Material.valueOf(icon))).glow().build()));
     }
 
     public IconGui getIconGui(Player player) {
