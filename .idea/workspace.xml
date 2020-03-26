@@ -2,19 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ec5341-1790-4a07-8304-bed2c1e3223a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__me_mattstudios_utils_matt_framework_gui_1_1_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__me_mattstudios_utils_matt_framework_gui_1_1_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/2020-03-25-1.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/latest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/banned-ips.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/banned-players.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/bukkit.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/commands.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/eula.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/help.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-1.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-2.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-3.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-4.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-5.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-6.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/2020-03-25-7.log.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/logs/latest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/ops.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/permissions.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/server.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/spigot.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/spigot.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/usercache.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/whitelist.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/advancements/2b4fb8f8-b62b-4623-a777-b80495f92d81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/data/raids.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/datapacks/bukkit/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/level.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/level.dat_old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/playerdata/2b4fb8f8-b62b-4623-a777-b80495f92d81.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/poi/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/poi/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/poi/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/poi/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/region/r.1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/session.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/stats/2b4fb8f8-b62b-4623-a777-b80495f92d81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world/uid.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/data/raids_nether.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/poi/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/poi/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/poi/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/poi/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/region/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/region/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/region/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/DIM-1/region/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/level.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/level.dat_old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/session.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_nether/uid.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/data/raids_end.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/poi/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/poi/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/poi/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/poi/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/region/r.-1.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/region/r.-1.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/region/r.0.-1.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/DIM1/region/r.0.0.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/level.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/level.dat_old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/session.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/world_the_end/uid.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MailMe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MailMe.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/MailMe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/GuiHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/ui/GuiHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/languages/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/languages/FR.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/MailMe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/GuiHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/GuiHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/command/MailCmd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/ConversationAbandonedListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/ConversationAbandonedListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/InputPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/InputPrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/PlayerSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/PlayerSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/SearchInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/SearchInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/SoundInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/conversations/SoundInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerDataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/datastore/PlayerDataHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/events/EntityEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/events/EntityEvents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/Mail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailBuilder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailSerializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/MailSerializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/mail/types/MailItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ChoosePlayerGui$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ChoosePlayerGui$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ChoosePlayerGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ChoosePlayerGui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/IconGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/IconGui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ItemInputGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/ItemInputGui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/MailGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/MailGui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/ItemStackSerializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/ItemStackSerializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Locale.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Locale.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/NMSReflection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/NMSReflection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Pagination.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Pagination.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/utility/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-MailMe-1.0-BETA.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,16 +136,21 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DeluxeChat-1.15.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/database" />
     </key>
   </component>
@@ -70,7 +160,15 @@
       <command value="mvn clean package" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.spigot.jar">
+    <configuration name="spigot.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/server/spigot.jar" />
+      <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/server/" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11 (2)" />
+      <method v="2" />
+    </configuration>
     <configuration name="MailMe build" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -97,6 +195,41 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="Package" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JAR Application.spigot.jar" />
+      <item itemvalue="Maven.Package" />
+      <item itemvalue="Maven.MailMe build" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.spigot.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -172,10 +305,18 @@
       <option name="project" value="LOCAL" />
       <updated>1584959448096</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated to universal icon registry">
+      <created>1585045615786</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585045615786</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Fixed serialization&#10;+ Date now correctly formatted and read&#10;+ Abstract Classes now correctly formatted and read&#10;+ Fixed Map incorrectly writing" />
     <MESSAGE value="Attempted to serialize itemstacks" />
@@ -184,7 +325,8 @@
     <MESSAGE value="Mail sending in progress" />
     <MESSAGE value="Finished plugin&#10;+ More Languages&#10;&#10;TODO - Override /mail from other plugins" />
     <MESSAGE value="Added Mailboxes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Mailboxes" />
+    <MESSAGE value="Updated to universal icon registry" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to universal icon registry" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="163" key="#Inspections" timestamp="1583877980847">
@@ -195,6 +337,15 @@
       <screen x="0" y="23" width="1680" height="954" />
     </state>
     <state x="440" y="163" key="#Project_Structure/0.23.1680.954@0.23.1680.954" timestamp="1584890972686" />
+    <state x="609" y="67" width="866" height="676" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585158761491">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="814" y="67" width="866" height="676" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.949@0.23.1680.949" timestamp="1585156809222" />
+    <state x="609" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.952@0.23.1680.952" timestamp="1585158761491" />
+    <state x="921" y="136" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog" timestamp="1585156282349">
+      <screen x="0" y="23" width="1680" height="949" />
+    </state>
+    <state x="921" y="136" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog/0.23.1680.949@0.23.1680.949" timestamp="1585156282349" />
     <state x="653" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1584790487313">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
@@ -210,9 +361,10 @@
       <screen x="0" y="23" width="1680" height="954" />
     </state>
     <state x="528" y="232" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1680.954@0.23.1680.954" timestamp="1584392145666" />
-    <state x="578" y="253" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584889212388">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state x="578" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585156190775">
+      <screen x="0" y="23" width="1680" height="949" />
     </state>
+    <state x="578" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.949@0.23.1680.949" timestamp="1585156190775" />
     <state x="578" y="253" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.954@0.23.1680.954" timestamp="1584889212388" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1584554124415" />
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.958@0.23.1680.958" timestamp="1584012295780" />
@@ -223,58 +375,78 @@
     <state x="317" y="74" key="CommitChangelistDialog2/0.23.1680.952@0.23.1680.952" timestamp="1584959447359" />
     <state x="317" y="74" key="CommitChangelistDialog2/0.23.1680.954@0.23.1680.954" timestamp="1584895159606" />
     <state x="317" y="102" key="CommitChangelistDialog2/0.23.1680.956@0.23.1680.956" timestamp="1584009023809" />
-    <state x="628" y="259" key="FileChooserDialogImpl" timestamp="1584461442845">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state x="787" y="228" key="FileChooserDialogImpl" timestamp="1585157424239">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
+    <state x="787" y="227" key="FileChooserDialogImpl/0.23.1680.949@0.23.1680.949" timestamp="1585156597741" />
+    <state x="787" y="228" key="FileChooserDialogImpl/0.23.1680.952@0.23.1680.952" timestamp="1585157424239" />
     <state x="628" y="259" key="FileChooserDialogImpl/0.23.1680.954@0.23.1680.954" timestamp="1584461442845" />
-    <state width="1638" height="255" key="GridCell.Tab.0.bottom" timestamp="1585045398985">
-      <screen x="0" y="23" width="1680" height="949" />
+    <state width="898" height="310" key="GridCell.Tab.0.bottom" timestamp="1585159606815">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1585045398985" />
-    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1585044919985" />
+    <state width="835" height="251" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1585156832897" />
+    <state width="898" height="310" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1585159606815" />
     <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1584959340526" />
     <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1584822360172" />
     <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1584805986025" />
     <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1584790529234" />
     <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.962@0.23.1680.962" timestamp="1584787946941" />
-    <state width="1638" height="255" key="GridCell.Tab.0.center" timestamp="1585045398984">
-      <screen x="0" y="23" width="1680" height="949" />
+    <state width="898" height="310" key="GridCell.Tab.0.center" timestamp="1585159606814">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1585045398984" />
-    <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1585044919984" />
+    <state width="835" height="251" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1585156832897" />
+    <state width="898" height="310" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1585159606814" />
     <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1584959340526" />
     <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1584822360170" />
     <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1584805986023" />
     <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1584790529233" />
     <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.962@0.23.1680.962" timestamp="1584787946940" />
-    <state width="1638" height="255" key="GridCell.Tab.0.left" timestamp="1585045398984">
-      <screen x="0" y="23" width="1680" height="949" />
+    <state width="898" height="310" key="GridCell.Tab.0.left" timestamp="1585159606813">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1585045398984" />
-    <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1585044919983" />
+    <state width="835" height="251" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1585156832897" />
+    <state width="898" height="310" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1585159606813" />
     <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1584959340526" />
     <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1584822360170" />
     <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1584805986017" />
     <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1584790529233" />
     <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.962@0.23.1680.962" timestamp="1584787946940" />
-    <state width="1638" height="255" key="GridCell.Tab.0.right" timestamp="1585045398985">
-      <screen x="0" y="23" width="1680" height="949" />
+    <state width="898" height="310" key="GridCell.Tab.0.right" timestamp="1585159606814">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1585045398985" />
-    <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1585044919984" />
+    <state width="835" height="251" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1585156832897" />
+    <state width="898" height="310" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1585159606814" />
     <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1584959340526" />
     <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1584822360171" />
     <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1584805986025" />
     <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1584790529234" />
     <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.962@0.23.1680.962" timestamp="1584787946941" />
-    <state x="328" y="79" key="SettingsEditor" timestamp="1584891050289">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state width="898" height="310" key="GridCell.Tab.1.bottom" timestamp="1585159606816">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
+    <state width="898" height="310" key="GridCell.Tab.1.bottom/0.23.1680.952@0.23.1680.952" timestamp="1585159606816" />
+    <state width="898" height="310" key="GridCell.Tab.1.center" timestamp="1585159606815">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state width="898" height="310" key="GridCell.Tab.1.center/0.23.1680.952@0.23.1680.952" timestamp="1585159606815" />
+    <state width="898" height="310" key="GridCell.Tab.1.left" timestamp="1585159606815">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state width="898" height="310" key="GridCell.Tab.1.left/0.23.1680.952@0.23.1680.952" timestamp="1585159606815" />
+    <state width="898" height="310" key="GridCell.Tab.1.right" timestamp="1585159606816">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state width="898" height="310" key="GridCell.Tab.1.right/0.23.1680.952@0.23.1680.952" timestamp="1585159606816" />
+    <state x="623" y="59" key="SettingsEditor" timestamp="1585158694636">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="623" y="59" key="SettingsEditor/0.23.1680.949@0.23.1680.949" timestamp="1585156619433" />
+    <state x="623" y="59" key="SettingsEditor/0.23.1680.952@0.23.1680.952" timestamp="1585158694636" />
     <state x="328" y="79" key="SettingsEditor/0.23.1680.954@0.23.1680.954" timestamp="1584891050289" />
-    <state x="510" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1585045590074">
+    <state x="510" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1585156082748">
       <screen x="0" y="23" width="1680" height="949" />
     </state>
-    <state x="510" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.949@0.23.1680.949" timestamp="1585045590074" />
+    <state x="510" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.949@0.23.1680.949" timestamp="1585156082748" />
     <state x="510" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.952@0.23.1680.952" timestamp="1585044043537" />
     <state x="510" y="329" key="com.intellij.ide.util.TipDialog/0.23.1680.954@0.23.1680.954" timestamp="1584994856104" />
     <state x="510" y="330" key="com.intellij.ide.util.TipDialog/0.23.1680.956@0.23.1680.956" timestamp="1584806297062" />
@@ -283,10 +455,10 @@
       <screen x="0" y="23" width="1680" height="954" />
     </state>
     <state x="620" y="421" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.954@0.23.1680.954" timestamp="1584307109525" />
-    <state x="505" y="229" width="670" height="672" key="run.anything.popup" timestamp="1585045240205">
+    <state x="505" y="229" width="670" height="672" key="run.anything.popup" timestamp="1585155385734">
       <screen x="0" y="23" width="1680" height="949" />
     </state>
-    <state x="505" y="229" width="670" height="672" key="run.anything.popup/0.23.1680.949@0.23.1680.949" timestamp="1585045240205" />
+    <state x="505" y="229" width="670" height="672" key="run.anything.popup/0.23.1680.949@0.23.1680.949" timestamp="1585155385734" />
     <state x="505" y="230" width="670" height="675" key="run.anything.popup/0.23.1680.952@0.23.1680.952" timestamp="1585044920014" />
     <state x="505" y="230" width="670" height="675" key="run.anything.popup/0.23.1680.954@0.23.1680.954" timestamp="1584959340548" />
     <state x="505" y="230" width="670" height="677" key="run.anything.popup/0.23.1680.956@0.23.1680.956" timestamp="1584822360223" />

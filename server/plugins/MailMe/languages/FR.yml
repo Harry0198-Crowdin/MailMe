@@ -1,0 +1,196 @@
+T: "FR"
+VER: 1.0
+
+prefix: "&8[&eMailMe&8]&r"
+
+cmd:
+  lang-change: "@prefix &eLa langue a changé !"
+  notify-change: "@prefix &eParamètres de notification mis à jour!"
+  mail-unread: "@prefix Vous avez du courrier non lu!"
+
+text:
+  format:
+    - "&8<    &eCourrier    &8>"
+    - "&7Courrier à partir de: &b%sender%"
+    - "&7Reçu à: &b%time%"
+    - "&7Contenu: %contents%"
+  hover: "&cCliquez pour répondre!"
+  prev-page: "&e<<< Page précédente"
+  prev-page-hover: "&cCliquez pour la page précédente!"
+  next-page: "&ePage suivante >>>"
+  next-page-hover: "&cCliquez pour la page suivante"
+
+
+notify:
+  received: "@prefix &eVous avez reçu du courrier de %s"
+  sent: "@prefix &eVous avez envoyé du courrier à %s"
+  could-not-send: "@prefix &eImpossible d’envoyer du courrier à %s. Vous avez récemment envoyé du courrier. S’il vous plaît essayer à nouveau plus tard."
+
+mail:
+  message: "@prefix Qu’aimeriez-vous que le message dise??"
+  sound-input: "@prefix Quel son aimeriez-vous jouer ? Trouvez des sons valides ici: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+
+mailbox:
+  not-chest: "@prefix Votre boîte aux lettres doit être un coffre!"
+  mailbox-set: "@prefix Votre boîte aux lettres est configurée!"
+  mailbox-removed: "@prefix Votre boîte aux lettres a été supprimée!"
+
+help:
+  - "&8[&eMailMe&8]"
+  - "&e/mailme lang <language> &7Changement de langue"
+  - "&e/mailme notify <true/false> &7Modifier les paramètres de notification"
+  - "&e/mailme read &7Lisez votre courrier"
+  - "&e/mailme send &7Envoyez votre courrier"
+  - "&e/mailme text &7Lire le courrier comme texte"
+  - "&e/mailme mailbox <set/remove>"
+
+gui:
+  read-title: "Lire Mail"
+  choose-player-title: "Destinataires"
+  item-input-title: "Articles à envoyer"
+  choose-icon-title: "Choisissez l’icône"
+
+
+  search: "Écrivez le nom du joueur que vous souhaitez trouver"
+  mail:
+    title: "&7Courrier à partir de: &b@sender"
+    lore:
+      - ""
+      - "&7Reçu à: &b@time"
+      - "&7Type de courrier: &b@type"
+      - "&7Lire: &b@read"
+      - ""
+      - "&bAstuce Pro: &7Cliquez pour recevoir du courrier!"
+  back-button:
+    title: "&8[&ePage précédente&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Cliquez pour aller à"
+      - "&7la page précédente!"
+    glow: true
+    skull-texture: ""
+  forward-button:
+    title: "&8[&ePage suivante&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Cliquez pour aller à"
+      - "&7la page suivante"
+    glow: true
+    skull-texture: ""
+  exit-button:
+    title: "&8[&ePage de sortie&8]"
+    material: BARRIER
+    amount: 1
+    lore:
+      - "&7Cliquez pour fermer"
+      - "&7l’interface utilisateur!"
+    glow: true
+    skull-texture: ""
+  search-button:
+    title: "&8[&eRechercher&8]"
+    material: BOOK
+    amount: 1
+    lore:
+      - "&7Cliquez pour rechercher par"
+      - "&7nom du joueur!"
+    glow: true
+    skull-texture: ""
+  no-results:
+    title: "&cAucun résultat :("
+    material: GLASS_BOTTLE
+    amount: 1
+    lore:
+      - "&7Essayez de rechercher avec un"
+      - "&7différents critères"
+    glow: true
+    skull-texture: ""
+  choose:
+    message:
+      title: "&8[&eCourrier message&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Cliquez pour envoyer quelqu’un"
+        - "&7un courrier message!"
+      glow: true
+      skull-texture: ""
+    item:
+      title: "&8[&eCourrier d’article&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Cliquez pour envoyer quelqu’un"
+        - "&7un courrier d'article!"
+      glow: true
+      skull-texture: ""
+    sound:
+      title: "&8[&eCourrier sonore&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Cliquez pour envoyer quelqu’un"
+        - "&7un courrier sonore!"
+      glow: true
+      skull-texture: ""
+    location:
+      title: "&8[&eCourrier de localisation&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Cliquez pour envoyer quelqu’un"
+        - "&7un courrier de localisation!"
+      glow: true
+      skull-texture: ""
+  icon-custom:
+    title: "&8[&cPersonnalisé&8]"
+    material: YELLOW_STAINED_GLASS_PANE
+    amount: 1
+    lore:
+      - "&7Cliquez avec l’élément pour avoir comme icône"
+      - "&7Vous ne perdrez pas cet article."
+    glow: true
+    skull-texture: ""
+  remove-filter:
+    title: "&8[&dSupprimer le filtre&8]"
+    material: IRON_BARS
+    amount: 1
+    lore:
+      - "&7Cliquez pour supprimer les filtres"
+    glow: true
+    skull-texture: ""
+  loading:
+    title: "&cChargement..."
+    material: SKELETON_SKULL
+    amount: 1
+    lore:
+      - ""
+    glow: true
+    skull-texture: ""
+  continue:
+    title: "&8[&eContinuer >&8]"
+    material: EMERALD_BLOCK
+    amount: 1
+    lore:
+      - "&7Cliquez pour continuer à"
+      - "&7La page suivante!"
+    glow: true
+    skull-texture: ""
+  text-button:
+    title: "&8[&eLire sous forme de texte&8]"
+    material: MAP
+    amount: 1
+    lore:
+      - "&7Cliquez sur"
+      - "&7lire votre courrier sous forme de texte"
+    glow: true
+    skull-texture: ""
+  read-mail:
+    title: "&eCourrier"
+    lore:
+      - "&7Cliquez sur"
+      - "&7recevoir le courrier"
+
+
+

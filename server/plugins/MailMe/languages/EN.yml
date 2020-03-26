@@ -1,0 +1,197 @@
+T: "EN"
+VER: 1.0
+
+prefix: "&8[&eMailMe&8]&r"
+
+cmd:
+  lang-change: "@prefix &eLanguage changed!"
+  notify-change: "@prefix &eNotification Settings updated!"
+  mail-unread: "@prefix &eYou have unread mail!"
+
+text:
+  format:
+    - "&8<    &eMail    &8>"
+    - "&7Mail From: &b%sender%"
+    - "&7Received at: &b%time%"
+    - "&7Contents: %contents%"
+  hover: "&cClick to Reply!"
+  prev-page: "&e<<< Previous Page"
+  prev-page-hover: "&cClick for the previous page!"
+  next-page: "&eNext Page >>>"
+  next-page-hover: "&cClick for the next page!"
+
+
+notify:
+  received: "@prefix &eYou received some mail from %s"
+  sent: "@prefix &eYou sent some mail to %s"
+  could-not-send: "@prefix &cWarning! &eCould not send mail to %s. You have recently sent mail. Please try again later."
+
+mail:
+  message: "@prefix What would you like the message to say?"
+  sound-input: "@prefix What sound would you like to play? Find valid sounds here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+
+mailbox:
+  not-chest: "@prefix Your mailbox must be a chest!"
+  mailbox-set: "@prefix Your mailbox has been set!"
+  mailbox-removed: "@prefix Your mailbox has been removed!"
+
+help:
+  - "&8[&eMailMe&8]"
+  - "&e/mailme lang <language> &7Switches Language"
+  - "&e/mailme notify <true/false> &7Switches notification settings"
+  - "&e/mailme read &7Read your mail"
+  - "&e/mailme send &7Send your mail"
+  - "&e/mailme text &7Read mail as text"
+  - "&e/mailme mailbox <set/remove>"
+
+gui:
+  read-title: "Read Mail"
+  choose-player-title: "Choose Recipients"
+  item-input-title: "Input Items to send"
+  choose-icon-title: "Choose Icon"
+
+
+  search: "Write the name of the player you'd like to find"
+  mail:
+    title: "&7From: &b@sender"
+    lore:
+      - ""
+      - "&7Received at: &b@time"
+      - "&7Mail Type: &b@type"
+      - "&7Read: &b@read"
+      - ""
+      - "&bPro Tip: &7Click to receive mail!"
+  back-button:
+    title: "&8[&ePrevious Page&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Click to go to"
+      - "&7the previous page!"
+    glow: true
+    skull-texture: ""
+  forward-button:
+    title: "&8[&eNext Page&8]"
+    material: REDSTONE_TORCH
+    amount: 1
+    lore:
+      - "&7Click to go to"
+      - "&7the next page!"
+    glow: true
+    skull-texture: ""
+  exit-button:
+    title: "&8[&eExit Page&8]"
+    material: BARRIER
+    amount: 1
+    lore:
+      - "&7Click to close"
+      - "&7the gui!"
+    glow: true
+    skull-texture: ""
+  search-button:
+    title: "&8[&eSearch&8]"
+    material: BOOK
+    amount: 1
+    lore:
+      - "&7Click to search by"
+      - "&7player name!"
+    glow: true
+    skull-texture: ""
+  no-results:
+    title: "&cNo Results :("
+    material: GLASS_BOTTLE
+    amount: 1
+    lore:
+      - "&7Try searching with a"
+      - "&7different criteria"
+    glow: true
+    skull-texture: ""
+  choose:
+    message:
+      title: "&8[&eMessage Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a message mail!"
+      glow: true
+      skull-texture: ""
+    item:
+      title: "&8[&eItem Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7an item mail!"
+      glow: true
+      skull-texture: ""
+    sound:
+      title: "&8[&eSound Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a sound mail!"
+      glow: true
+      skull-texture: ""
+    location:
+      title: "&8[&eLocation Mail&8]"
+      material: PAPER
+      amount: 1
+      lore:
+        - "&7Click to send someone"
+        - "&7a location mail!"
+      glow: true
+      skull-texture: ""
+  icon-custom:
+    title: "&8[&cCustom&8]"
+    material: YELLOW_STAINED_GLASS_PANE
+    amount: 1
+    lore:
+      - "&7Click with item to have as icon"
+      - "&7You won't lose this item."
+    glow: true
+    skull-texture: ""
+  remove-filter:
+    title: "&8[&dRemove Filter&8]"
+    material: IRON_BARS
+    amount: 1
+    lore:
+      - "&7Click to remove any filters"
+      - "&7on the menu!"
+    glow: true
+    skull-texture: ""
+  loading:
+    title: "&cLoading..."
+    material: SKELETON_SKULL
+    amount: 1
+    lore:
+      - ""
+    glow: true
+    skull-texture: ""
+  continue:
+    title: "&8[&eContinue >&8]"
+    material: EMERALD_BLOCK
+    amount: 1
+    lore:
+      - "&7Click to continue to"
+      - "&7The next page!"
+    glow: true
+    skull-texture: ""
+  text-button:
+    title: "&8[&eRead as Text&8]"
+    material: MAP
+    amount: 1
+    lore:
+      - "&7Click to"
+      - "&7read your mail as text"
+    glow: true
+    skull-texture: ""
+  read-mail:
+    title: "&eMail"
+    lore:
+      - "&7Click to"
+      - "&7receive the mail"
+
+
+
