@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="b1ec5341-1790-4a07-8304-bed2c1e3223a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/harry0198/mailme/datastore/PlayerData.java" afterDir="false" />
@@ -10,6 +11,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/FR.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/MailGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/harry0198/mailme/ui/MailGui.class" afterDir="false" />
     </list>
+=======
+    <list default="true" id="b1ec5341-1790-4a07-8304-bed2c1e3223a" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,12 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585644888189</updated>
     </task>
+<<<<<<< Updated upstream
     <task id="LOCAL-00013" summary="Fixed serialization errors">
       <created>1585662520862</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
       <updated>1585662520862</updated>
+=======
+    <task id="LOCAL-00013" summary="Added &quot;DE&quot; to Locale file Type">
+      <created>1585669369194</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585669369194</updated>
+>>>>>>> Stashed changes
     </task>
     <option name="localTasksCounter" value="14" />
     <servers />
@@ -260,8 +273,13 @@
     <MESSAGE value="Updated to universal icon registry" />
     <MESSAGE value="Added Metrics and Overriden essentials commands" />
     <MESSAGE value="Fixed mission '.' on permission system" />
+<<<<<<< Updated upstream
     <MESSAGE value="Fixed serialization errors" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed serialization errors" />
+=======
+    <MESSAGE value="Added &quot;DE&quot; to Locale file Type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;DE&quot; to Locale file Type" />
+>>>>>>> Stashed changes
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="163" key="#Inspections" timestamp="1583877980847">
