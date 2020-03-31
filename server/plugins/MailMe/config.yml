@@ -33,7 +33,7 @@ delay: 1
 
 # Turns debug mode on / off
 # Default false (off)
-debug: false
+debug: true
 
 #                              Icons for usage
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

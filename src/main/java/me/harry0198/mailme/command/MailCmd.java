@@ -34,6 +34,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
@@ -43,6 +44,7 @@ import org.bukkit.entity.Player;
 public final class MailCmd extends CommandBase {
 
     private final static String BASE_PERM = "mailme.base.";
+    private final static String ADMIN_PERM = "mailme.admin";
 
     private MailMe plugin;
 
@@ -141,6 +143,49 @@ public final class MailCmd extends CommandBase {
             data.setMailBox(null);
             player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-removed"));
         }
+    }
+
+    @Permission(ADMIN_PERM)
+    @SubCommand("defaultMB")
+    public void setDefaultMailBox(Player player) {
+
+        PlayerData data = plugin.getPlayerDataHandler().getPlayerData(player);
+
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+            Block chest = player.getTargetBlock(null, 10);
+            if (!chest.getType().equals(Material.CHEST)) {
+                player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
+                return;
+            }
+            Location loc = chest.getLocation();
+
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                plugin.getConfig().set("default-mailbox.world", loc.getWorld().getName());
+                plugin.getConfig().set("default-mailbox.x", loc.getBlockX());
+                plugin.getConfig().set("default-mailbox.y", loc.getBlockY());
+                plugin.getConfig().set("default-mailbox.z", loc.getBlockZ());
+                plugin.saveConfig();
+            });
+            plugin.defaultLocation = loc;
+            player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-set"));
+        });
+    }
+
+    @Permission(ADMIN_PERM)
+    @SubCommand("output-debug")
+    public void outputDebug(CommandSender sender) {
+        StringBuilder sb = new StringBuilder()
+                .append("[MailMe Debug Output]")
+                .append("\nBukkit version: ")
+                .append(Bukkit.getServer().getBukkitVersion())
+                .append("\nPlugin Version: ")
+                .append(plugin.getDescription().getVersion())
+                .append("\nJava Version: ")
+                .append(System.getProperty("java.runtime.version"))
+                .append("\nLoaded Language files: ")
+                .append(plugin.getLocale().getLoadedLanguages());
+
+        sender.sendMessage(sb.toString());
     }
 
 

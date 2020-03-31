@@ -18,7 +18,7 @@
 #
 # ◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥
 #
-
+config-ver: 2
 #                              Global Modifiers
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
@@ -52,3 +52,16 @@ icons:
   - EMERALD
   - MINECART
   - DIAMOND
+
+#                           Default Mailbox Location
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+
+# Please Note: Here, pings are not unique! Therefore, if a player doesn't have mail at one of these locations,
+# an effect will still show for them.
+
+default-mailbox:
+  world: "world"
+  x: 0
+  y: 0
+  z: 0

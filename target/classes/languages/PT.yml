@@ -1,5 +1,5 @@
 T: "PT"
-VER: 1.0
+VER: 1.1
 
 prefix: "&8[&eMailMe&8]&r"
 
@@ -192,3 +192,14 @@ gui:
     lore:
       - "&7Clique para"
       - "&7receber carta"
+  are-you-sure:
+    title: "&aVocê tem certeza?"
+    material: EMERALD_BLOCK
+    amount: 1
+    glow: true
+    lore:
+      - "&7Clicar com o botão direito novamente"
+      - "&7Excluir este e-mail"
+      - ""
+      - "&7Como alternativa, clique aqui para"
+      - "&7Cancele a operação"

@@ -41,6 +41,13 @@ public final class PlayerData {
     public PlayerData(final UUID uuid, final Locale.LANG lang) {
         this.uuid = uuid;
         this.lang = lang;
+        Location defaultLoc = MailMe.getInstance().defaultLocation;
+        if (defaultLoc != null) {
+            this.x = defaultLoc.getBlockX();
+            this.y = defaultLoc.getBlockY();
+            this.z = defaultLoc.getBlockZ();
+            this.world = defaultLoc.getWorld().getName();
+        }
     }
 
 

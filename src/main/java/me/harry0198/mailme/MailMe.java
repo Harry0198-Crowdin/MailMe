@@ -34,6 +34,7 @@ import me.mattstudios.mf.base.CommandManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -59,6 +60,7 @@ public final class MailMe extends JavaPlugin {
     private GuiHandler uiHandler;
     private PlayerDataHandler playerDataHandler;
     private MailCmd mailCmds;
+    public Location defaultLocation;
 
     /* Conversation Factory */
     private ConversationFactory conversationFactory;
@@ -91,12 +93,12 @@ public final class MailMe extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
         @SuppressWarnings("unused")
         Metrics metrics = new Metrics(this);
 
         loadConversations();
-        saveDefaultConfig();
         debug("Creating playerdata folder");
         new File(getDataFolder() + "/playerdata").mkdir();
         debug("Loading locale");
@@ -117,6 +119,16 @@ public final class MailMe extends JavaPlugin {
         commandManager.hideTabComplete(true);
 
         runMailBoxTask();
+
+        defaultLocation = getDefaultMailBoxLocation();
+    }
+
+    private Location getDefaultMailBoxLocation() {
+        String world = getConfig().getString("default-mailbox.world");
+        int x = getConfig().getInt("default-mailbox.x");
+        int y = getConfig().getInt("default-mailbox.y");
+        int z = getConfig().getInt("default-mailbox.z");
+        return new Location(Bukkit.getWorld(world),x,y,z);
     }
 
     public BukkitTask runMailBoxTask() {
@@ -131,6 +143,11 @@ public final class MailMe extends JavaPlugin {
                 if (data.getMailBox() == null) continue;
 
                 Location loc = data.getMailBox();
+
+                if (loc.getWorld().getBlockAt(loc).getType() == Material.AIR) {
+                    getPlayerDataHandler().getPlayerData(player).setMailBox(null);
+                    continue;
+                }
                 loc.add(0.5,1.2,0.5);
 
                 List<Mail> unread = data.getMail().stream().filter(mail -> !mail.isRead()).collect(Collectors.toList());
@@ -144,7 +161,7 @@ public final class MailMe extends JavaPlugin {
     public void onDisable() {
     }
 
-    private void debug(String msg) {
+    public void debug(String msg) {
         if (getConfig().getBoolean("debug"))
             getServer().getLogger().log(Level.INFO, msg);
     }

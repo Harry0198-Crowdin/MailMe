@@ -1,5 +1,5 @@
 T: "EN"
-VER: 1.0
+VER: 1.1
 
 prefix: "&8[&eMailMe&8]&r"
 
@@ -43,6 +43,7 @@ help:
   - "&e/mail send &7Send your mail"
   - "&e/mail text &7Read mail as text"
   - "&e/mail mailbox <set/remove>"
+  - "&e/mail defaultMB &7Sets default mailbox!"
 
 gui:
   read-title: "Read Mail"

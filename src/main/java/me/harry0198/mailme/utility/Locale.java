@@ -21,9 +21,15 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public final class Locale {
 
@@ -36,8 +42,30 @@ public final class Locale {
             if (!new File(MailMe.getInstance().getDataFolder() + "/languages", lang.toString() + ".yml").exists()) {
                 MailMe.getInstance().saveResource("languages/" + lang.toString() + ".yml", false);
             }
-            this.yaml.put(lang,YamlConfiguration.loadConfiguration(new File(MailMe.getInstance().getDataFolder() + "/languages/" + lang.toString() + ".yml")) );
+
+            File langFile = new File(MailMe.getInstance().getDataFolder() + "/languages/" + lang.toString() + ".yml");
+            YamlConfiguration externalYamlConfig = YamlConfiguration.loadConfiguration(langFile);
+
+            InputStreamReader defConfigStream = new InputStreamReader(MailMe.getInstance().getResource(lang.toString() + ".yml"), StandardCharsets.UTF_8);
+            YamlConfiguration internalLangConfig = YamlConfiguration.loadConfiguration(defConfigStream);
+
+            for (String string : internalLangConfig.getKeys(true)) {
+                if (!externalYamlConfig.contains(string)) {
+                    externalYamlConfig.set(string, internalLangConfig.get(string));
+                }
+            }
+            try {
+               internalLangConfig.save(langFile);
+            } catch (IOException io) {
+                io.printStackTrace();
+            }
+
+            this.yaml.put(lang, internalLangConfig);
         }
+    }
+
+    public Set<LANG> getLoadedLanguages() {
+        return yaml.keySet();
     }
 
     public String getMessage(String string) {

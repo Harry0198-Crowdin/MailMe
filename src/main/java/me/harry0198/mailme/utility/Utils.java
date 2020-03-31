@@ -98,5 +98,4 @@ public class Utils {
         double note = 6 / 24D; // 6 is the value of the red note
         player.spawnParticle(Particle.NOTE, location, 0, note, 0, 0, 1);
     }
-
 }
