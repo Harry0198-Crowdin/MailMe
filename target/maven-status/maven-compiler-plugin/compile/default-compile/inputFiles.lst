@@ -18,6 +18,7 @@
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/mail/MailBuilder.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/ui/ChooseTypeGui.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/datastore/PlayerDataHandler.java
+/Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/utility/TypeAdapterFactory.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/ui/ItemInputGui.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/mail/types/MailItems.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/me/harry0198/mailme/ui/IconGui.java

@@ -29,7 +29,6 @@ import java.util.UUID;
 @SuppressWarnings({"unused"})
 public final class MailMessages extends Mail {
 
-    private final String type = "MailMessages"; // For deserializer
     private String message;
 
     /**

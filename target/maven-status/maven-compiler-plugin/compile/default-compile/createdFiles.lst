@@ -2,6 +2,7 @@ me/harry0198/mailme/ui/IconGui.class
 me/harry0198/mailme/conversations/PlayerSearch.class
 me/harry0198/mailme/utility/Locale.class
 me/harry0198/mailme/mail/types/MailSound.class
+me/harry0198/mailme/utility/TypeAdapterFactory.class
 me/harry0198/mailme/ui/ChooseTypeGui.class
 me/harry0198/mailme/mail/types/MailLocation.class
 me/harry0198/mailme/mail/MailBuilder.class

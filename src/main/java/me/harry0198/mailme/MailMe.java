@@ -16,8 +16,8 @@
 
 package me.harry0198.mailme;
 
-
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.harry0198.mailme.command.MailCmd;
 import me.harry0198.mailme.conversations.*;
 import me.harry0198.mailme.datastore.PlayerData;
@@ -26,9 +26,9 @@ import me.harry0198.mailme.events.EntityEvents;
 import me.harry0198.mailme.mail.Mail;
 import me.harry0198.mailme.mail.MailSerializer;
 import me.harry0198.mailme.ui.GuiHandler;
-import me.harry0198.mailme.utility.ItemStackSerializer;
 import me.harry0198.mailme.utility.Locale;
 
+import me.harry0198.mailme.utility.TypeAdapterFactory;
 import me.harry0198.mailme.utility.Utils;
 import me.mattstudios.mf.base.CommandManager;
 import org.bstats.bukkit.Metrics;
@@ -36,7 +36,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -49,13 +48,12 @@ import java.util.stream.Collectors;
 
 public final class MailMe extends JavaPlugin {
 
-    public static final Gson GSON = new GsonBuilder()
-                    .setDateFormat("dd-MM-yyyy hh:mm:ss.SSS")
+    public final static Gson GSON = new GsonBuilder()
+                    .setDateFormat("dd-MM-yyyy-hh:mm:ss.SSS")
                     .enableComplexMapKeySerialization()
                     .setPrettyPrinting()
-                    .registerTypeAdapter(Mail.class, new MailSerializer())
-                    .registerTypeAdapter(ItemStack.class, new ItemStackSerializer())
-                    .serializeSpecialFloatingPointValues()
+                    .registerTypeAdapter(Mail.class, new MailSerializer<Mail>())
+            .registerTypeAdapterFactory(new TypeAdapterFactory())
                     .create();
     private Locale locale;
     private GuiHandler uiHandler;
@@ -71,7 +69,6 @@ public final class MailMe extends JavaPlugin {
     public static final List<Player> playerList = new ArrayList<>();
 
     private void loadConversations() {
-
         this.conversationFactory = new ConversationFactory(this).withModality(true)
                 .withFirstPrompt(new InputPrompt())
                 .withEscapeSequence("cancel").withTimeout(60)
@@ -145,7 +142,6 @@ public final class MailMe extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
     }
 
     private void debug(String msg) {

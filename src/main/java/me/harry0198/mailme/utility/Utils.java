@@ -16,6 +16,7 @@
 
 package me.harry0198.mailme.utility;
 
+
 import com.google.gson.reflect.TypeToken;
 import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.datastore.PlayerData;
@@ -25,7 +26,6 @@ import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -44,6 +44,7 @@ public class Utils {
 
     public static PlayerData readJson(File file) {
         try {
+
             Type token = new TypeToken<PlayerData>() {}.getType();
             FileReader fr = new FileReader(file);
             PlayerData data = MailMe.GSON.fromJson(fr, token);
@@ -59,7 +60,6 @@ public class Utils {
 
     public static void writeJson(File file, PlayerData data) {
         try {
-
             FileWriter writer = new FileWriter(file);
             MailMe.GSON.toJson(data, writer);
             writer.close();

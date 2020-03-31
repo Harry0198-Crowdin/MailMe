@@ -34,7 +34,6 @@ import java.util.*;
 @SuppressWarnings({"unused"})
 public final class MailItems extends Mail implements Serializable {
 
-    private String type = "MailItems"; // For deserializer
     private List<ItemStack> items;
 
     /**

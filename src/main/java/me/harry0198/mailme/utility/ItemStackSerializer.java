@@ -16,51 +16,57 @@
 
 package me.harry0198.mailme.utility;
 
+
 import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
+import org.bukkit.Material;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.io.BukkitObjectInputStream;
-import org.bukkit.util.io.BukkitObjectOutputStream;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.Base64;
+import java.io.*;
 
-public class ItemStackSerializer implements JsonDeserializer<ItemStack>, JsonSerializer<ItemStack> {
+// Registers new type adpater for ItemStack.
+// Based from tastybento's bentobox
+public class ItemStackSerializer extends TypeAdapter<ItemStack>{
 
     @Override
-    public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public void write(JsonWriter out, ItemStack value) throws IOException {
+        if (value == null) {
+            out.nullValue();
+            return;
+        }
+        YamlConfiguration c = new YamlConfiguration();
+        c.set("is", value);
+        out.value(c.saveToString());
+    }
 
-        if (!json.isJsonPrimitive()) {
+    @Override
+    public ItemStack read(JsonReader reader) throws IOException {
+        if (reader.peek() == JsonToken.NULL) {
+            reader.nextNull();
             return null;
         }
+        YamlConfiguration c = new YamlConfiguration();
+        String n = reader.nextString();
+        // Verify material type because yaml loading errors of unknown materials cannot be trapped by try clause.
+        if (n.contains("type:")) {
+            String type = n.substring(n.indexOf("type:") + 6);
+            type = type.substring(0, type.indexOf('\n'));
+            Material m = Material.matchMaterial(type);
+            if (m == null) {
+                return new ItemStack(Material.AIR);
+            }
 
-
-
-        try (final ByteArrayInputStream bis = new ByteArrayInputStream(Base64.getDecoder().decode(json.getAsString())); final BukkitObjectInputStream ois = new BukkitObjectInputStream(bis)) {
-            return (ItemStack) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
         }
-
-        return null;
+        try {
+            c.loadFromString(n);
+            return c.getItemStack("is");
+        } catch (InvalidConfigurationException e) {
+            return new ItemStack(Material.AIR);
+        }
     }
 
-    @Override
-    public JsonElement serialize(ItemStack src, Type typeOfSrc, JsonSerializationContext context) {
-
-        if (src == null) {
-            return JsonNull.INSTANCE;
-        }
-
-        try (final ByteArrayOutputStream bos = new ByteArrayOutputStream(); final BukkitObjectOutputStream oos = new BukkitObjectOutputStream(bos)) {
-            oos.writeObject(src);
-            return new JsonPrimitive(Base64.getEncoder().encodeToString(bos.toByteArray()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return JsonNull.INSTANCE;
-    }
 }

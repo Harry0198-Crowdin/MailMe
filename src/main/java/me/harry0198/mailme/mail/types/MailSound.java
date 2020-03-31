@@ -30,9 +30,7 @@ import java.util.UUID;
 @SuppressWarnings({"unused"})
 public final class MailSound extends Mail {
 
-    private final String type = "MailSound"; // For deserializer
     private Sound sound;
-    private MailMessages messages; // Nested Message in Sound
 
     public MailSound(ItemStack icon, List<OfflinePlayer> recipients, Sound sound) {
         this(icon, recipients, sound, "", null);
@@ -42,7 +40,6 @@ public final class MailSound extends Mail {
             super(icon, new Date());
             super.addRecipients(recipients);
             this.sound = sound;
-            messages = new MailMessages(icon, recipients, msg);
             super.setSender(sender);
     }
 
@@ -61,9 +58,7 @@ public final class MailSound extends Mail {
     public BaseComponent[] getContentsAsText() {
         ComponentBuilder builder = new ComponentBuilder("");
         TextComponent txt = new TextComponent(sound.toString() + "\n");
-        TextComponent msg = new TextComponent(messages.getMessage());
         builder.append(txt);
-        builder.append(msg);
         return builder.create();
     }
 }

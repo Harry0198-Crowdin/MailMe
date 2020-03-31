@@ -31,7 +31,6 @@ import java.util.UUID;
 @SuppressWarnings({"unused"})
 public final class MailLocation extends Mail {
 
-    private final String type = "MailLocation"; // For deserializer
     private double x,y,z;
     private String world;
 
