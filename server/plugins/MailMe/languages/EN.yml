@@ -37,12 +37,12 @@ mailbox:
 
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mailme lang <language> &7Switches Language"
-  - "&e/mailme notify <true/false> &7Switches notification settings"
-  - "&e/mailme read &7Read your mail"
-  - "&e/mailme send &7Send your mail"
-  - "&e/mailme text &7Read mail as text"
-  - "&e/mailme mailbox <set/remove>"
+  - "&e/mail lang <language> &7Switches Language"
+  - "&e/mail notify <true/false> &7Switches notification settings"
+  - "&e/mail read &7Read your mail"
+  - "&e/mail send &7Send your mail"
+  - "&e/mail text &7Read mail as text"
+  - "&e/mail mailbox <set/remove>"
 
 gui:
   read-title: "Read Mail"

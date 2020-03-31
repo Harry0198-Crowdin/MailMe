@@ -37,12 +37,12 @@ mailbox:
 
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mailme lang <language> &7SMuda o idioma"
-  - "&e/mailme notify <true/false> &7Muda as configurações de notificação"
-  - "&e/mailme read &7Leia suas cartas"
-  - "&e/mailme send &7Envie sua carta"
-  - "&e/mailme text &7Ler sua carta como texto"
-  - "&e/mailme mailbox <set/remove>"
+  - "&e/mail lang <language> &7SMuda o idioma"
+  - "&e/mail notify <true/false> &7Muda as configurações de notificação"
+  - "&e/mail read &7Leia suas cartas"
+  - "&e/mail send &7Envie sua carta"
+  - "&e/mail text &7Ler sua carta como texto"
+  - "&e/mail mailbox <set/remove>"
 
 gui:
   read-title: "Ler carta"
