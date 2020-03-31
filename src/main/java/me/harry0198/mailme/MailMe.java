@@ -31,6 +31,7 @@ import me.harry0198.mailme.utility.Locale;
 
 import me.harry0198.mailme.utility.Utils;
 import me.mattstudios.mf.base.CommandManager;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.conversations.ConversationFactory;
@@ -93,6 +94,10 @@ public final class MailMe extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        @SuppressWarnings("unused")
+        Metrics metrics = new Metrics(this);
+
         loadConversations();
         saveDefaultConfig();
         debug("Creating playerdata folder");

@@ -37,8 +37,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 
-@Command("mailme")
-@Alias("mail")
+@Command("mail")
+@Alias("mailme")
 @SuppressWarnings({"unused"})
 public final class MailCmd extends CommandBase {
 
