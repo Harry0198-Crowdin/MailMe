@@ -192,6 +192,17 @@ gui:
     lore:
       - "&7Click to"
       - "&7receive the mail"
+  are-you-sure:
+    title: "&aAre you sure?"
+    material: EMERALD_BLOCK
+    amount: 1
+    glow: true
+    lore:
+      - "&7Right clicking again will"
+      - "&7Delete this mail"
+      - ""
+      - "&7Alternatively, left click this to"
+      - "&7Cancel the operation"
 
 
 

@@ -64,8 +64,9 @@ public final class MailGui extends PaginationGui {
         }
 
         List<GuiItem> mailList = new ArrayList<>();
-
+        int i = 0;
         for (Object m : super.getPage(getCurrentPage())) {
+
             // If it's in this class - it will be mail!
             Mail mail = (Mail) m;
 
@@ -80,18 +81,35 @@ public final class MailGui extends PaginationGui {
             if (!mail.isRead()) {
                 itemBuilder.glow();
             }
-            mailList.add(new GuiItem(itemBuilder.build(), event -> {
+            int finalI = i;
+            GuiItem item = new GuiItem(itemBuilder.build(), event -> {
                 event.setCancelled(true);
-                Player player = (Player) event.getWhoClicked();
-                mail.onClick(player);
-                mail.setRead(true, player);
-                newInstance(getCurrentPage()).open();
-                GuiHandler.playDingSound(getPlayer());
-            }));
+                if (event.isLeftClick()) {
+                    Player player = (Player) event.getWhoClicked();
+                    mail.onClick(player);
+                    mail.setRead(true, player);
+                    newInstance(getCurrentPage()).open();
+                    GuiHandler.playDingSound(getPlayer());
+                } else {
+                    getGui().setItem(finalI + 1, getAreYouSure(mail));
+                    getGui().update();
+                }
+            });
+            mailList.add(item);
+            i++;
         }
 
         addBetweenPoints(mailList);
         getGui().open(getPlayer());
+    }
+
+    private GuiItem getAreYouSure(Mail mail) {
+        return new GuiItem(areYouSure(getPlayerData().getLang()), event1 -> {
+            if (event1.isRightClick()) {
+                getPlayerData().removeMail(mail);
+            }
+            new MailGui(getPlugin(), getPlayer(), getPlayerData().getMail(), getCurrentPage()).open();
+        });
     }
 
     @Override

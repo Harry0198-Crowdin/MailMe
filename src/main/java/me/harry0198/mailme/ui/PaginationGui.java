@@ -18,8 +18,10 @@ package me.harry0198.mailme.ui;
 
 import me.harry0198.mailme.MailMe;
 import me.harry0198.mailme.datastore.PlayerData;
+import me.harry0198.mailme.utility.Locale;
 import me.harry0198.mailme.utility.Pagination;
 import me.harry0198.mailme.utility.Utils;
+import me.mattstudios.mfgui.gui.components.ItemBuilder;
 import me.mattstudios.mfgui.gui.guis.Gui;
 import me.mattstudios.mfgui.gui.guis.GuiItem;
 import org.bukkit.Material;
@@ -115,6 +117,10 @@ abstract class PaginationGui {
                 marker++;
             }
         }
+    }
+
+    protected ItemStack areYouSure(Locale.LANG lang) {
+        return Utils.getItemStack(plugin.getLocale().getConfigurationSection(lang, "gui.are-you-sure"));
     }
 
     protected void updateTitlePath(String addition) {

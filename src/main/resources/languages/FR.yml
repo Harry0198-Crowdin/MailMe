@@ -191,6 +191,17 @@ gui:
     lore:
       - "&7Cliquez sur"
       - "&7recevoir le courrier"
+  are-you-sure:
+    title: "&aÊtes-vous sûr?"
+    material: EMERALD_BLOCK
+    amount: 1
+    glow: true
+    lore:
+      - "&7Un clic droit à nouveau"
+      - "&7Supprimer ce mail"
+      - ""
+      - "&7Vous pouvez également cliquer avec le bouton gauche pour"
+      - "&7Annuler l'opération"
 
 
 

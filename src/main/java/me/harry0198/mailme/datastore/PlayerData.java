@@ -145,6 +145,11 @@ public final class PlayerData {
         }
     }
 
+    public void removeMail(Mail mail) {
+        this.mail.remove(mail.getDate());
+        update();
+    }
+
     /**
      * Sets Player's preferred language
      *
