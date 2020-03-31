@@ -42,7 +42,7 @@ import org.bukkit.entity.Player;
 @SuppressWarnings({"unused"})
 public final class MailCmd extends CommandBase {
 
-    private final static String BASE_PERM = "mailme.base";
+    private final static String BASE_PERM = "mailme.base.";
 
     private MailMe plugin;
 
