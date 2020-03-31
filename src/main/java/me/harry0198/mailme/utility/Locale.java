@@ -69,6 +69,6 @@ public final class Locale {
     }
 
     public enum LANG {
-        EN, FR, PT
+        EN, FR, PT, DE
     }
 }
