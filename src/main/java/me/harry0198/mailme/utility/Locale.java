@@ -55,12 +55,12 @@ public final class Locale {
                 }
             }
             try {
-               internalLangConfig.save(langFile);
+               externalYamlConfig.save(langFile);
             } catch (IOException io) {
                 io.printStackTrace();
             }
 
-            this.yaml.put(lang, internalLangConfig);
+            this.yaml.put(lang, externalYamlConfig);
         }
     }
 

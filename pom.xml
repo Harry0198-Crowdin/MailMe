@@ -6,7 +6,7 @@
 
     <groupId>me.harry0198.mailme</groupId>
     <artifactId>MailMe</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>MailMe</name>
