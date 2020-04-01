@@ -47,6 +47,15 @@ public final class PlayerDataHandler {
         return playerData.get(uuid);
     }
 
+    public void forceSetPlayerData(PlayerData data) {
+        if (playerData.containsKey(data.getUuid()))
+            playerData.replace(data.getUuid(), data);
+    }
+
+    public PlayerData getTmpFromFile(File file) {
+        return Utils.readJson(file);
+    }
+
     public void removePlayerData(UUID uuid) {
         if (exists(uuid))
             playerData.remove(uuid);

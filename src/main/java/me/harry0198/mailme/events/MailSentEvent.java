@@ -16,5 +16,6 @@
 
 package me.harry0198.mailme.events;
 
+//TODO api
 public final class MailSentEvent {
 }

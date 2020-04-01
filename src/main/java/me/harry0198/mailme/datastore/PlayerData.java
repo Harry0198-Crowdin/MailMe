@@ -79,6 +79,13 @@ public final class PlayerData {
     public Locale.LANG getLang() { return this.lang; }
 
     /**
+     * Gets the player's UUID
+     *
+     * @return Player's UUID
+     */
+    public UUID getUuid() { return uuid; }
+
+    /**
      * Gets the current notification preference
      *
      * @return True if allowed notifications
@@ -123,7 +130,8 @@ public final class PlayerData {
         this.world = location.getWorld().getName();
         update();
 
-        tryAddToTask(Bukkit.getPlayer(uuid));
+        if (Bukkit.getOfflinePlayer(uuid).isOnline())
+            tryAddToTask(Bukkit.getPlayer(uuid));
     }
 
     /**
