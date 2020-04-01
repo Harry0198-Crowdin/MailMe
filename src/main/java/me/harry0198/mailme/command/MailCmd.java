@@ -35,7 +35,18 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Command("mail")
@@ -102,8 +113,8 @@ public final class MailCmd extends CommandBase {
 
         if (page == null) page = 0;
         if (page > 0) {
-            TextComponent message = new TextComponent(MailMe.getInstance().getLocale().getMessage(lang,"text.prev-page"));
-            message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage(lang,"text.prev-page-hover")).create()));
+            TextComponent message = new TextComponent(MailMe.getInstance().getLocale().getMessage(lang, "text.prev-page"));
+            message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage(lang, "text.prev-page-hover")).create()));
             message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/mailme text " + (page - 1)));
             player.spigot().sendMessage(message);
         }
@@ -113,8 +124,8 @@ public final class MailCmd extends CommandBase {
         if (page < pagination.totalPages()) {
             pagination.getPage(page).forEach(m -> player.spigot().sendMessage(m.getMailAsText()));
 
-            TextComponent m = new TextComponent(MailMe.getInstance().getLocale().getMessage(lang,"text.next-page"));
-            m.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage(lang,"text.next-page-hover")).create()));
+            TextComponent m = new TextComponent(MailMe.getInstance().getLocale().getMessage(lang, "text.next-page"));
+            m.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage(lang, "text.next-page-hover")).create()));
             m.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/mailme text " + (page + 1)));
             player.spigot().sendMessage(m);
         }
@@ -150,6 +161,7 @@ public final class MailCmd extends CommandBase {
     public void setDefaultMailBox(Player player) {
 
         PlayerData data = plugin.getPlayerDataHandler().getPlayerData(player);
+        ConfigurationSection mailboxConfig = plugin.getConfig().getConfigurationSection("default-mailbox");
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             Block chest = player.getTargetBlock(null, 10);
@@ -159,10 +171,28 @@ public final class MailCmd extends CommandBase {
             }
             Location loc = chest.getLocation();
 
-            plugin.getConfig().set("default-mailbox.world", loc.getWorld().getName());
-            plugin.getConfig().set("default-mailbox.x", loc.getBlockX());
-            plugin.getConfig().set("default-mailbox.y", loc.getBlockY());
-            plugin.getConfig().set("default-mailbox.z", loc.getBlockZ());
+            try (Stream<Path> walk = Files.walk(Paths.get(plugin.getDataFolder() + "/playerdata"))) {
+                List<String> result = walk.map(Path::toString)
+                        .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
+
+                result.forEach(file -> {
+                    PlayerData playerData =  plugin.getPlayerDataHandler().getTmpFromFile(new File(file));
+                    Location currentMailBox = playerData.getMailBox();
+                    if (currentMailBox == null || currentMailBox.equals(plugin.defaultLocation)){ // If player's Mailbox was previously a default one or didn't have one before
+                        playerData.setMailBox(loc); // Set MailBox to new location
+                        plugin.getPlayerDataHandler().forceSetPlayerData(playerData);
+                    }
+                });
+
+
+            } catch (IOException ignore) {
+                plugin.debug("Set Default Mailbox: Failed to set mailboxes existing");
+            }
+
+            mailboxConfig.set("world", loc.getWorld().getName());
+            mailboxConfig.set("x", loc.getBlockX());
+            mailboxConfig.set("y", loc.getBlockY());
+            mailboxConfig.set("z", loc.getBlockZ());
             plugin.saveConfig();
 
             plugin.defaultLocation = loc;
