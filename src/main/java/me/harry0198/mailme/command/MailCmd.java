@@ -159,14 +159,14 @@ public final class MailCmd extends CommandBase {
             }
             Location loc = chest.getLocation();
 
-            Bukkit.getScheduler().runTask(plugin, () -> {
-                plugin.getConfig().set("default-mailbox.world", loc.getWorld().getName());
-                plugin.getConfig().set("default-mailbox.x", loc.getBlockX());
-                plugin.getConfig().set("default-mailbox.y", loc.getBlockY());
-                plugin.getConfig().set("default-mailbox.z", loc.getBlockZ());
-                plugin.saveConfig();
-            });
+            plugin.getConfig().set("default-mailbox.world", loc.getWorld().getName());
+            plugin.getConfig().set("default-mailbox.x", loc.getBlockX());
+            plugin.getConfig().set("default-mailbox.y", loc.getBlockY());
+            plugin.getConfig().set("default-mailbox.z", loc.getBlockZ());
+            plugin.saveConfig();
+
             plugin.defaultLocation = loc;
+
             player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-set"));
         });
     }
