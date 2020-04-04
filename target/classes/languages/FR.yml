@@ -7,6 +7,7 @@ cmd:
   lang-change: "@prefix &eLa langue a changé !"
   notify-change: "@prefix &eParamètres de notification mis à jour!"
   mail-unread: "@prefix Vous avez du courrier non lu!"
+  invalid-preset-key: "@prefix &eClé prédéfinie invalide! Vérifiez votre config.yml pour les valeurs valides"
 
 text:
   format:
@@ -24,6 +25,7 @@ text:
 notify:
   received: "@prefix &eVous avez reçu du courrier de %s"
   sent: "@prefix &eVous avez envoyé du courrier à %s"
+  sent-multiple: "Destinataires multiples"
   could-not-send: "@prefix &eImpossible d’envoyer du courrier à %s. Vous avez récemment envoyé du courrier. S’il vous plaît essayer à nouveau plus tard."
 
 mail:
@@ -43,6 +45,8 @@ help:
   - "&e/mail send &7Envoyez votre courrier"
   - "&e/mail text &7Lire le courrier comme texte"
   - "&e/mail mailbox <set/remove>"
+  - "&e/mailme admin send <all/playername> [Preset-ID] &7Senden Sie eine Standardmail."
+  - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
 
 gui:
   read-title: "Lire Mail"

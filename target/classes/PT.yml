@@ -7,6 +7,7 @@ cmd:
   lang-change: "@prefix &eIdioma alterado!"
   notify-change: "@prefix &eConfigurações de notificação atualizadas!"
   mail-unread: "@prefix Você tem cartas não lidos!"
+  nvalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
 
 text:
   format:
@@ -24,6 +25,7 @@ text:
 notify:
   received: "@prefix &eVocê recebeu algumas cartas de %s"
   sent: "@prefix &eVocê enviou uma carta para %s"
+  sent-multiple: "Múltiplos destinatários"
   could-not-send: "@prefix &cAtenção! &eNão foi possível enviar carta para %s. Por favor, tente novamente mais tarde."
 
 mail:
@@ -43,6 +45,8 @@ help:
   - "&e/mail send &7Envie sua carta"
   - "&e/mail text &7Ler sua carta como texto"
   - "&e/mail mailbox <set/remove>"
+  - "&e/mailme admin send <all/playername> [Preset-ID] &7Senden Sie eine Standardmail."
+  - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
 
 gui:
   read-title: "Ler carta"

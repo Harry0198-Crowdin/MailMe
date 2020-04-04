@@ -65,3 +65,30 @@ default-mailbox:
   x: 0
   y: 0
   z: 0
+
+#                           Preset Mail for sending
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+
+# Administrators can send preset mail that is defined here. You can send the presets using
+# /mail admin send <player/all> [preset-ID]
+
+presets:
+  win: |-
+    {
+      "type": "com.haroldstudios.mailme.mail.types.MailItems",
+      "data": {
+        "items": [
+          "is:\n  \u003d\u003d: org.bukkit.inventory.ItemStack\n  v: 1976\n  type: DIAMOND\n"
+        ],
+        "icon": "is:\n  \u003d\u003d: org.bukkit.inventory.ItemStack\n  v: 1976\n  type: ELYTRA\n  meta:\n    \u003d\u003d: ItemMeta\n    meta-type: UNSPECIFIC\n    enchants:\n      LURE: 1\n    ItemFlags:\n    - HIDE_ENCHANTS\n",
+        "date": "04-04-2020-04:00:19.813",
+        "recipients": [
+          "4aebd9fe-c5df-32ec-bd8d-bda099eb15ba"
+        ],
+        "read": false,
+        "reply": false,
+        "sender": "4aebd9fe-c5df-32ec-bd8d-bda099eb15ba",
+        "delay": 1
+      }
+    }

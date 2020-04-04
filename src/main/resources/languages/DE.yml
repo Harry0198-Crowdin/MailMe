@@ -7,6 +7,7 @@ cmd:
   lang-change: "@prefix &eSprache geändert!"
   notify-change: "@prefix &eBenachrichtigungseinstellungen aktualisiert!"
   mail-unread: "@prefix &eDu hast ungelesene Nachrichten!"
+  invalid-preset-key: "@prefix &eUngültige voreingestellte Taste! Überprüfen Sie Ihre config.yml auf gültige Werte"
 
 text:
   format:
@@ -24,6 +25,7 @@ text:
 notify:
   received: "@prefix &eDu hast eine Nachricht von %s erhalten"
   sent: "@prefix &eDu hast eine Nachricht an %s gesendet"
+  sent-multiple: "Mehrere Empfänger"
   could-not-send: "@prefix &cWarnung! &eKonnte Nachricht nicht an %s senden. Du hast erst kürzlich eine gesendet. Bitte versuch es später erneut."
 
 mail:
@@ -43,6 +45,8 @@ help:
   - "&e/mail send &7Eine Nachricht senden"
   - "&e/mail text &7Nachrichten als text lesen"
   - "&e/mail mailbox <set/remove>"
+  - "&e/mailme admin send <all/playername> [Preset-ID] &7Senden Sie eine Standardmail."
+  - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
 
 gui:
   read-title: "Nachricht lesen"

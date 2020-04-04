@@ -1,0 +1,11 @@
+com.haroldstudios.mailme
+com.haroldstudios.mailme.command
+com.haroldstudios.mailme.components
+com.haroldstudios.mailme.components.hooks
+com.haroldstudios.mailme.conversations
+com.haroldstudios.mailme.datastore
+com.haroldstudios.mailme.events
+com.haroldstudios.mailme.mail
+com.haroldstudios.mailme.mail.types
+com.haroldstudios.mailme.ui
+com.haroldstudios.mailme.utility

@@ -7,6 +7,7 @@ cmd:
   lang-change: "@prefix &eLanguage changed!"
   notify-change: "@prefix &eNotification Settings updated!"
   mail-unread: "@prefix &eYou have unread mail!"
+  invalid-preset-key: "@prefix &eInvalid preset key! Check your config.yml for valid values"
 
 text:
   format:
@@ -24,6 +25,7 @@ text:
 notify:
   received: "@prefix &eYou received some mail from %s"
   sent: "@prefix &eYou sent some mail to %s"
+  sent-multiple: "Multiple Recipients"
   could-not-send: "@prefix &cWarning! &eCould not send mail to %s. You have recently sent mail. Please try again later."
 
 mail:
@@ -37,13 +39,15 @@ mailbox:
 
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mail lang <language> &7Switches Language"
-  - "&e/mail notify <true/false> &7Switches notification settings"
-  - "&e/mail read &7Read your mail"
-  - "&e/mail send &7Send your mail"
-  - "&e/mail text &7Read mail as text"
-  - "&e/mail mailbox <set/remove>"
-  - "&e/mail defaultMB &7Sets default mailbox!"
+  - "&e/mailme lang <language> &7Switches Language"
+  - "&e/mailme notify <true/false> &7Switches notification settings"
+  - "&e/mailme read &7Read your mail"
+  - "&e/mailme send &7Send your mail"
+  - "&e/mailme text &7Read mail as text"
+  - "&e/mailme mailbox <set/remove>"
+  - "&e/mailme defaultMB &7Sets default mailbox!"
+  - "&e/mailme admin send <all/playername> [Preset-ID] &7Send a default mail."
+  - "&e/mailme admin preset <id-to-set> &7Sets a preset for admin sending"
 
 gui:
   read-title: "Read Mail"

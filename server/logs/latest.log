@@ -139,7 +139,7 @@
 [09:10:13] [Server thread/INFO]: [MailMe] Enabling MailMe v1.0-BETA
 [09:10:13] [Server thread/ERROR]: Error occurred while enabling MailMe v1.0-BETA (Is it up to date?)
 java.lang.ExceptionInInitializerError: null
-	at me.harry0198.mailme.MailMe.onEnable(MailMe.java:99) ~[?:?]
+	at MailMe.onEnable(MailMe.java:99) ~[?:?]
 	at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:263) ~[spigot.jar:git-Spigot-9de398a-9c887d4]
 	at org.bukkit.plugin.java.JavaPluginLoader.enablePlugin(JavaPluginLoader.java:352) [spigot.jar:git-Spigot-9de398a-9c887d4]
 	at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:417) [spigot.jar:git-Spigot-9de398a-9c887d4]
