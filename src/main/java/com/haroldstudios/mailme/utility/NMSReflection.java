@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NMSReflection {
+public final class NMSReflection {
 
     /*
      * The server version string to location NMS and OBC classes

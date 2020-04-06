@@ -28,13 +28,12 @@ import org.bukkit.inventory.ItemStack;
  *
  * @author tastybento
  */
-public class TypeAdapterFactory implements com.google.gson.TypeAdapterFactory {
+public final class TypeAdapterFactory implements com.google.gson.TypeAdapterFactory {
 
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
         Class<?> rawType = type.getRawType();
         if (ItemStack.class.isAssignableFrom(rawType)) {
-            // Use our current location adapter for backward compatibility
             return (TypeAdapter<T>) new ItemStackSerializer();
         }
 

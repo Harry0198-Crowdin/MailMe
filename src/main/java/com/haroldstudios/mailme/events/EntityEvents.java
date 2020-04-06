@@ -16,15 +16,22 @@
 
 package com.haroldstudios.mailme.events;
 
+import com.google.gson.reflect.TypeToken;
 import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.datastore.PlayerData;
+import com.haroldstudios.mailme.mail.Mail;
+import com.haroldstudios.mailme.utility.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.lang.reflect.Type;
+import java.util.Collections;
 
 public class EntityEvents implements Listener {
 
@@ -38,6 +45,23 @@ public class EntityEvents implements Listener {
     public void onJoin(org.bukkit.event.player.PlayerJoinEvent e) {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
 
+            if (!plugin.getDataStoreHandler().playerDataFileExists(e.getPlayer().getUniqueId())) {
+
+                String welcomeKey = "welcome";
+
+                // If welcome mail exists
+                if (Utils.isValidPresetKey(plugin, welcomeKey)) {
+                    ConfigurationSection presets = plugin.getConfig().getConfigurationSection("presets");
+                    String preset = presets.getString(welcomeKey);
+                    Type token = new TypeToken<Mail>() {}.getType();
+                    Mail mail = MailMe.GSON.fromJson(preset, token);
+                    mail.clearRecipients();
+                    mail.addRecipients(Collections.singletonList(e.getPlayer()));
+
+                    Bukkit.getScheduler().runTask(plugin, mail::sendAsAdmin); //TODO works?
+                }
+            }
+
             PlayerData data = plugin.getDataStoreHandler().getPlayerData(e.getPlayer().getUniqueId());
 
             if (data.hasUnreadMail()) {
@@ -47,6 +71,7 @@ public class EntityEvents implements Listener {
             if (data.getMailBox() != null) {
                 MailMe.playerList.add(e.getPlayer());
             }
+
         });
     }
 

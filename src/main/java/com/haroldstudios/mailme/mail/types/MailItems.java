@@ -16,6 +16,7 @@
 
 package com.haroldstudios.mailme.mail.types;
 
+import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.mail.Mail;
 import com.haroldstudios.mailme.utility.NMSReflection;
 import net.md_5.bungee.api.ChatColor;
@@ -103,10 +104,20 @@ public final class MailItems extends Mail implements Serializable {
         return items;
     }
 
+    public void giveItems(Player player) {
+        final ItemStack[] items = getItems().stream()
+                .map(ItemStack::new)
+                .toArray(ItemStack[]::new);
+        final Map<Integer, ItemStack> map = player.getInventory().addItem(items);
+        for (final ItemStack item : map.values()) {
+            player.getWorld().dropItemNaturally(player.getLocation(), item);
+        }
+    }
+
     @Override
     public void onClick(Player player) {
         if (!isRead()) {
-            items.forEach(item -> player.getInventory().addItem(item));
+            giveItems(player);
         }
     }
 
@@ -126,5 +137,12 @@ public final class MailItems extends Mail implements Serializable {
             builder.append(txt);
         }
         return builder.create();
+    }
+
+    @Override
+    public Mail clone() {
+        MailItems mail = new MailItems(getIcon(), getDate(), Collections.emptyList(), getItems(), getSender());
+        mail.addRecipientsUUID(getRecipients());
+        return mail;
     }
 }

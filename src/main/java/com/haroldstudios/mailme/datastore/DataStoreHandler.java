@@ -51,7 +51,7 @@ public final class DataStoreHandler {
     }
 
     public PlayerData getPlayerData(UUID uuid) {
-        if (!exists(uuid))
+        if (!playerDataExists(uuid))
             makeData(uuid);
         return playerData.get(uuid);
     }
@@ -66,7 +66,7 @@ public final class DataStoreHandler {
     }
 
     public void removePlayerData(UUID uuid) {
-        if (exists(uuid))
+        if (playerDataExists(uuid))
             playerData.remove(uuid);
     }
 
@@ -100,8 +100,12 @@ public final class DataStoreHandler {
         return defaultLocation;
     }
 
-    private boolean exists(UUID uuid) {
+    public boolean playerDataExists(UUID uuid) {
         return playerData.containsKey(uuid);
+    }
+
+    public boolean playerDataFileExists(UUID uuid) {
+        return new File(plugin.getDataFolder() + "/playerdata/" + uuid.toString() + ".json").exists();
     }
 
 }

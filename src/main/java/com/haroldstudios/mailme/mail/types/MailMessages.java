@@ -18,10 +18,13 @@ package com.haroldstudios.mailme.mail.types;
 
 import com.haroldstudios.mailme.mail.Mail;
 import net.md_5.bungee.api.chat.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -108,5 +111,12 @@ public final class MailMessages extends Mail {
      */
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public Mail clone() {
+        MailMessages mail = new MailMessages(getIcon(), getDate(), Collections.emptyList(), getMessage(), getSender());
+        mail.addRecipientsUUID(getRecipients());
+        return mail;
     }
 }

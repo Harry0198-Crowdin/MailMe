@@ -23,6 +23,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +44,13 @@ public final class MailSound extends Mail {
             super.setSender(sender);
     }
 
+    public MailSound(final ItemStack icon, final Date date, final List<OfflinePlayer> recipients, final Sound sound, final UUID sender) {
+        super(icon, date);
+        super.addRecipients(recipients);
+        this.sound = sound;
+        super.setSender(sender);
+    }
+
 
     @Override
     public MailType getMailType() {
@@ -60,5 +68,12 @@ public final class MailSound extends Mail {
         TextComponent txt = new TextComponent(sound.toString() + "\n");
         builder.append(txt);
         return builder.create();
+    }
+
+    @Override
+    public Mail clone() {
+        MailSound mail = new MailSound(getIcon(), getDate(), Collections.emptyList(), sound, getSender());
+        mail.addRecipientsUUID(getRecipients());
+        return mail;
     }
 }

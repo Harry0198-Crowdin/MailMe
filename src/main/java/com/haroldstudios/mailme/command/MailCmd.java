@@ -24,6 +24,7 @@ import com.haroldstudios.mailme.mail.MailBuilder;
 import com.haroldstudios.mailme.ui.MailGui;
 import com.haroldstudios.mailme.utility.Locale;
 import com.haroldstudios.mailme.utility.Pagination;
+import com.haroldstudios.mailme.utility.Utils;
 import me.mattstudios.mf.annotations.*;
 import me.mattstudios.mf.annotations.Optional;
 import me.mattstudios.mf.base.CommandBase;
@@ -41,11 +42,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Command("mail")
 @Alias("mailme")
@@ -168,24 +173,6 @@ public final class MailCmd extends CommandBase {
                 return;
             }
             Location loc = chest.getLocation();
-
-//            try (Stream<Path> walk = Files.walk(Paths.get(plugin.getDataFolder() + "/playerdata"))) {
-//                List<String> result = walk.map(Path::toString)
-//                        .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
-//
-//                result.forEach(file -> {
-//                    PlayerData playerData = plugin.getDataStoreHandler().getTmpFromFile(new File(file));
-//                    Location currentMailBox = playerData.getMailBox();
-//                    if (currentMailBox == null || currentMailBox.equals(plugin.defaultLocation)) { // If player's Mailbox was previously a default one or didn't have one before
-//                        playerData.setMailBox(loc); // Set MailBox to new location
-//                        plugin.getDataStoreHandler().forceSetPlayerData(playerData);
-//                    }
-//                });
-//
-//
-//            } catch (IOException ignore) {
-//                plugin.debug("Set Default Mailbox: Failed to set mailboxes existing");
-//            }
             Bukkit.getScheduler().runTask(MailMe.getInstance(), () -> {
                 mailboxConfig.set("world", loc.getWorld().getName());
                 mailboxConfig.set("x", loc.getBlockX());
@@ -249,19 +236,39 @@ public final class MailCmd extends CommandBase {
             return;
         }
         // if args length is greater than 2 (has id)
-
-        ConfigurationSection presets = plugin.getConfig().getConfigurationSection("presets");
-        if (!presets.getKeys(false).contains(args[3])) {
+        if (!Utils.isValidPresetKey(plugin, args[3])) {
             sender.sendMessage(plugin.getLocale().getMessage("cmd.invalid-preset-key"));
             return;
         }
+        ConfigurationSection presets = plugin.getConfig().getConfigurationSection("presets");
 
         String preset = presets.getString(args[3]);
         Type token = new TypeToken<Mail>() {}.getType();
         Mail mail = MailMe.GSON.fromJson(preset, token);
 
+        List<UUID> recipients = new ArrayList<>();
 
-        mail.sendAsAdmin(args[2]);
+        // Send to all players
+        if (args[2].equalsIgnoreCase("all")) {
+
+            try (Stream<Path> walk = Files.walk(Paths.get(MailMe.getInstance().getDataFolder() + "/playerdata"))) {
+                List<String> result = walk.map(Path::toString)
+                        .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
+
+                result.forEach(file -> recipients.add(MailMe.getInstance().getDataStoreHandler().getTmpFromFile(new File(file)).getUuid()));
+
+            } catch (IOException exception) {
+                MailMe.getInstance().debug("Failed to send as admin: " + exception.getMessage());
+            }
+
+        // Send to specific player
+        } else {
+            recipients.add(Bukkit.getOfflinePlayer(args[2]).getUniqueId());
+        }
+
+        mail.addRecipientsUUID(recipients);
+        // Send as Administrator
+        mail.sendAsAdmin();
     }
 
     // Usage /mailme admin preset <name>
@@ -271,9 +278,11 @@ public final class MailCmd extends CommandBase {
         Player player = (Player) sender;
         if (args.length < 3) throw new SyntaxError();
         plugin.getGuiHandler().getChooseTypeGui().open(player);
-        MailBuilder.getMailDraft(player).setPreset(true);
-        MailBuilder.getMailDraft(player).setPresetName(args[2]);
-        MailBuilder.getMailDraft(player).addRecipient(player);
+
+        MailBuilder.getMailDraft(player)
+                .setPreset(true)
+                .setPresetName(args[2])
+                .addRecipient(player);
     }
 
 

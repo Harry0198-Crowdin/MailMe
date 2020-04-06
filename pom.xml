@@ -6,7 +6,7 @@
 
     <groupId>com.haroldstudios.mailme</groupId>
     <artifactId>MailMe</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <name>MailMe</name>
@@ -86,9 +86,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -96,7 +93,6 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
-
                     </execution>
                 </executions>
             </plugin>

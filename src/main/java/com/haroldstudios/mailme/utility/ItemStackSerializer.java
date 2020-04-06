@@ -30,7 +30,7 @@ import java.io.*;
 
 // Registers new type adpater for ItemStack.
 // Based from tastybento's bentobox
-public class ItemStackSerializer extends TypeAdapter<ItemStack>{
+public final class ItemStackSerializer extends TypeAdapter<ItemStack>{
 
     @Override
     public void write(JsonWriter out, ItemStack value) throws IOException {

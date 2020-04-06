@@ -134,9 +134,7 @@ public final class MailBuilder {
          * @return The Builder
          */
         public Builder addRecipients(OfflinePlayer... players) {
-            for (OfflinePlayer player : players) {
-                recipients.add(player);
-            }
+            recipients.addAll(Arrays.asList(players));
             mailDrafts.put(sender, this);
             return this;
         }
@@ -296,6 +294,7 @@ public final class MailBuilder {
             }
 
             if (mail != null && isPreset()) {
+                mail.clearRecipients();
                 Type token = new TypeToken<Mail>() {}.getType();
                 MailMe.getInstance().getConfig().set("presets." + presetName, MailMe.GSON.toJson(mail, token));
                 MailMe.getInstance().saveConfig();

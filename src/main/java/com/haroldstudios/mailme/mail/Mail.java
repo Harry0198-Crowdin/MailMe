@@ -20,24 +20,18 @@ import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.datastore.PlayerData;
 
 import com.haroldstudios.mailme.events.MailSentEvent;
+import com.haroldstudios.mailme.mail.types.MailItems;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SuppressWarnings("unused")
-public abstract class Mail {
+public abstract class Mail implements Cloneable {
 
     private ItemStack icon;
     private Date date;
@@ -65,6 +59,13 @@ public abstract class Mail {
      * @return BaseComponent
      */
     public abstract BaseComponent[] getContentsAsText();
+
+    /**
+     * Clone the Mail Object so it is separated from reference object
+     * @return Cloned Mail Object
+     */
+    @Override
+    public abstract Mail clone();
 
     /**
      * Click action in GUI
@@ -181,6 +182,15 @@ public abstract class Mail {
     }
 
     /**
+     * Adds recipients
+     *
+     * @param players List of Players via UUID
+     */
+    public void addRecipientsUUID(List<UUID> players) {
+        recipients.addAll(players);
+    }
+
+    /**
      * Recipient to remove from list
      *
      * @param player Player to remove
@@ -205,6 +215,7 @@ public abstract class Mail {
         List<UUID> newList = new ArrayList<>(recipients);
 
         PlayerData senderData = MailMe.getInstance().getDataStoreHandler().getPlayerData(sender);
+
         for (UUID player : recipients) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.MINUTE, -delay);
@@ -212,13 +223,20 @@ public abstract class Mail {
             PlayerData data = MailMe.getInstance().getDataStoreHandler().getPlayerData(player);
             List<Mail> dataMail = data.getMail().stream().filter(r -> r.getDate().getTime() > timeTravel.getTime()).filter(r -> r.getSender().equals(sender)).collect(Collectors.toList());
             if (!dataMail.isEmpty()) {
+                if (getMailType().equals(MailType.MAIL_ITEM)) {
+                    MailItems mailItems = (MailItems) this;
+                    mailItems.giveItems(Bukkit.getPlayer(sender));
+                }
                 Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.could-not-send"), Bukkit.getOfflinePlayer(player).getName()));
                 newList.remove(player);
             }
         }
+
         if (sender.toString().length() != 36) return;
+
         List<Object> newestList;
         newestList= newList.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList());
+
         // If there are more than x recipients, instead of listing all players, shorten list
         if (newestList.size() > 5) {
             newestList.clear();
@@ -227,37 +245,29 @@ public abstract class Mail {
 
 
         Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), newestList));
-        newList.forEach(player -> MailMe.getInstance().getDataStoreHandler().getPlayerData(player).addMail(this));
+        newList.forEach(player -> MailMe.getInstance().getDataStoreHandler().getPlayerData(player).addMail(this.clone()));
 
         MailBuilder.mailDrafts.remove(Bukkit.getPlayer(sender));
     }
 
-    public void sendAsAdmin(String arg) {
-
+    /**
+     * Sends the mail as if came from server / admin
+     * (Bypasses Checks and Removes Sender)
+     */
+    public void sendAsAdmin() {
         this.date = new Date();
 
-        if (arg.equalsIgnoreCase("all")) {
-            addRecipients(Arrays.asList(Bukkit.getOfflinePlayers()));
-            addRecipients(Bukkit.getOnlinePlayers().stream().map(offlineP -> (OfflinePlayer) offlineP).collect(Collectors.toList()));
+        getRecipients().forEach(player -> {
 
-            try (Stream<Path> walk = Files.walk(Paths.get(MailMe.getInstance().getDataFolder() + "/playerdata"))) {
-                List<String> result = walk.map(Path::toString)
-                        .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
+            PlayerData data = MailMe.getInstance().getDataStoreHandler().getPlayerData(player);
+            data.addMail(this.clone());
 
-                result.forEach(file -> {
-                    PlayerData playerData = MailMe.getInstance().getDataStoreHandler().getTmpFromFile(new File(file));
-                    playerData.addMail(this);
-                    MailMe.getInstance().getDataStoreHandler().forceSetPlayerData(playerData);
-                });
+            // TODO run Async? TASKCHAIN ON MOST METHODS? E.G SENDING
+            MailMe.getInstance().getDataStoreHandler().forceSetPlayerData(data);
+        });
 
-
-            } catch (IOException ignore) {
-                MailMe.getInstance().debug("Failed to send as admin: IOException");
-            }
-        } else {
-            MailMe.getInstance().getDataStoreHandler().getPlayerData(Bukkit.getOfflinePlayer(arg)).addMail(this);
-        }
-        PlayerData senderData = MailMe.getInstance().getDataStoreHandler().getPlayerData(sender); }
+        // NEEDED? PlayerData senderData = MailMe.getInstance().getDataStoreHandler().getPlayerData(sender);
+    }
 
     /**
      * Gets the mail in its text form

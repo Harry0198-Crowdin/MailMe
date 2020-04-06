@@ -31,6 +31,7 @@ notify:
 mail:
   message: "@prefix Qu’aimeriez-vous que le message dise??"
   sound-input: "@prefix Quel son aimeriez-vous jouer ? Trouvez des sons valides ici: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+  no-space: "@prefix Vous n'avez pas d'espace dans votre inventaire pour le réclamer!"
 
 mailbox:
   not-chest: "@prefix Votre boîte aux lettres doit être un coffre!"

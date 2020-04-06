@@ -6,13 +6,15 @@
 #    |.  \    /:  | /   /  \\  \  /\  |\( \_|:  \ |.  \    /:  |(:      "|
 #    |___|\__/|___|(___/    \___)(__\_|_)\_______)|___|\__/|___| \_______)
 
-# @Author Harry0198 / Harolds
+# Author Harry0198 / Harolds
 
 #
 # ◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥◤◢◣◥
 #                     How to use the plugin
-#   Most of this plugin should be self explanatory. Lots of values
-#           Are commented out for your ease of use.
+#   Most of this plugin should be self explanatory. Values should
+#           be commented out for your ease of use.
+#
+#   If you're still stuck please refer to the wiki: wiki.haroldstudios.com
 #
 #   Alternatively, see plugin page for more help!
 #

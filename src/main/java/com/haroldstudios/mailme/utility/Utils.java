@@ -16,9 +16,6 @@
 
 package com.haroldstudios.mailme.utility;
 
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.datastore.PlayerData;
@@ -34,7 +31,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Utils {
+public final class Utils {
 
     public static String colour(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
@@ -86,7 +83,7 @@ public class Utils {
 
     public static String applyPlaceHolders(Mail mail, String string) {
         string = string.replaceAll("@time", mail.getDate().toString());
-        string = string.replaceAll("@sender", Bukkit.getOfflinePlayer(mail.getSender()).getName());
+        string = string.replaceAll("@sender", mail.getSender() == null ? "???" : Bukkit.getOfflinePlayer(mail.getSender()).getName());
         string = string.replaceAll("@type", mail.getMailType().toString());
         string = string.replaceAll("@read", String.valueOf(mail.isRead()));
         return string;
@@ -101,16 +98,8 @@ public class Utils {
         player.spawnParticle(Particle.NOTE, location, 0, note, 0, 0, 1);
     }
 
-    public static void replaceOldPackage(String json) {
-
-        JsonParser parser = new JsonParser();
-        JsonObject jObj = (JsonObject) parser.parse(json);
-
-        List<String> keys = jObj.entrySet()
-                .stream()
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toCollection(ArrayList::new));
-
-        keys.forEach(System.out::println);
+    public static boolean isValidPresetKey(final MailMe plugin, final String preset) {
+        ConfigurationSection presets = plugin.getConfig().getConfigurationSection("presets");
+        return (presets.getKeys(false).contains(preset));
     }
 }

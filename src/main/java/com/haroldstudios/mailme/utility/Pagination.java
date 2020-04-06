@@ -19,7 +19,7 @@ package com.haroldstudios.mailme.utility;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pagination<T> extends ArrayList<T>  {
+public final class Pagination<T> extends ArrayList<T>  {
 
     private int pageSize;
 
@@ -41,7 +41,12 @@ public class Pagination<T> extends ArrayList<T>  {
     }
 
     public List<T> getPage(int page) {
-        if (page < 0 || page >= totalPages()) throw new IndexOutOfBoundsException("Page: " + page + ", Total: " + totalPages());
+        if (page < 0 || page >= totalPages()) {
+            if (page > 0) { // If can go to previous page
+                return getPage(page - 1);
+            }
+            throw new IndexOutOfBoundsException("Page: " + page + ", Total: " + totalPages());
+        }
 
         List<T> objects = new ArrayList<>();
 

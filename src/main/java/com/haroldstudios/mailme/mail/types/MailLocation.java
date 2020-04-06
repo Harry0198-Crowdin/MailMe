@@ -19,11 +19,13 @@ package com.haroldstudios.mailme.mail.types;
 import com.haroldstudios.mailme.mail.Mail;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -97,5 +99,12 @@ public final class MailLocation extends Mail {
     @Override
     public BaseComponent[] getContentsAsText() {
         return new ComponentBuilder("§bWorld: §f" + world + "\n" + "§bX: §f" + x + "\n" + "§bY: §f" + y + "\n" + "§bZ: §f" + z).create();
+    }
+
+    @Override
+    public Mail clone() {
+        MailLocation mail = new MailLocation(getIcon(), getDate(), Collections.emptyList(), new Location(Bukkit.getWorld(world), x,y,z), getSender());
+        mail.addRecipientsUUID(getRecipients());
+        return mail;
     }
 }
