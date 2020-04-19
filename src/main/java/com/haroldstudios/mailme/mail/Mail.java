@@ -19,7 +19,6 @@ package com.haroldstudios.mailme.mail;
 import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.datastore.PlayerData;
 
-import com.haroldstudios.mailme.events.MailSentEvent;
 import com.haroldstudios.mailme.mail.types.MailItems;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
@@ -204,12 +203,6 @@ public abstract class Mail implements Cloneable {
      */
     public void sendMail() {
 
-        MailSentEvent event = new MailSentEvent(this);
-        Bukkit.getPluginManager().callEvent(event);
-
-        if (event.isCancelled())
-            return;
-
         UUID sender = getSender();
         List<UUID> recipients = getRecipients();
         List<UUID> newList = new ArrayList<>(recipients);
@@ -235,12 +228,20 @@ public abstract class Mail implements Cloneable {
         if (sender.toString().length() != 36) return;
 
         List<Object> newestList;
-        newestList= newList.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList());
+        newestList = newList.stream().map(pl -> Bukkit.getOfflinePlayer(pl).getName()).collect(Collectors.toList());
 
         // If there are more than x recipients, instead of listing all players, shorten list
         if (newestList.size() > 5) {
             newestList.clear();
             newestList.add(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent-multiple"));
+        }
+
+        if (MailMe.getInstance().getVaultHook() != null && !MailMe.getInstance().getVaultHook().attemptTransaction(Bukkit.getPlayer(sender))) {
+            if (getMailType().equals(MailType.MAIL_ITEM)) {
+                MailItems mailItems = (MailItems) this;
+                mailItems.giveItems(Bukkit.getPlayer(sender));
+            }
+            return;
         }
 
 

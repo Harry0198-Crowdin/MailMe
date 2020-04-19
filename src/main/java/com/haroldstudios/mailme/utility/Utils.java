@@ -23,8 +23,10 @@ import com.haroldstudios.mailme.mail.Mail;
 import me.mattstudios.mfgui.gui.components.ItemBuilder;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.*;
 import java.lang.reflect.Type;

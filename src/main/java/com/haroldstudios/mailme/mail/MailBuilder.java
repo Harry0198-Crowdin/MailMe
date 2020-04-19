@@ -45,8 +45,8 @@ public final class MailBuilder {
         private Player sender;
         private String message;
         private ItemStack icon;
-        private List<OfflinePlayer> recipients;
-        private List<ItemStack> items;
+        private final List<OfflinePlayer> recipients;
+        private final List<ItemStack> items;
         private Sound sound;
         private Location location;
         private boolean preset;
@@ -64,6 +64,7 @@ public final class MailBuilder {
             this.mailType = type;
             this.recipients = new ArrayList<>();
             this.items = new ArrayList<>();
+
             mailDrafts.put(sender, this);
         }
 

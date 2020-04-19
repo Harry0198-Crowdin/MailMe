@@ -48,16 +48,20 @@ public final class PlayerSearch extends StringPrompt {
         PlayerData data = MailMe.getInstance().getDataStoreHandler().getPlayerData((Player) context.getForWhom());
 
         Player player = (Player) context.getForWhom();
-        OfflinePlayer search = Bukkit.getOfflinePlayer(s);
+        Bukkit.getScheduler().runTaskAsynchronously(MailMe.getInstance(), () -> {
+            OfflinePlayer search = Bukkit.getOfflinePlayer(s);
+            Bukkit.getScheduler().runTask(MailMe.getInstance(), () -> {
 
-        if (search == null) {
-            Gui gui = new ChoosePlayerGui(MailMe.getInstance(), player, Collections.emptyList(), 0).getGui();
-            gui.setItem(2, 5, new GuiItem(GuiHandler.getSearchIcon(MailMe.getInstance().getLocale(), data.getLang())));
-            gui.open(player);
-            return Prompt.END_OF_CONVERSATION;
-        }
+                if (search == null) {
+                    Gui gui = new ChoosePlayerGui(MailMe.getInstance(), player, Collections.emptyList(), 0).getGui();
+                    gui.setItem(2, 5, new GuiItem(GuiHandler.getSearchIcon(MailMe.getInstance().getLocale(), data.getLang())));
+                    gui.open(player);
+                    return;
+                }
 
-        new ChoosePlayerGui(MailMe.getInstance(), player, new ArrayList<>(Collections.singletonList(search)), 0).open();
+                new ChoosePlayerGui(MailMe.getInstance(), player, new ArrayList<>(Collections.singletonList(search)), 0).open();
+            });
+        });
 
         return Prompt.END_OF_CONVERSATION;
     }

@@ -37,6 +37,11 @@ delay: 1
 # Default false (off)
 debug: false
 
+# If Vault is enabled
+enable-vault: false
+# Cost to send mail
+cost: 25.00
+
 #                              Icons for usage
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #

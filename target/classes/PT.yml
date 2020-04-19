@@ -7,8 +7,8 @@ cmd:
   lang-change: "@prefix &eIdioma alterado!"
   notify-change: "@prefix &eConfigurações de notificação atualizadas!"
   mail-unread: "@prefix Você tem cartas não lidos!"
-  nvalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
-
+  invalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
+  vault-insufficient-funds: "@prefix &eFundos insuficientes!"
 text:
   format:
     - "&8<    &eCarta   &8>"

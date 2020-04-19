@@ -26,9 +26,11 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.hamcrest.core.Is;
 
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -84,20 +86,14 @@ public class EntityEvents implements Listener {
         plugin.getDataStoreHandler().removePlayerData(e.getPlayer().getUniqueId());
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onInteract(PlayerInteractEvent e) {
         if (e.getClickedBlock() == null || !e.getClickedBlock().getType().equals(Material.CHEST)) return;
 
         Player player = e.getPlayer();
         PlayerData data = plugin.getDataStoreHandler().getPlayerData(player);
 
-        if (data.getMailBox() == null || !data.getMailBox().equals(e.getClickedBlock().getLocation()))
-            return;
-
-        MailBoxOpenedEvent mailBoxOpenedEvent = new MailBoxOpenedEvent(data);
-        Bukkit.getPluginManager().callEvent(mailBoxOpenedEvent);
-
-        if (mailBoxOpenedEvent.isCancelled())
+        if (data == null || data.getMailBox() == null || !data.getMailBox().equals(e.getClickedBlock().getLocation()))
             return;
 
         e.setCancelled(true);

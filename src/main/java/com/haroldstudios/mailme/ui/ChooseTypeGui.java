@@ -35,7 +35,7 @@ public final class ChooseTypeGui {
 
     public ChooseTypeGui(MailMe plugin) {
         this.plugin = plugin;
-        this.ui = new Gui(plugin,3, ChatColor.YELLOW + "MailMe");
+        this.ui = new Gui(plugin, 3, ChatColor.YELLOW + "MailMe");
         ui.getFiller().fill(new GuiItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE), e -> e.setCancelled(true)));
     }
 
@@ -46,25 +46,25 @@ public final class ChooseTypeGui {
 
         PlayerData data = plugin.getDataStoreHandler().getPlayerData(player);
 
-        gui.setItem(2,3, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.message")), event -> {
+        gui.setItem(2, 3, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.message")), event -> {
             event.setCancelled(true);
             MailBuilder.getMailDraft(player).setMailType(Mail.MailType.MAIL_MESSAGE);
             plugin.getGuiHandler().getIconGui(player).open();
             GuiHandler.playUISound(player);
         }));
-        gui.setItem(2,4, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.item")), event -> {
+        gui.setItem(2, 4, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.item")), event -> {
             event.setCancelled(true);
             MailBuilder.getMailDraft(player).setMailType(Mail.MailType.MAIL_ITEM);
             plugin.getGuiHandler().getIconGui(player).open();
             GuiHandler.playUISound(player);
         }));
-        gui.setItem(2,6, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.sound")), event -> {
+        gui.setItem(2, 6, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.sound")), event -> {
             event.setCancelled(true);
             MailBuilder.getMailDraft(player).setMailType(Mail.MailType.MAIL_SOUND);
             plugin.getGuiHandler().getIconGui(player).open();
             GuiHandler.playUISound(player);
         }));
-        gui.setItem(2,7, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.location")), event -> {
+        gui.setItem(2, 7, new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.choose.location")), event -> {
             event.setCancelled(true);
             MailBuilder.getMailDraft(player).setMailType(Mail.MailType.MAIL_LOCATION);
             plugin.getGuiHandler().getIconGui(player).open();
@@ -74,8 +74,7 @@ public final class ChooseTypeGui {
     }
 
     public void create(Player player) {
-        if (MailBuilder.getMailDraft(player) == null)
-            new MailBuilder.Builder(Mail.MailType.MAIL_MESSAGE, player);
+        new MailBuilder.Builder(Mail.MailType.MAIL_MESSAGE, player);
     }
 
 }

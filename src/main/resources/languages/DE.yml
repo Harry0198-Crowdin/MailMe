@@ -8,7 +8,7 @@ cmd:
   notify-change: "@prefix &eBenachrichtigungseinstellungen aktualisiert!"
   mail-unread: "@prefix &eDu hast ungelesene Nachrichten!"
   invalid-preset-key: "@prefix &eUngültige voreingestellte Taste! Überprüfen Sie Ihre config.yml auf gültige Werte"
-
+  vault-insufficient-funds: "@prefix &eUnzureichende Mittel!"
 text:
   format:
     - "&8< &eNachrict &8>"

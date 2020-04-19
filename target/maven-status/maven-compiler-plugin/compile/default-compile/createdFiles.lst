@@ -1,11 +1,9 @@
 com/haroldstudios/mailme/utility/Utils$1.class
 com/haroldstudios/mailme/utility/Utils.class
 com/haroldstudios/mailme/mail/types/MailLocation.class
-com/haroldstudios/mailme/events/MailSentEvent.class
 com/haroldstudios/mailme/utility/Pagination.class
 com/haroldstudios/mailme/conversations/ConversationAbandonedListener.class
 com/haroldstudios/mailme/datastore/PlayerData.class
-com/haroldstudios/mailme/events/MailDeletedEvent.class
 com/haroldstudios/mailme/conversations/InputPrompt.class
 com/haroldstudios/mailme/ui/IconGui.class
 com/haroldstudios/mailme/ui/GuiHandler.class
@@ -27,7 +25,6 @@ com/haroldstudios/mailme/command/MailCmd.class
 com/haroldstudios/mailme/events/EntityEvents$1.class
 com/haroldstudios/mailme/datastore/DataStoreHandler.class
 com/haroldstudios/mailme/mail/MailBuilder.class
-com/haroldstudios/mailme/events/MailBoxOpenedEvent.class
 com/haroldstudios/mailme/conversations/PlayerSearch.class
 com/haroldstudios/mailme/mail/Mail.class
 com/haroldstudios/mailme/events/EntityEvents.class
@@ -39,6 +36,7 @@ com/haroldstudios/mailme/mail/MailBuilder$Builder.class
 com/haroldstudios/mailme/ui/MailGui.class
 com/haroldstudios/mailme/mail/Mail$MailType.class
 com/haroldstudios/mailme/mail/types/MailItems.class
+com/haroldstudios/mailme/components/hooks/VaultHook.class
 com/haroldstudios/mailme/components/IncompleteBuilderException.class
 com/haroldstudios/mailme/MailMe.class
 com/haroldstudios/mailme/ui/PaginationGui.class

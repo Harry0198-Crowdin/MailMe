@@ -18,6 +18,7 @@ package com.haroldstudios.mailme;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.haroldstudios.mailme.components.hooks.VaultHook;
 import com.haroldstudios.mailme.conversations.*;
 import com.haroldstudios.mailme.events.EntityEvents;
 import com.haroldstudios.mailme.utility.TypeAdapterFactory;
@@ -37,16 +38,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -75,6 +72,9 @@ public final class MailMe extends JavaPlugin {
     private ConversationFactory searchFactory;
     private ConversationFactory searchPlayerFactory;
     private ConversationFactory soundInputFactory;
+
+    /* Hooks */
+    private VaultHook vaultHook;
 
     public static final List<OfflinePlayer> playerList = new ArrayList<>();
 
@@ -134,6 +134,10 @@ public final class MailMe extends JavaPlugin {
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PlaceholderAPIExpansion(this).register();
         }
+        if (getServer().getPluginManager().getPlugin("Vault") != null) {
+            this.vaultHook = new VaultHook(this);
+        }
+
     }
 
     /**
@@ -143,30 +147,31 @@ public final class MailMe extends JavaPlugin {
      */
     public BukkitTask runMailBoxTask() {
 
-        return Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
+        return Bukkit.getScheduler().runTaskTimer(this, () -> {
             // Iterate through players with mailbox
             for (OfflinePlayer player : playerList) {
+                Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+                    // Checks if player is still online
+                    if (!player.isOnline()) return;
 
-                // Checks if player is still online
-                if (!player.isOnline()) continue;
+                    // Checks if player has mailbox
+                    PlayerData data = getDataStoreHandler().getPlayerData(player);
+                    if (data.getMailBox() == null) return;
 
-                // Checks if player has mailbox
-                PlayerData data = getDataStoreHandler().getPlayerData(player);
-                if (data.getMailBox() == null) continue;
+                    Location loc = data.getMailBox();
 
-                Location loc = data.getMailBox();
+                    // Ensures mailbox still exists
+                    if (loc.getWorld().getBlockAt(loc).getType() == Material.AIR) {
+                        getDataStoreHandler().getPlayerData(player).setMailBox(null);
+                        return;
+                    }
+                    loc.add(0.5, 1.2, 0.5);
 
-                // Ensures mailbox still exists
-                if (loc.getWorld().getBlockAt(loc).getType() == Material.AIR) {
-                    getDataStoreHandler().getPlayerData(player).setMailBox(null);
-                    continue;
-                }
-                loc.add(0.5,1.2,0.5);
-
-                // Checks if player has unread mail
-                List<Mail> unread = data.getMail().stream().filter(mail -> !mail.isRead()).collect(Collectors.toList());
-                if (unread.size() > 0)
-                    Utils.playNoteEffect((Player) player, loc);
+                    // Checks if player has unread mail
+                    List<Mail> unread = data.getMail().stream().filter(mail -> !mail.isRead()).collect(Collectors.toList());
+                    if (unread.size() > 0)
+                        Utils.playNoteEffect((Player) player, loc);
+                });
             }
         },0L,80L);
     }
@@ -208,6 +213,10 @@ public final class MailMe extends JavaPlugin {
 
     public ConversationFactory getSoundInputFactory() {
         return soundInputFactory;
+    }
+
+    public VaultHook getVaultHook() {
+        return vaultHook;
     }
 
     public MailCmd getCmds() {

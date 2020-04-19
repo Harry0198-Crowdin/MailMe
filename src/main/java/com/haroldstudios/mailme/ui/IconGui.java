@@ -46,6 +46,10 @@ public final class IconGui extends PaginationGui {
             event.setCancelled(true);
             if (event.getCursor().getType().equals(Material.AIR)) return;
             MailBuilder.getMailDraft(getPlayer()).setIcon(new org.bukkit.inventory.ItemStack(event.getCursor()));
+            if (MailBuilder.getMailDraft(getPlayer()).getRecipients().size() > 0) {
+                plugin.getGuiHandler().getChoosePlayerGui(getPlayer()).openSpecificInputGui();
+                return;
+            }
             plugin.getGuiHandler().getChoosePlayerGui(getPlayer()).open();
             GuiHandler.playDingSound(getPlayer());
         });

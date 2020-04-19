@@ -8,6 +8,7 @@ cmd:
   notify-change: "@prefix &eParamètres de notification mis à jour!"
   mail-unread: "@prefix Vous avez du courrier non lu!"
   invalid-preset-key: "@prefix &eClé prédéfinie invalide! Vérifiez votre config.yml pour les valeurs valides"
+  vault-insufficient-funds: "@prefix &eFonds insuffisants!"
 
 text:
   format:

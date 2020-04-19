@@ -6,6 +6,7 @@ authors: [Harry0198]
 description: This plugin allows players to transfer items, messages, sounds, locations and etc to each other accross the waves!
 softdepend:
   - PlaceholderAPI
+  - Vault
 
 commands:
   mail:

@@ -17,7 +17,6 @@
 package com.haroldstudios.mailme.datastore;
 
 import com.haroldstudios.mailme.MailMe;
-import com.haroldstudios.mailme.events.MailDeletedEvent;
 import com.haroldstudios.mailme.utility.Locale;
 import com.haroldstudios.mailme.mail.Mail;
 
@@ -190,12 +189,6 @@ public final class PlayerData {
      * @param mail Mail object
      */
     public void deleteMail(Mail mail) {
-        MailDeletedEvent mailDeletedEvent = new MailDeletedEvent(mail);
-        Bukkit.getPluginManager().callEvent(mailDeletedEvent);
-
-        if (mailDeletedEvent.isCancelled())
-            return;
-
         this.mail.remove(mail.getDate());
         update();
     }
