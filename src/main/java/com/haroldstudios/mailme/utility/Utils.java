@@ -25,6 +25,8 @@ import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.MaterialData;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -77,7 +79,16 @@ public final class Utils {
         if (Material.valueOf(section.getString("material")).equals(Material.PLAYER_HEAD))
             builder.setSkullTexture(section.getString("skull-texture"));
 
-        return builder.build();
+        ItemStack stack = builder.build();
+
+        ItemMeta meta = stack.getItemMeta();
+        meta.setCustomModelData(section.getInt("custom-model-data"));
+        meta.setUnbreakable(true); // On versions 1.11 and above
+
+        stack.setItemMeta(meta);
+
+
+        return stack;
     }
 
     public static String applyPlaceHolders(Mail mail, String string, UUID player) {

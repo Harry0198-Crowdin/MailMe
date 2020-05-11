@@ -65,6 +65,7 @@ gui:
     title: "&bEnviar correio"
     material: FEATHER
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Clicando neste"
@@ -83,6 +84,7 @@ gui:
     title: "&8[&ePágina Anterior&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para ir para"
       - "&7a página anterior!"
@@ -92,6 +94,7 @@ gui:
     title: "&8[&ePágina Seguinte&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para ir para"
       - "&7a página seguinte!"
@@ -101,6 +104,7 @@ gui:
     title: "&8[&eFechar a página&8]"
     material: BARRIER
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para fechar"
       - "&7o gui!"
@@ -110,6 +114,7 @@ gui:
     title: "&8[&eProcurar&8]"
     material: BOOK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para pesquisar por"
       - "&7um jogador!"
@@ -119,6 +124,7 @@ gui:
     title: "&cSem resultados :("
     material: GLASS_BOTTLE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Tente pesquisar com"
       - "&7critérios diferentes"
@@ -129,12 +135,14 @@ gui:
       title: "&aEnviar anonimamente"
       material: EMERALD
       amount: 1
+      custom-model-data: 0
       lore:
         - ""
     message:
       title: "&8[&eCarta&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Clique para enviar a carta"
         - "&7para alguém!"
@@ -144,6 +152,7 @@ gui:
       title: "&8[&eCarta de item&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Clique para enviar a carta de item"
         - "&7para alguém!"
@@ -153,6 +162,7 @@ gui:
       title: "&8[&eCarta de som&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Clique para enviar a carta de som"
         - "&7para alguém!"
@@ -162,6 +172,7 @@ gui:
       title: "&8[&eCarta de localização&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Clique para enviar a carta de localização"
         - "&7para alguém!"
@@ -171,6 +182,7 @@ gui:
     title: "&8[&cPersonalizadas&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique no item para ter como ícone"
       - "&7Você não perderá este item."
@@ -180,6 +192,7 @@ gui:
     title: "&8[&dRemover filtro&8]"
     material: IRON_BARS
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para remover qualquer filtro"
       - "&7do menu!"
@@ -189,6 +202,7 @@ gui:
     title: "&cCarregando..."
     material: SKELETON_SKULL
     amount: 1
+    custom-model-data: 0
     lore:
       - ""
     glow: true
@@ -197,6 +211,7 @@ gui:
     title: "&8[&eContinuar >&8]"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para continuar para"
       - "&7a próxima página!"
@@ -206,6 +221,7 @@ gui:
     title: "&8[&eLer como texto&8]"
     material: MAP
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Clique para"
       - "&7ler sua carta como texto"
@@ -220,6 +236,7 @@ gui:
     title: "&aVocê tem certeza?"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Clicar com o botão direito novamente"

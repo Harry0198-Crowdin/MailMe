@@ -65,6 +65,7 @@ gui:
     title: "&bMail senden"
     material: FEATHER
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Klicken Sie darauf"
@@ -83,6 +84,7 @@ gui:
     title: "&8[&eVorige Seite&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um zur vorigen"
       - "&7Seite zu gelangen!"
@@ -92,6 +94,7 @@ gui:
     title: "&8[&eNächste Seite&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um zur nächsten"
       - "&7Seite zu gelangen!"
@@ -101,6 +104,7 @@ gui:
     title: "&8[&eSeite verlassen&8]"
     material: BARRIER
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um das"
       - "&7GUI zu schliessen!"
@@ -110,6 +114,7 @@ gui:
     title: "&8[&eSuchen&8]"
     material: BOOK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um nach"
       - "&7Spielername zu suchen!"
@@ -119,6 +124,7 @@ gui:
     title: "&cKeine Resultate :("
     material: GLASS_BOTTLE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Versuche mit einem anderen"
       - "&7Kriterium zu suchen."
@@ -129,12 +135,14 @@ gui:
       title: "&aAnonym senden"
       material: EMERALD
       amount: 1
+      custom-model-data: 0
       lore:
         - ""
     message:
       title: "&8[&eTextnachricht&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Klicke um jemandem eine"
         - "&7Textnachricht zu senden!"
@@ -144,6 +152,7 @@ gui:
       title: "&8[&eItem Nachricht&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Klicke um jemandem eine"
         - "&7Item Nachricht zu senden!"
@@ -153,6 +162,7 @@ gui:
       title: "&8[&eSound Nachricht&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Klicke um jemandem eine"
         - "&7Sound Nachricht zu senden!"
@@ -162,6 +172,7 @@ gui:
       title: "&8[&eOrt Nachricht&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Klicke um jemandem eine"
         - "&7Orts Nachricht zu senden!"
@@ -171,6 +182,7 @@ gui:
     title: "&8[&cBenutzerdefiniert&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke mit einem Item um es als"
       - "&7Icon zu setzten."
@@ -181,6 +193,7 @@ gui:
     title: "&8[&dFilter entfernen&8]"
     material: IRON_BARS
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um sämtliche Filter"
       - "&7im Menu zu entfernen!"
@@ -190,6 +203,7 @@ gui:
     title: "&cLade..."
     material: SKELETON_SKULL
     amount: 1
+    custom-model-data: 0
     lore:
       - ""
     glow: true
@@ -198,6 +212,7 @@ gui:
     title: "&8[&eWeiter >&8]"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um zur nächsten"
       - "&7Seite zu kommen!"
@@ -207,6 +222,7 @@ gui:
     title: "&8[&eAls Text lesen&8]"
     material: MAP
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Klicke um deine Nachricht"
       - "&7als Text zu lesen."
@@ -221,6 +237,7 @@ gui:
     title: "&aBist du sicher?"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Klicken Sie erneut mit der rechten Maustaste"

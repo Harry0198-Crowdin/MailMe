@@ -66,6 +66,7 @@ gui:
     title: "&bEnvoyer un mail"
     material: FEATHER
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Cliquer dessus"
@@ -84,6 +85,7 @@ gui:
     title: "&8[&ePage précédente&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour aller à"
       - "&7la page précédente!"
@@ -93,6 +95,7 @@ gui:
     title: "&8[&ePage suivante&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour aller à"
       - "&7la page suivante"
@@ -102,6 +105,7 @@ gui:
     title: "&8[&ePage de sortie&8]"
     material: BARRIER
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour fermer"
       - "&7l’interface utilisateur!"
@@ -111,6 +115,7 @@ gui:
     title: "&8[&eRechercher&8]"
     material: BOOK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour rechercher par"
       - "&7nom du joueur!"
@@ -120,6 +125,7 @@ gui:
     title: "&cAucun résultat :("
     material: GLASS_BOTTLE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Essayez de rechercher avec un"
       - "&7différents critères"
@@ -130,12 +136,14 @@ gui:
       title: "&aEnvoyer anonymement"
       material: EMERALD
       amount: 1
+      custom-model-data: 0
       lore:
         - ""
     message:
       title: "&8[&eCourrier message&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Cliquez pour envoyer quelqu’un"
         - "&7un courrier message!"
@@ -145,6 +153,7 @@ gui:
       title: "&8[&eCourrier d’article&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Cliquez pour envoyer quelqu’un"
         - "&7un courrier d'article!"
@@ -154,6 +163,7 @@ gui:
       title: "&8[&eCourrier sonore&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Cliquez pour envoyer quelqu’un"
         - "&7un courrier sonore!"
@@ -163,6 +173,7 @@ gui:
       title: "&8[&eCourrier de localisation&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Cliquez pour envoyer quelqu’un"
         - "&7un courrier de localisation!"
@@ -172,6 +183,7 @@ gui:
     title: "&8[&cPersonnalisé&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez avec l’élément pour avoir comme icône"
       - "&7Vous ne perdrez pas cet article."
@@ -181,6 +193,7 @@ gui:
     title: "&8[&dSupprimer le filtre&8]"
     material: IRON_BARS
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour supprimer les filtres"
     glow: true
@@ -189,6 +202,7 @@ gui:
     title: "&cChargement..."
     material: SKELETON_SKULL
     amount: 1
+    custom-model-data: 0
     lore:
       - ""
     glow: true
@@ -197,6 +211,7 @@ gui:
     title: "&8[&eContinuer >&8]"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez pour continuer à"
       - "&7La page suivante!"
@@ -206,6 +221,7 @@ gui:
     title: "&8[&eLire sous forme de texte&8]"
     material: MAP
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Cliquez sur"
       - "&7lire votre courrier sous forme de texte"
@@ -220,6 +236,7 @@ gui:
     title: "&aÊtes-vous sûr?"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Un clic droit à nouveau"

@@ -67,6 +67,7 @@ gui:
     title: "&bSend Mail"
     material: FEATHER
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Clicking this"
@@ -85,6 +86,7 @@ gui:
     title: "&8[&ePrevious Page&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to go to"
       - "&7the previous page!"
@@ -94,6 +96,7 @@ gui:
     title: "&8[&eNext Page&8]"
     material: REDSTONE_TORCH
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to go to"
       - "&7the next page!"
@@ -103,6 +106,7 @@ gui:
     title: "&8[&eExit Page&8]"
     material: BARRIER
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to close"
       - "&7the gui!"
@@ -112,6 +116,7 @@ gui:
     title: "&8[&eSearch&8]"
     material: BOOK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to search by"
       - "&7player name!"
@@ -121,6 +126,7 @@ gui:
     title: "&cNo Results :("
     material: GLASS_BOTTLE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Try searching with a"
       - "&7different criteria"
@@ -131,6 +137,7 @@ gui:
       title: "&aSend anonymously"
       material: EMERALD
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Click this to"
         - "&7send your mail without any"
@@ -139,6 +146,7 @@ gui:
       title: "&8[&eMessage Mail&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Click to send someone"
         - "&7a message mail!"
@@ -148,6 +156,7 @@ gui:
       title: "&8[&eItem Mail&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Click to send someone"
         - "&7an item mail!"
@@ -157,6 +166,7 @@ gui:
       title: "&8[&eSound Mail&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Click to send someone"
         - "&7a sound mail!"
@@ -166,6 +176,7 @@ gui:
       title: "&8[&eLocation Mail&8]"
       material: PAPER
       amount: 1
+      custom-model-data: 0
       lore:
         - "&7Click to send someone"
         - "&7a location mail!"
@@ -175,6 +186,7 @@ gui:
     title: "&8[&cCustom&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click with item to have as icon"
       - "&7You won't lose this item."
@@ -184,6 +196,7 @@ gui:
     title: "&8[&dRemove Filter&8]"
     material: IRON_BARS
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to remove any filters"
       - "&7on the menu!"
@@ -193,6 +206,7 @@ gui:
     title: "&cLoading..."
     material: SKELETON_SKULL
     amount: 1
+    custom-model-data: 0
     lore:
       - ""
     glow: true
@@ -201,6 +215,7 @@ gui:
     title: "&8[&eContinue >&8]"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to continue to"
       - "&7The next page!"
@@ -210,6 +225,7 @@ gui:
     title: "&8[&eRead as Text&8]"
     material: MAP
     amount: 1
+    custom-model-data: 0
     lore:
       - "&7Click to"
       - "&7read your mail as text"
@@ -224,6 +240,7 @@ gui:
     title: "&aAre you sure?"
     material: EMERALD_BLOCK
     amount: 1
+    custom-model-data: 0
     glow: true
     lore:
       - "&7Right clicking again will"

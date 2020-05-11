@@ -49,16 +49,18 @@ cost: 25.00
 # Default icons:
 # There is no limit to these so you can just add more and it will make new pages like normal.
 # If a mistake is made an error will be thrown.
-# To add more, simply add another row with your valid material
+# To add more, simply add another row with your valid material ; modeldata
+# If you're not using a custom resource pack, modeldata will not be useful for you and you can set it to 0
+# Example: DIRT;0
 
 icons:
-  - BLACK_BANNER
-  - SEA_PICKLE
-  - ELYTRA
-  - DIAMOND_PICKAXE
-  - EMERALD
-  - MINECART
-  - DIAMOND
+  - BLACK_BANNER;0
+  - SEA_PICKLE;0
+  - ELYTRA;0
+  - DIAMOND_PICKAXE;0
+  - EMERALD;0
+  - MINECART;0
+  - DIAMOND;0
 
 #                                 MailBoxes
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

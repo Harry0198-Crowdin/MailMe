@@ -28,6 +28,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,18 @@ public final class GuiHandler {
         this.chooseTypeGui = new ChooseTypeGui(plugin);
 
         List<String> section = plugin.getConfig().getStringList("icons");
-        section.forEach(icon -> icons.add(new ItemBuilder(new ItemStack(Material.valueOf(icon))).glow(true).build()));
+        section.forEach(icon -> {
+            if (!icon.contains(";")) {
+                icon = icon + ";0";
+            }
+            System.out.println(icon.split(";")[0]);
+            ItemStack stack = new ItemBuilder(new ItemStack(Material.valueOf(icon.split(";")[0]))).glow(true).build();
+            ItemMeta meta = stack.getItemMeta();
+            meta.setCustomModelData(Integer.valueOf(icon.split(";")[1]));
+            meta.setUnbreakable(true);
+            stack.setItemMeta(meta);
+            icons.add(stack);
+        });
     }
 
     public IconGui getIconGui(Player player, MailBuilder builder) {
