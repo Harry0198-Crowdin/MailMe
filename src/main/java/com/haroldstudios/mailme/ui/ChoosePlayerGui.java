@@ -26,6 +26,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,10 @@ public final class ChoosePlayerGui extends PaginationGui {
 
     public ChoosePlayerGui(MailMe plugin, Player player, List<?> items, int currentPage, MailBuilder builder) {
         super(plugin, player, items, currentPage, builder);
+
+        getGui().setDefaultClickAction(event -> {
+            event.setCancelled(true);
+        });
 
         applyNavBut(currentPage);
         getGui().setItem(2,2, GuiHandler.getLoading(getPlugin().getLocale(), getPlayerData().getLang()));
@@ -55,6 +60,9 @@ public final class ChoosePlayerGui extends PaginationGui {
 
         getGui().setItem(5,9,new GuiItem(GuiHandler.getContinue(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
             event.setCancelled(true);
+            if (event.getClick().equals(ClickType.SHIFT_LEFT) || event.getClick().equals(ClickType.SHIFT_RIGHT)) {
+                return;
+            }
             if (!getMailBuilder().getRecipients().isEmpty()) {
                 // Opens next menu
                 openInputGui(getMailBuilder());
