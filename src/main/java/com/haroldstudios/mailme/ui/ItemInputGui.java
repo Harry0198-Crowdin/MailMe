@@ -19,6 +19,7 @@ package com.haroldstudios.mailme.ui;
 import com.haroldstudios.mailme.MailMe;
 import com.haroldstudios.mailme.components.IncompleteBuilderException;
 import com.haroldstudios.mailme.mail.MailBuilder;
+import com.haroldstudios.mailme.utility.Utils;
 import me.mattstudios.mfgui.gui.guis.Gui;
 import me.mattstudios.mfgui.gui.guis.GuiItem;
 import org.bukkit.Material;
@@ -36,7 +37,7 @@ public final class ItemInputGui {
     private boolean gracefulClose = false;
 
     public ItemInputGui(MailMe plugin, Player player, MailBuilder builder) {
-        this.gui = new Gui(plugin, 2, "MailMe // " + plugin.getLocale().getMessage(plugin.getDataStoreHandler().getPlayerData(player).getLang(), "gui.item-input-title"));
+        this.gui = new Gui(plugin, 2, plugin.getLocale().getMessage(plugin.getDataStoreHandler().getPlayerData(player).getLang(), "gui.item-input-title"));
         this.player = player;
         gui.getFiller().fillBottom(new GuiItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE), event -> event.setCancelled(true)));
         gui.setItem(2,9, new GuiItem(GuiHandler.getContinue(plugin.getLocale(), plugin.getDataStoreHandler().getPlayerData(player).getLang()), event -> {

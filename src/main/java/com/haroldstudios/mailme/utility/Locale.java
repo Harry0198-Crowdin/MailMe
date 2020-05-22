@@ -97,7 +97,11 @@ public final class Locale {
         return this.yaml.get(lang).getConfigurationSection(path);
     }
 
+    public LANG getServerLang() {
+        return serverLang;
+    }
+
     public enum LANG {
-        EN, FR, PT, DE
+        EN, FR, PT, DE, ZH
     }
 }

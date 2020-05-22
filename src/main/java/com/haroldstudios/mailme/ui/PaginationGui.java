@@ -26,6 +26,7 @@ import me.mattstudios.mfgui.gui.guis.Gui;
 import me.mattstudios.mfgui.gui.guis.GuiItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -53,12 +54,17 @@ abstract class PaginationGui {
         this.allItems.addAll(items);
         this.currentPage = currentPage;
 
-        gui.getFiller().fill(new GuiItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE), e -> e.setCancelled(true)));
+        gui.getFiller().fill(new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(plugin.getLocale().getServerLang(), "gui.filler")), e -> e.setCancelled(true)));
         gui.setItem(5,5,new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(data.getLang(), "gui.exit-button")), e -> {
             e.setCancelled(true);
             gui.close(player);
             GuiHandler.playCloseSound(player);
         }));
+        gui.setDefaultClickAction(event -> {
+            if (event.getClickedInventory() == null) return;
+            if (event.getRawSlot() > event.getInventory().getSize()) { return; }
+            event.setCancelled(true);
+        });
     }
 
     protected void applyNavBut(int page) {

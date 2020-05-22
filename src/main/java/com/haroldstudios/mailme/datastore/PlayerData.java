@@ -24,6 +24,7 @@ import com.haroldstudios.mailme.utility.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -147,12 +148,16 @@ public final class PlayerData {
         this.x = location.getBlockX();
         this.y = location.getBlockY();
         this.z = location.getBlockZ();
-        this.world = location.getWorld().getName();
-        update();
+
+        World w = location.getWorld();
+        if (w != null) {
+            this.world = w.getName();
+        }
 
         MailMe.getInstance().getDataStoreHandler().getPlayerMailBoxes().put(location, getUuid());
-
-        tryAddToTask(Bukkit.getPlayer(uuid));
+        Player player = Bukkit.getPlayer(uuid);
+        if (player != null)
+            tryAddToTask(player);
     }
 
     /**

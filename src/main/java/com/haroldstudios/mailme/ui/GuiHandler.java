@@ -48,12 +48,13 @@ public final class GuiHandler {
             if (!icon.contains(";")) {
                 icon = icon + ";0";
             }
-            System.out.println(icon.split(";")[0]);
             ItemStack stack = new ItemBuilder(new ItemStack(Material.valueOf(icon.split(";")[0]))).glow(true).build();
-            ItemMeta meta = stack.getItemMeta();
-            meta.setCustomModelData(Integer.valueOf(icon.split(";")[1]));
-            meta.setUnbreakable(true);
-            stack.setItemMeta(meta);
+            if (Integer.parseInt(icon.split(";")[1]) != 0) {
+                ItemMeta meta = stack.getItemMeta();
+                meta.setCustomModelData(Integer.valueOf(icon.split(";")[1]));
+                meta.setUnbreakable(true);
+                stack.setItemMeta(meta);
+            }
             icons.add(stack);
         });
     }

@@ -70,7 +70,9 @@ public final class Utils {
     }
 
     public static ItemStack getItemStack(ConfigurationSection section) {
-        ItemBuilder builder = new ItemBuilder(Material.valueOf(section.getString("material")))
+        Material material = Material.valueOf(section.getString("material"));
+        if (material.equals(Material.AIR)) return new ItemStack(Material.AIR);
+        ItemBuilder builder = new ItemBuilder(material)
                 .setName(colour(section.getString("title")))
                 .setLore(colourList(section.getStringList("lore")).toArray(new String[]{}))
                 .setAmount(section.getInt("amount"))
@@ -80,12 +82,14 @@ public final class Utils {
             builder.setSkullTexture(section.getString("skull-texture"));
 
         ItemStack stack = builder.build();
+        int modelData = section.getInt("custom-model-data");
+        if (modelData != 0) {
+            ItemMeta meta = stack.getItemMeta();
+            meta.setCustomModelData(section.getInt("custom-model-data"));
+            meta.setUnbreakable(true); // On versions 1.11 and above
 
-        ItemMeta meta = stack.getItemMeta();
-        meta.setCustomModelData(section.getInt("custom-model-data"));
-        meta.setUnbreakable(true); // On versions 1.11 and above
-
-        stack.setItemMeta(meta);
+            stack.setItemMeta(meta);
+        }
 
 
         return stack;

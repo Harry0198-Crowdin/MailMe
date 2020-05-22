@@ -54,12 +54,20 @@ help:
   - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
 
 gui:
+  choose-type-title: "MailMe"
   read-title: "Ler carta"
   choose-player-title: "Escolha Destinatários"
   item-input-title: "Itens de entrada para enviar"
   choose-icon-title: "Escolha o ícone"
 
-
+  filler:
+    title: ""
+    material: BLACK_STAINED_GLASS_PANE
+    amount: 1
+    custom-model-data: 0
+    glow: false
+    lore:
+      - ""
   search: "Escreva o nome do jogador que você gostaria de encontrar"
   send:
     title: "&bEnviar correio"

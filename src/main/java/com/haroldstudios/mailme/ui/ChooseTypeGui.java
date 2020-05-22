@@ -36,8 +36,9 @@ public final class ChooseTypeGui {
 
     public ChooseTypeGui(MailMe plugin) {
         this.plugin = plugin;
-        this.ui = new Gui(plugin, 3, ChatColor.YELLOW + "MailMe");
-        ui.getFiller().fill(new GuiItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE), e -> e.setCancelled(true)));
+        this.ui = new Gui(plugin, 3, plugin.getLocale().getMessage("gui.choose-type-title"));
+        ui.getFiller().fill(new GuiItem(Utils.getItemStack(plugin.getLocale().getConfigurationSection(plugin.getLocale().getServerLang(), "gui.filler")), e -> e.setCancelled(true)));
+        ui.setDefaultClickAction(event -> event.setCancelled(true));
     }
 
     public void open(Player player, MailBuilder builder) {

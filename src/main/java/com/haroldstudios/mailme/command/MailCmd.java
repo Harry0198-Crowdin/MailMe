@@ -36,10 +36,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
@@ -73,6 +70,16 @@ public final class MailCmd extends CommandBase {
     @Default
     public void execute(Player player) {
         player.sendMessage(plugin.getLocale().getLore(plugin.getDataStoreHandler().getPlayerData(player).getLang(), "help"));
+    }
+
+    @Permission(BASE_PERM + "reload")
+    @SubCommand("reload")
+    public void reload(CommandSender sender) {
+        plugin.reloadConfig();
+        plugin.load();
+        plugin.checkForHooks();
+
+        sender.sendMessage("§8[§eMailMe§8] §aPlugin Reloaded!");
     }
 
     @Permission(BASE_PERM + "lang")

@@ -67,6 +67,7 @@ public final class MailMe extends JavaPlugin {
     private GuiHandler uiHandler;
     private DataStoreHandler dataStoreHandler;
     private MailCmd mailCmds;
+    private BukkitTask mailTask;
 
     /* Conversation Factory */
     private ConversationFactory searchFactory;
@@ -90,6 +91,25 @@ public final class MailMe extends JavaPlugin {
         @SuppressWarnings("unused")
         Metrics metrics = new Metrics(this);
 
+        load();
+
+        debug("Registering events");
+        getServer().getPluginManager().registerEvents(new EntityEvents(this), this);
+
+        checkForHooks();
+
+    }
+
+    public void checkForHooks() {
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new PlaceholderAPIExpansion(this).register();
+        }
+        if (getServer().getPluginManager().getPlugin("Vault") != null) {
+            this.vaultHook = new VaultHook(this);
+        }
+    }
+
+    public void load() {
         loadConversations();
         debug("Creating playerdata folder");
         new File(getDataFolder() + "/playerdata").mkdir();
@@ -97,8 +117,6 @@ public final class MailMe extends JavaPlugin {
         this.locale = new Locale();
         debug("Loading GuiHandler");
         this.uiHandler = new GuiHandler(this);
-        debug("Registering events");
-        getServer().getPluginManager().registerEvents(new EntityEvents(this), this);
         debug("Loading playerdata handler");
         this.dataStoreHandler = new DataStoreHandler(this);
         debug("Loading commands");
@@ -115,15 +133,11 @@ public final class MailMe extends JavaPlugin {
         commandManager.register(mailCmds);
         commandManager.hideTabComplete(true);
 
-        runMailBoxTask();
-
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
-            new PlaceholderAPIExpansion(this).register();
-        }
-        if (getServer().getPluginManager().getPlugin("Vault") != null) {
-            this.vaultHook = new VaultHook(this);
+        if (mailTask != null) {
+            mailTask.cancel();
         }
 
+        mailTask = runMailBoxTask();
     }
 
     /**
