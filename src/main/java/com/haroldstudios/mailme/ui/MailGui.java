@@ -33,35 +33,42 @@ public final class MailGui extends PaginationGui {
         updateTitlePath(getPlugin().getLocale().getMessage(getPlayerData().getLang(), "gui.read-title"));
         applyNavBut(page);
 
-        getGui().setItem(3,1,new GuiItem(GuiHandler.getTextButton(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
-            event.setCancelled(true);
-            getGui().close(player);
-            plugin.getCmds().readAsText(player, 0);
-            GuiHandler.playUISound(player);
-        }));
+        if (plugin.getConfig().getBoolean("gui.read.read-as-text-button.enabled")) {
+            getGui().setItem(plugin.getConfig().getInt("gui.read.read-as-text-button.slot"), new GuiItem(GuiHandler.getTextButton(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
+                event.setCancelled(true);
+                getGui().close(player);
+                plugin.getCmds().readAsText(player, 0);
+                GuiHandler.playUISound(player);
+            }));
+        }
 
-        getGui().setItem(4,1, new GuiItem(GuiHandler.getSend(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
-            event.setCancelled(true);
-            getPlugin().getCmds().send(player, new String[]{"send"});
-            GuiHandler.playUISound(player);
-        }));
+        if (plugin.getConfig().getBoolean("gui.read.send-button.enabled")) {
+            getGui().setItem(plugin.getConfig().getInt("gui.read.send-button.slot"), new GuiItem(GuiHandler.getSend(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
+                event.setCancelled(true);
+                getPlugin().getCmds().send(player, new String[]{"send"});
+                GuiHandler.playUISound(player);
+            }));
+        }
     }
 
     @Override
     public void open() {
 
-        getGui().setItem(3,9,new GuiItem(GuiHandler.getSearchIcon(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
-            event.setCancelled(true);
-            getPlugin().getSearchFactory().buildConversation(getPlayer()).begin();
-            getGui().close(getPlayer());
-            GuiHandler.playUISound(getPlayer());
-        }));
-
-        getGui().setItem(4,9, new GuiItem(removeFilter(), event -> {
-            event.setCancelled(true);
-            new MailGui(getPlugin(), getPlayer(), getPlayerData().getMail(), 0).open();
-            GuiHandler.playUISound(getPlayer());
-        }));
+        if (getPlugin().getConfig().getBoolean("gui.read.set-filter.enabled")) {
+            getGui().setItem(getPlugin().getConfig().getInt("gui.read.set-filter.slot"), new GuiItem(GuiHandler.getSearchIcon(getPlugin().getLocale(), getPlayerData().getLang()), event -> {
+                event.setCancelled(true);
+                getPlugin().getSearchFactory().buildConversation(getPlayer()).begin();
+                getGui().close(getPlayer());
+                GuiHandler.playUISound(getPlayer());
+            }));
+        }
+        if (getPlugin().getConfig().getBoolean("gui.read.clear-filter.enabled")) {
+            getGui().setItem(getPlugin().getConfig().getInt("gui.read.clear-filter.slot"), new GuiItem(removeFilter(), event -> {
+                event.setCancelled(true);
+                new MailGui(getPlugin(), getPlayer(), getPlayerData().getMail(), 0).open();
+                GuiHandler.playUISound(getPlayer());
+            }));
+        }
 
         if (getAllItems().size() == 0) {
            setNoResults();

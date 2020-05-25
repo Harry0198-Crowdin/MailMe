@@ -28,8 +28,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.*;
 
-// Registers new type adpater for ItemStack.
-// Based from tastybento's bentobox
 public final class ItemStackSerializer extends TypeAdapter<ItemStack>{
 
     @Override

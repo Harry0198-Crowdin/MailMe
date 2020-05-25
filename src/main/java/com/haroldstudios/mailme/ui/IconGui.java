@@ -26,6 +26,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public final class IconGui extends PaginationGui {
 
@@ -42,19 +43,30 @@ public final class IconGui extends PaginationGui {
     @Override
     public void open() {
         ItemStack stack = Utils.getItemStack(plugin.getLocale().getConfigurationSection(getPlayerData().getLang(), "gui.icon-custom"));
+        // Custom Icon
         GuiItem gi = new GuiItem(stack, event -> {
             event.setCancelled(true);
+            if (event.getCursor() == null) return;
             if (event.getCursor().getType().equals(Material.AIR)) return;
+
+            Player player = (Player) event.getWhoClicked();
+            ItemStack cursor = event.getCursor();
+
             getMailBuilder().setIcon(new org.bukkit.inventory.ItemStack(event.getCursor()));
             if (getMailBuilder().getRecipients().size() > 0) {
                 plugin.getGuiHandler().getChoosePlayerGui(getPlayer(), getMailBuilder()).openInputGui(getMailBuilder());
                 return;
             }
+            event.setCursor(null);
+            final Map<Integer, ItemStack> map = player.getInventory().addItem(cursor);
+            for (final ItemStack item : map.values()) {
+                player.getWorld().dropItemNaturally(player.getLocation(), item);
+            }
             plugin.getGuiHandler().getChoosePlayerGui(getPlayer(), getMailBuilder()).open();
             GuiHandler.playDingSound(getPlayer());
         });
         List<GuiItem> iconList = new ArrayList<>();
-
+        // Generic presets
         getPage(getCurrentPage()).forEach(it -> {
             ItemStack item = (ItemStack) it;
             iconList.add(new GuiItem(item, event -> {

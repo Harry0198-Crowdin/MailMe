@@ -295,7 +295,7 @@ public abstract class Mail implements Cloneable {
         String sender = getSender() != null ? Bukkit.getOfflinePlayer(getSender()).getName() : "???";
         ComponentBuilder builder = new ComponentBuilder("");
 
-        builder.event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply"));
+        builder.event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/mailme reply " + sender));
         builder.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(MailMe.getInstance().getLocale().getMessage("text.hover")).create()));
 
         OfflinePlayer sendr = Bukkit.getOfflinePlayer(getSender());

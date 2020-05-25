@@ -82,6 +82,11 @@ public final class MailCmd extends CommandBase {
         sender.sendMessage("§8[§eMailMe§8] §aPlugin Reloaded!");
     }
 
+    @SubCommand("help")
+    public void help(Player player) {
+        execute(player);
+    }
+
     @Permission(BASE_PERM + "lang")
     @SubCommand("lang")
     @Completion("#locale")
@@ -120,7 +125,7 @@ public final class MailCmd extends CommandBase {
             OfflinePlayer target = Bukkit.getOfflinePlayer(pl);
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (target == null || !target.hasPlayedBefore()) {
-                    plugin.getLocale().getMessage(data.getLang(), "cmd.unknown-player");
+                    player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "cmd.unknown-player"));
                     return;
                 }
 
@@ -342,6 +347,7 @@ public final class MailCmd extends CommandBase {
     @Completion({"#admin-options"})
     @SubCommand("admin")
     public void adminCmd(CommandSender sender, String[] args) {
+        if (args.length < 2) throw new SyntaxError();
         if (args[1].contains("send")) {
             adminSendCmd(sender, args);
         } else if (args[1].contains("preset")) {

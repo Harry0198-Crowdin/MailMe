@@ -42,6 +42,21 @@ enable-vault: false
 # Cost to send mail
 cost: 25.00
 
+gui:
+  read:
+    send-button:
+      enabled: true
+      slot: 27
+    read-as-text-button:
+      enabled: true
+      slot: 18
+    set-filter:
+      enabled: true
+      slot: 26
+    clear-filter:
+      enabled: true
+      slot: 35
+
 #                              Icons for usage
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
