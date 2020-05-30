@@ -232,17 +232,12 @@ public final class MailCmd extends CommandBase {
             Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
                 Block chest = player.getTargetBlock(null, 10);
                 if (chest == null || chest.getType() == null) {
-                    System.out.println("failed 1");
                     player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
                     return;
                 }
 
                 if (plugin.getDataStoreHandler().getValidMailBoxMaterials() != null) {
-                    System.out.println(plugin.getDataStoreHandler().getValidMailBoxMaterials());
                     if (!plugin.getDataStoreHandler().getValidMailBoxMaterials().contains(chest.getType())) {
-                        System.out.println("failed 2");
-                        System.out.println(chest.getType());
-                        System.out.println(plugin.getDataStoreHandler().getValidMailBoxMaterials().contains(chest.getType()));
                         player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
                         return;
                     }
@@ -270,9 +265,11 @@ public final class MailCmd extends CommandBase {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             Block chest = player.getTargetBlock(null, 10);
-            if (!chest.getType().equals(Material.CHEST)) {
-                player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
-                return;
+            if (plugin.getDataStoreHandler().getValidMailBoxMaterials() != null) {
+                if (!plugin.getDataStoreHandler().getValidMailBoxMaterials().contains(chest.getType())) {
+                    player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
+                    return;
+                }
             }
             Location loc = chest.getLocation();
             Bukkit.getScheduler().runTask(MailMe.getInstance(), () -> {

@@ -2,6 +2,13 @@
 T: ZH
 VER: 1.1
 prefix: '&8[&e郵件&8]&r'
+
+mail-types:
+  message: "訊息"
+  item: "份"
+  sound: "TRANSLATION NEEDED"
+  location: "地段"
+
 cmd:
   lang-change: '@prefix &e語言已更新!'
   notify-change: '@prefix &e通知設置已更新!'

@@ -3,6 +3,12 @@ VER: 1.1
 
 prefix: "&8[&eMailMe&8]&r"
 
+mail-types:
+  message: "Botschaft"
+  item: "Artikel"
+  sound: "Klang"
+  location: "Standort"
+
 cmd:
   lang-change: "@prefix &eSprache geändert!"
   notify-change: "@prefix &eBenachrichtigungseinstellungen aktualisiert!"

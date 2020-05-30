@@ -6,7 +6,7 @@
 
     <groupId>com.haroldstudios.mailme</groupId>
     <artifactId>MailMe</artifactId>
-    <version>1.4.24</version>
+    <version>1.4.3</version>
     <packaging>jar</packaging>
 
     <name>MailMe</name>

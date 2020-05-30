@@ -136,7 +136,7 @@ abstract class PaginationGui {
     }
 
     protected void updateTitlePath(String addition) {
-        gui.updateTitle("MailMe // " + addition);
+        gui.updateTitle(addition);
     }
 
     public Gui getGui() {

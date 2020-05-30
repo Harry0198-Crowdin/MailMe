@@ -89,7 +89,7 @@ public final class MailGui extends PaginationGui {
             String[] stockArr = new String[lore.size()];
             stockArr = lore.toArray(stockArr);
 
-            ItemBuilder itemBuilder = new ItemBuilder(mail.getIcon().getType())
+            ItemBuilder itemBuilder = new ItemBuilder(mail.getIcon())
                     .setName(Utils.applyPlaceHolders(mail, getPlugin().getLocale().getMessage(super.getPlayerData().getLang(), "gui.mail.title"), getPlayer().getUniqueId()))
                     .setLore(stockArr)
                     .glow(!mail.isRead());

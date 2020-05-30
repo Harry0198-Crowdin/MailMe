@@ -26,7 +26,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -103,9 +102,22 @@ public final class Utils {
         string = string.replaceAll("@time", mail.getDate().toString());
 
         string = string.replaceAll("@sender", mail.isAnonymous() ? locale.getMessage(lang, "mail.anonymous") : mail.isServer() ? locale.getMessage(lang, "mail.server") : mail.getSender() == null ? locale.getMessage(lang, "mail.unknown") : Bukkit.getOfflinePlayer(mail.getSender()).getName());
-        string = string.replaceAll("@type", mail.getMailType().toString());
+        string = string.replaceAll("@type", convertType(mail.getMailType(), lang));
         string = string.replaceAll("@read", String.valueOf(mail.isRead()));
         return string;
+    }
+
+    public static String convertType(Mail.MailType type, Locale.LANG lang) {
+        switch (type) {
+            case MAIL_ITEM:
+                return MailMe.getInstance().getLocale().getMessage(lang, "mail-types.item");
+            case MAIL_SOUND:
+                return MailMe.getInstance().getLocale().getMessage(lang, "mail-types.sound");
+            case MAIL_LOCATION:
+                return MailMe.getInstance().getLocale().getMessage(lang, "mail-types.location");
+            default:
+                return MailMe.getInstance().getLocale().getMessage(lang, "mail-types.message");
+        }
     }
 
     public static List<String> applyPlaceHolders(Mail mail, List<String> string, UUID player) {

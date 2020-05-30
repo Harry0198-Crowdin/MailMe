@@ -30,6 +30,7 @@ com/haroldstudios/mailme/events/EntityEvents.class
 com/haroldstudios/mailme/ui/ItemInputGui.class
 com/haroldstudios/mailme/ui/ChoosePlayerGui$1.class
 com/haroldstudios/mailme/utility/Locale$LANG.class
+com/haroldstudios/mailme/utility/Utils$2.class
 com/haroldstudios/mailme/mail/MailBuilder$2.class
 com/haroldstudios/mailme/ui/MailGui.class
 com/haroldstudios/mailme/mail/Mail$MailType.class
