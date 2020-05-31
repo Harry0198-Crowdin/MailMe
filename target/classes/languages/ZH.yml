@@ -16,6 +16,9 @@ cmd:
   invalid-preset-key: '@prefix &e預設鍵無效! 檢查您的config.yml是否為有效值'
   vault-insufficient-funds: '@prefix &e不充足的資金!'
   unknown-player: '@prefix &e未知的玩家或玩家從未進入過伺服!'
+
+vault: "@prefix &6@amount &eTranslation required!"
+
 text:
   format:
     - '&8<    &e郵件    &8>'

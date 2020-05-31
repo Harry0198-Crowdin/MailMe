@@ -125,7 +125,7 @@ public class PlaceholderAPIExpansion extends PlaceholderExpansion {
 
         // %example_placeholder5%
         if(identifier.equals("global_language")){
-            return String.valueOf(plugin.getConfig().getString("lang"));
+            return String.valueOf(plugin.getLocale().getServerLang());
         }
 
         // %example_placeholder6%

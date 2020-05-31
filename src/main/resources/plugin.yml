@@ -12,3 +12,17 @@ softdepend:
 commands:
   mail:
 
+permissions:
+  mailme.base.send:
+    default: true
+  mailme.base.read:
+    default: true
+  mailme.type.message:
+    default: true
+  mailme.type.item:
+    default: true
+  mailme.type.location:
+    default: true
+  mailme.type.sound:
+    default: true
+

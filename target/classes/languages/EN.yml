@@ -17,6 +17,8 @@ cmd:
   vault-insufficient-funds: "@prefix &eInsufficient funds!"
   unknown-player: "@prefix &eUnknown player or player hasn't joined before!"
 
+vault: "@prefix &6@amount &ewas removed from your balance!"
+
 text:
   format:
     - "&8<    &eMail    &8>"

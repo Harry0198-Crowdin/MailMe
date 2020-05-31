@@ -16,6 +16,9 @@ cmd:
   invalid-preset-key: "@prefix &eUngültige voreingestellte Taste! Überprüfe deine config.yml auf gültige Werte"
   vault-insufficient-funds: "@prefix &eUnzureichende Mittel!"
   unknown-player: "@prefix &eUnbekannter Spieler oder Spieler ist noch nicht beigetreten!"
+
+vault: "@prefix &6@amount &ewurde von Ihrem Guthaben entfernt!"
+
 text:
   format:
     - "&8< &eNachrict &8>"

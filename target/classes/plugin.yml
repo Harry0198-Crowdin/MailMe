@@ -1,5 +1,5 @@
 name: MailMe
-version: 1.4.3
+version: 1.4.4
 main: com.haroldstudios.mailme.MailMe
 api-version: 1.13
 authors: [Harry0198]
@@ -11,4 +11,18 @@ softdepend:
 
 commands:
   mail:
+
+permissions:
+  mailme.base.send:
+    default: true
+  mailme.base.read:
+    default: true
+  mailme.type.message:
+    default: true
+  mailme.type.item:
+    default: true
+  mailme.type.location:
+    default: true
+  mailme.type.sound:
+    default: true
 

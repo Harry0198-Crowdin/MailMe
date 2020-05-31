@@ -40,9 +40,30 @@ debug: false
 # If Vault is enabled
 enable-vault: false
 # Cost to send mail
-cost: 25.00
+cost:
+  message: 25.00
+  item: 40.00
+  sound: 5.00
+  location: 10.00
+  set-mailbox: 100.00
 
 gui:
+  send:
+    message-mail:
+      enabled: true
+      slot: 11
+    item-mail:
+      enabled: true
+      slot: 12
+    sound-mail:
+      enabled: true
+      slot: 14
+    location-mail:
+      enabled: true
+      slot: 15
+    anonymous:
+      enabled: true
+      slot: 22
   read:
     send-button:
       enabled: true

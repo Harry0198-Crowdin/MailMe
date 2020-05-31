@@ -21,7 +21,9 @@ import com.haroldstudios.mailme.mail.Mail;
 import com.haroldstudios.mailme.utility.Utils;
 import me.mattstudios.mfgui.gui.components.ItemBuilder;
 import me.mattstudios.mfgui.gui.guis.GuiItem;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,13 +91,18 @@ public final class MailGui extends PaginationGui {
             String[] stockArr = new String[lore.size()];
             stockArr = lore.toArray(stockArr);
 
-            ItemBuilder itemBuilder = new ItemBuilder(mail.getIcon())
+            ItemStack itemStack = new ItemBuilder(mail.getIcon())
                     .setName(Utils.applyPlaceHolders(mail, getPlugin().getLocale().getMessage(super.getPlayerData().getLang(), "gui.mail.title"), getPlayer().getUniqueId()))
                     .setLore(stockArr)
-                    .glow(!mail.isRead());
+                    .glow(!mail.isRead()).build();
+
+
+            if (mail.isRead())
+                itemStack.removeEnchantment(Enchantment.LURE);
+
 
             int finalI = i;
-            GuiItem item = new GuiItem(itemBuilder.build(), event -> {
+            GuiItem item = new GuiItem(itemStack, event -> {
                 event.setCancelled(true);
                 if (event.isLeftClick()) {
                     Player player = (Player) event.getWhoClicked();

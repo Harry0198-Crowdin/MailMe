@@ -16,6 +16,9 @@ cmd:
   invalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
   vault-insufficient-funds: "@prefix &eFundos insuficientes!"
   unknown-player: "@prefix &eJogador desconhecido ou jogador não entrou antes!"
+
+vault: "@prefix &6@amount &efoi removido do seu saldo"
+
 text:
   format:
     - "&8<    &eCarta   &8>"

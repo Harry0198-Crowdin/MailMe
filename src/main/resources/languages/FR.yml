@@ -17,6 +17,8 @@ cmd:
   vault-insufficient-funds: "@prefix &eFonds insuffisants!"
   unknown-player: "prefix &eUn joueur inconnu ou un joueur ne s'est pas encore joint!"
 
+vault: "@prefix &6@amount &ea été retiré de votre solde"
+
 text:
   format:
     - "&8<    &eCourrier    &8>"

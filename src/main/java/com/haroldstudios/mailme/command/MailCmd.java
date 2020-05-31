@@ -53,13 +53,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.haroldstudios.mailme.utility.Constants.ADMIN_PERM;
+import static com.haroldstudios.mailme.utility.Constants.BASE_PERM;
+
 @Command("mail")
 @Alias("mailme")
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused", "deprecation"})
 public final class MailCmd extends CommandBase {
-
-    private final static String BASE_PERM = "mailme.base.";
-    private final static String ADMIN_PERM = "mailme.admin";
 
     private final MailMe plugin;
 
@@ -124,7 +124,7 @@ public final class MailCmd extends CommandBase {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             OfflinePlayer target = Bukkit.getOfflinePlayer(pl);
             Bukkit.getScheduler().runTask(plugin, () -> {
-                if (target == null || !target.hasPlayedBefore()) {
+                if (!target.hasPlayedBefore()) {
                     player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "cmd.unknown-player"));
                     return;
                 }
@@ -156,18 +156,11 @@ public final class MailCmd extends CommandBase {
         }
 
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
-            Mail.MailType type;
+
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[1]);
             String contents = String.join(" ", Arrays.copyOfRange(args, 3, args.length));
             
             boolean server = !(sender instanceof Player);
-
-            try {
-                type = Mail.MailType.valueOf(args[2].toUpperCase());
-            } catch (IllegalArgumentException e) {
-                sender.sendMessage("§cSyntax Error!");
-                return;
-            }
 
             plugin.getServer().getScheduler().runTask(plugin, () -> {
 
@@ -229,12 +222,9 @@ public final class MailCmd extends CommandBase {
         PlayerData data = plugin.getDataStoreHandler().getPlayerData(player);
 
         if (string.equalsIgnoreCase("set")) {
+
             Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
                 Block chest = player.getTargetBlock(null, 10);
-                if (chest == null || chest.getType() == null) {
-                    player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.not-chest"));
-                    return;
-                }
 
                 if (plugin.getDataStoreHandler().getValidMailBoxMaterials() != null) {
                     if (!plugin.getDataStoreHandler().getValidMailBoxMaterials().contains(chest.getType())) {
@@ -245,8 +235,13 @@ public final class MailCmd extends CommandBase {
 
                 Location loc = chest.getLocation();
 
-                Bukkit.getScheduler().runTask(plugin, () -> plugin.getDataStoreHandler().getPlayerData(player).setMailBox(loc));
-                player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-set"));
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    if (MailMe.getInstance().getVaultHook() != null && !MailMe.getInstance().getVaultHook().attemptTransaction(player, plugin.getConfig().getDouble("cost.set-mailbox"))) {
+                        return;
+                    }
+                    plugin.getDataStoreHandler().getPlayerData(player).setMailBox(loc);
+                    player.sendMessage(plugin.getLocale().getMessage(data.getLang(), "mailbox.mailbox-set"));
+                });
             });
         } else if (string.equalsIgnoreCase("remove")) {
             data.setMailBox(null);
@@ -263,6 +258,11 @@ public final class MailCmd extends CommandBase {
         DataStoreHandler store = plugin.getDataStoreHandler();
         Location oldLocation = store.defaultLocation;
 
+        if (mailboxConfig == null) {
+            plugin.debug("There was an issue while fetching the ConfigurationSection for the default mailbox! default-mailbox == null!");
+            return;
+        }
+
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             Block chest = player.getTargetBlock(null, 10);
             if (plugin.getDataStoreHandler().getValidMailBoxMaterials() != null) {
@@ -273,7 +273,8 @@ public final class MailCmd extends CommandBase {
             }
             Location loc = chest.getLocation();
             Bukkit.getScheduler().runTask(MailMe.getInstance(), () -> {
-                mailboxConfig.set("world", loc.getWorld().getName());
+                String worldName = loc.getWorld() != null ? loc.getWorld().getName() : Bukkit.getWorlds().get(0).getName();
+                mailboxConfig.set("world", worldName);
                 mailboxConfig.set("x", loc.getBlockX());
                 mailboxConfig.set("y", loc.getBlockY());
                 mailboxConfig.set("z", loc.getBlockZ());
@@ -379,11 +380,18 @@ public final class MailCmd extends CommandBase {
             return;
         }
         ConfigurationSection presets = plugin.getConfig().getConfigurationSection("presets");
+        if (presets == null) {
+            MailMe.getInstance().debug("There was an error while fetching presets from the config.yml! presets == null!");
+            return;
+        }
 
         String preset = presets.getString(args[3]);
         Type token = new TypeToken<Mail>() {}.getType();
-        MailMe.getInstance();
         Mail mail = MailMe.GSON.fromJson(preset, token);
+        if (mail == null) {
+            plugin.debug("There was an issue while deserializing the mail in command adminSendCommand. Mail == null!");
+            return;
+        }
 
         List<UUID> recipients = new ArrayList<>();
 

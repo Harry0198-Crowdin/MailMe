@@ -1,6 +1,7 @@
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/components/hooks/VaultHook.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/ui/GuiHandler.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/ui/PaginationGui.java
+/Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/utility/Constants.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/utility/ItemStackSerializer.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/command/MailCmd.java
 /Users/harrydrummond/workspace/MailMe/src/main/java/com/haroldstudios/mailme/datastore/PlayerData.java

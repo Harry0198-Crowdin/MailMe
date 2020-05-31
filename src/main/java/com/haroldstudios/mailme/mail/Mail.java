@@ -214,13 +214,17 @@ public abstract class Mail implements Cloneable {
         List<UUID> recipients = getRecipients();
         List<UUID> newList = new ArrayList<>(recipients);
 
-        if (getSender() == null) {
+        Player bukkitPlayer = Bukkit.getPlayer(sender);
+
+        if (getSender() == null || bukkitPlayer == null) {
             sendAsServer();
             return;
         }
 
         PlayerData senderData = MailMe.getInstance().getDataStoreHandler().getPlayerData(sender);
 
+
+        // Checks if have recently sent mail to recipient(s)
         for (UUID player : recipients) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.MINUTE, -delay);
@@ -230,9 +234,9 @@ public abstract class Mail implements Cloneable {
             if (!dataMail.isEmpty()) {
                 if (getMailType().equals(MailType.MAIL_ITEM)) {
                     MailItems mailItems = (MailItems) this;
-                    mailItems.giveItems(Bukkit.getPlayer(sender));
+                    mailItems.giveItems(bukkitPlayer);
                 }
-                Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.could-not-send"), Bukkit.getOfflinePlayer(player).getName()));
+                bukkitPlayer.sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.could-not-send"), Bukkit.getOfflinePlayer(player).getName()));
                 newList.remove(player);
             }
         }
@@ -248,17 +252,21 @@ public abstract class Mail implements Cloneable {
             newestList.add(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent-multiple"));
         }
 
-        if (MailMe.getInstance().getVaultHook() != null && !MailMe.getInstance().getVaultHook().attemptTransaction(Bukkit.getPlayer(sender))) {
-            if (getMailType().equals(MailType.MAIL_ITEM)) {
-                MailItems mailItems = (MailItems) this;
-                mailItems.giveItems(Bukkit.getPlayer(sender));
+        // Checks if Vault is enabled and removes money if so
+        if (newList.size() > 0) {
+            if (MailMe.getInstance().getVaultHook() != null && !MailMe.getInstance().getVaultHook().attemptTransaction(Bukkit.getPlayer(sender), getMailType())) {
+                // If player does not have money and mail was an Item Mail, it returns the items to sender.
+                if (getMailType().equals(MailType.MAIL_ITEM)) {
+                    MailItems mailItems = (MailItems) this;
+                    mailItems.giveItems(bukkitPlayer);
+                }
+                return;
             }
-            return;
         }
 
         try {
-            if (Bukkit.getPlayer(sender) != null || sender.equals(Bukkit.getPlayer(sender).getUniqueId())) {
-                Bukkit.getPlayer(sender).sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), newestList));
+            if (Bukkit.getPlayer(sender) != null || sender.equals(bukkitPlayer.getUniqueId())) {
+                bukkitPlayer.sendMessage(String.format(MailMe.getInstance().getLocale().getMessage(senderData.getLang(), "notify.sent"), newestList));
             }
         } catch (NullPointerException ignore) { }
         newList.forEach(player -> MailMe.getInstance().getDataStoreHandler().getPlayerData(player).addMail(this.clone()));
