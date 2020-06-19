@@ -1,63 +1,63 @@
 ---
-T: "FR"
+T: "PT"
 VER: 1.1
 prefix: "&8[&eMailMe&8]&r"
 mail-types:
-  message: "Message"
-  item: "Articles"
-  sound: "Du son"
-  location: "Emplacement"
+  message: "Mensagem"
+  item: "Itens"
+  sound: "Som"
+  location: "Localização"
 cmd:
-  lang-change: "@prefix &eLa langue a changé !"
-  notify-change: "@prefix &eParamètres de notification mis à jour!"
-  mail-unread: "@prefix Vous avez du courrier non lu!"
-  invalid-preset-key: "@prefix &eClé prédéfinie invalide! Vérifiez votre config.yml pour les valeurs valides"
-  vault-insufficient-funds: "@prefix &eFonds insuffisants!"
-  unknown-player: "prefix &eUn joueur inconnu ou un joueur ne s'est pas encore joint!"
-vault: "@prefix &6@amount &ea été retiré de votre solde"
+  lang-change: "@prefix &eIdioma alterado!"
+  notify-change: "@prefix &eConfigurações de notificação atualizadas!"
+  mail-unread: "@prefix Você tem cartas não lidos!"
+  invalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
+  vault-insufficient-funds: "@prefix &eFundos insuficientes!"
+  unknown-player: "@prefix &eJogador desconhecido ou jogador não entrou antes!"
+vault: "@prefix &6@amount &efoi removido do seu saldo"
 text:
   format:
-    - "&8<    &eCourrier    &8>"
-    - " à partir de: &b%sender%"
-    - "&7Reçu à: &b%time%"
-    - "&7Contenu: %contents%"
-  hover: "&cCliquez pour répondre!"
-  prev-page: "&e<<< Page précédente"
-  prev-page-hover: "&cCliquez pour la page précédente!"
-  next-page: "&ePage suivante >>>"
-  next-page-hover: "&cCliquez pour la page suivante"
+    - "&8<    &eCarta   &8>"
+    - " de: &b%sender%"
+    - " em: &b%time%"
+    - "&7Conteúdo: %contents%"
+  hover: "&cClique para responder!"
+  prev-page: "&e<<< Página Anterior"
+  prev-page-hover: "&cClique para a página anterior!"
+  next-page: "&ePágina Seguinte >>>"
+  next-page-hover: "&cClique para a página seguinte!"
 notify:
-  received: "@prefix &eVous avez reçu du courrier de %s"
-  sent: "@prefix &eVous avez envoyé du courrier à %s"
-  sent-multiple: "Destinataires multiples"
-  could-not-send: "@prefix &eImpossible d’envoyer du courrier à %s. Vous avez récemment envoyé du courrier. S’il vous plaît essayer à nouveau plus tard."
+  received: "@prefix &eVocê recebeu algumas cartas de %s"
+  sent: "@prefix &eVocê enviou uma carta para %s"
+  sent-multiple: "Múltiplos destinatários"
+  could-not-send: "@prefix &cAtenção! &eNão foi possível enviar carta para %s. Por favor, tente novamente mais tarde."
 mail:
-  message: "@prefix Qu’aimeriez-vous que le message dise??"
-  sound-input: "@prefix Quel son aimeriez-vous jouer ? Trouvez des sons valides ici: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
-  no-space: "@prefix Vous n'avez pas d'espace dans votre inventaire pour le réclamer!"
-  unknown: "Inconnue"
-  anonymous: "Anonyme"
-  server: "Server"
+  message: "@prefix O que você gostaria que a carta dissesse?"
+  sound-input: "@prefix Que som você gostaria de tocar? Encontre sons válidos aqui: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+  no-space: "@prefix Você não tem espaço em seu inventário para reivindicar isso!"
+  unknown: "Desconhecido"
+  anonymous: "Anônimo"
+  server: "Servidor"
 mailbox:
-  not-chest: "@prefix Votre boîte aux lettres doit être un coffre!"
-  mailbox-set: "@prefix Votre boîte aux lettres est configurée!"
-  mailbox-removed: "@prefix Votre boîte aux lettres a été supprimée!"
+  not-chest: "@prefix Sua caixa de correio deve ser um baú!"
+  mailbox-set: "@prefix Sua caixa de correio foi configurada!"
+  mailbox-removed: "@prefix Sua caixa de correio foi removida!"
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mail lang <language> &7Changement de langue"
-  - "&e/mail notify <true/false> &7Modifier les paramètres de notification"
-  - "&e/mail read &7Lisez votre courrier"
-  - "&e/mail send &7Envoyez votre courrier"
-  - "&e/mail text &7Lire le courrier comme texte"
+  - "&e/mail lang <language> &7SMuda o idioma"
+  - "&e/mail notify <true/false> &7Muda as configurações de notificação"
+  - "&e/mail read &7Leia suas cartas"
+  - "&e/mail send &7Envie sua carta"
+  - "&e/mail text &7Ler sua carta como texto"
   - "&e/mail mailbox <set/remove>"
   - "&e/mailme admin send <all/playername> [Preset-ID] &7Senden Sie eine Standardmail."
   - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
 gui:
   choose-type-title: "MailMe"
-  read-title: "Lire Mail"
-  choose-player-title: "Destinataires"
-  item-input-title: "Articles à envoyer"
-  choose-icon-title: "Choisissez l’icône"
+  read-title: "Ler carta"
+  choose-player-title: "Escolha Destinatários"
+  item-input-title: "Itens de entrada para enviar"
+  choose-icon-title: "Escolha o ícone"
   filler:
     title: ""
     material: BLACK_STAINED_GLASS_PANE
@@ -66,145 +66,146 @@ gui:
     glow: false
     lore:
       - ""
-  search: "Écrivez le nom du joueur que vous souhaitez trouver"
+  search: "Escreva o nome do jogador que você gostaria de encontrar"
   send:
-    title: "&bEnvoyer un mail"
+    title: "&bEnviar correio"
     material: FEATHER
     amount: 1
     custom-model-data: 0
     glow: true
     lore:
-      - "&7Cliquer dessus"
-      - "&7ouvrira le générateur de courrier"
-      - "&7menu!"
+      - "&7Clicando neste"
+      - "&7irá abrir o construtor de correio"
+      - "&7cardápio!"
   mail:
-    title: "&7Courrier à partir de: &b@sender"
+    title: "&7De: &b@sender"
     lore:
       - ""
-      - "&7Reçu à: &b@time"
-      - " de courrier: &b@type"
-      - "&7Lire: &b@read"
+      - " em: &b@time"
+      - " de carta: &b@type"
+      - "&7Ler: &b@read"
       - ""
-      - " Pro: &7Cliquez pour recevoir du courrier!"
+      - "&bDica:  para receber a carta!"
   back-button:
-    title: "&8[&ePage précédente&8]"
+    title: "&8[&ePágina Anterior&8]"
     material: REDSTONE_TORCH
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour aller à"
-      - "&7la page précédente!"
+      - "&7Clique para ir para"
+      - "&7a página anterior!"
     glow: true
     skull-texture: ""
   forward-button:
-    title: "&8[&ePage suivante&8]"
+    title: "&8[&ePágina Seguinte&8]"
     material: REDSTONE_TORCH
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour aller à"
-      - "&7la page suivante"
+      - "&7Clique para ir para"
+      - "&7a página seguinte!"
     glow: true
     skull-texture: ""
   exit-button:
-    title: "&8[&ePage de sortie&8]"
+    title: "&8[&eFechar a página&8]"
     material: BARRIER
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour fermer"
-      - "&7l’interface utilisateur!"
+      - "&7Clique para fechar"
+      - "&7o gui!"
     glow: true
     skull-texture: ""
   search-button:
-    title: "&8[&eRechercher&8]"
+    title: "&8[&eProcurar&8]"
     material: BOOK
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour rechercher par"
-      - "&7nom du joueur!"
+      - "&7Clique para pesquisar por"
+      - "&7um jogador!"
     glow: true
     skull-texture: ""
   no-results:
-    title: "&cAucun résultat :("
+    title: "&cSem resultados :("
     material: GLASS_BOTTLE
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Essayez de rechercher avec un"
-      - "&7différents critères"
+      - "&7Tente pesquisar com"
+      - "&7critérios diferentes"
     glow: true
     skull-texture: ""
   choose:
     send-anonymously:
-      title: "&aEnvoyer anonymement"
+      title: "&aEnviar anonimamente"
       material: EMERALD
       amount: 1
       custom-model-data: 0
       lore:
         - ""
     message:
-      title: "&8[&eCourrier message&8]"
+      title: "&8[&eCarta&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Cliquez pour envoyer quelqu’un"
-        - "&7un courrier message!"
+        - "&7Clique para enviar a carta"
+        - "&7para alguém!"
       glow: true
       skull-texture: ""
     item:
-      title: "&8[&eCourrier d’article&8]"
+      title: "&8[&eCarta de item&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Cliquez pour envoyer quelqu’un"
-        - "&7un courrier d'article!"
+        - "&7Clique para enviar a carta de item"
+        - "&7para alguém!"
       glow: true
       skull-texture: ""
     sound:
-      title: "&8[&eCourrier sonore&8]"
+      title: "&8[&eCarta de som&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Cliquez pour envoyer quelqu’un"
-        - "&7un courrier sonore!"
+        - "&7Clique para enviar a carta de som"
+        - "&7para alguém!"
       glow: true
       skull-texture: ""
     location:
-      title: "&8[&eCourrier de localisation&8]"
+      title: "&8[&eCarta de localização&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Cliquez pour envoyer quelqu’un"
-        - "&7un courrier de localisation!"
+        - "&7Clique para enviar a carta de localização"
+        - "&7para alguém!"
       glow: true
       skull-texture: ""
   icon-custom:
-    title: "&8[&cPersonnalisé&8]"
+    title: "&8[&cPersonalizadas&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez avec l’élément pour avoir comme icône"
-      - "&7Vous ne perdrez pas cet article."
+      - "&7Clique no item para ter como ícone"
+      - "&7Você não perderá este item."
     glow: true
     skull-texture: ""
   remove-filter:
-    title: "&8[&dSupprimer le filtre&8]"
+    title: "&8[&dRemover filtro&8]"
     material: IRON_BARS
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour supprimer les filtres"
+      - "&7Clique para remover qualquer filtro"
+      - "&7do menu!"
     glow: true
     skull-texture: ""
   loading:
-    title: "&cChargement..."
+    title: "&cCarregando..."
     material: SKELETON_SKULL
     amount: 1
     custom-model-data: 0
@@ -213,42 +214,39 @@ gui:
     glow: true
     skull-texture: ""
   continue:
-    title: "&8[&eContinuer >&8]"
+    title: "&8[&eContinuar >&8]"
     material: EMERALD_BLOCK
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez pour continuer à"
-      - "&7La page suivante!"
+      - "&7Clique para continuar para"
+      - "&7a próxima página!"
     glow: true
     skull-texture: ""
   text-button:
-    title: "&8[&eLire sous forme de texte&8]"
+    title: "&8[&eLer como texto&8]"
     material: MAP
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Cliquez sur"
-      - "&7lire votre courrier sous forme de texte"
+      - "&7Clique para"
+      - "&7ler sua carta como texto"
     glow: true
     skull-texture: ""
   read-mail:
-    title: "&eCourrier"
+    title: "&eMail"
     lore:
-      - "&7Cliquez sur"
-      - "&7recevoir le courrier"
+      - "&7Clique para"
+      - "&7receber carta"
   are-you-sure:
-    title: "&aÊtes-vous sûr?"
+    title: "&aVocê tem certeza?"
     material: EMERALD_BLOCK
     amount: 1
     custom-model-data: 0
     glow: true
     lore:
-      - "&7Un clic droit à nouveau"
-      - "&7Supprimer ce mail"
+      - "&7Clicar com o botão direito novamente"
+      - "&7Excluir este e-mail"
       - ""
-      - "&7Vous pouvez également cliquer avec le bouton gauche pour"
-      - "&7Annuler l'opération"
-
-
-
+      - "&7Como alternativa, clique aqui para"
+      - "&7Cancele a operação"
