@@ -1,1 +1,3 @@
-files: []
+files:
+  - source: /src/main/resources/languages
+    translation: /src/main/resources/languages/%two_letters_code%
