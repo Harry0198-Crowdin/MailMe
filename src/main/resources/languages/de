@@ -1,64 +1,64 @@
 ---
-T: "DE"
+T: "EN"
 VER: 1.1
 prefix: "&8[&eMailMe&8]&r"
 mail-types:
-  message: "Botschaft"
-  item: "Artikel"
-  sound: "Klang"
-  location: "Standort"
+  message: "Message"
+  item: "Items"
+  sound: "Sound"
+  location: "Location"
 cmd:
-  lang-change: "@prefix &eSprache geändert!"
-  notify-change: "@prefix &eBenachrichtigungseinstellungen aktualisiert!"
-  mail-unread: "@prefix &eDu hast ungelesene Nachrichten!"
-  invalid-preset-key: "@prefix &eUngültige voreingestellte Taste! Überprüfe deine config.yml auf gültige Werte"
-  vault-insufficient-funds: "@prefix &eUnzureichende Mittel!"
-  unknown-player: "@prefix &eUnbekannter Spieler oder Spieler ist noch nicht beigetreten!"
-vault: "@prefix &6@amount &ewurde von Ihrem Guthaben entfernt!"
+  lang-change: "@prefix &eLanguage changed!"
+  notify-change: "@prefix &eNotification Settings updated!"
+  mail-unread: "@prefix &eYou have unread mail!"
+  invalid-preset-key: "@prefix &eInvalid preset key! Check your config.yml for valid values"
+  vault-insufficient-funds: "@prefix &eInsufficient funds!"
+  unknown-player: "@prefix &eUnknown player or player hasn't joined before!"
+vault: "@prefix &6@amount &ewas removed from your balance!"
 text:
   format:
-    - "&8< &eNachrict &8>"
-    - " von: &b%sender%"
-    - " am: &b%time%"
-    - "&7Inhalt: %contents%"
-  hover: "&cKlicke zum Antworten!"
-  prev-page: "&e<<< Vorherige Seite"
-  prev-page-hover: "&cKlicke für die vorherige Seite!"
-  next-page: "&eNächste Seite >>>"
-  next-page-hover: "&cKlicke für die nächste Seite!"
+    - "&8<    &eMail    &8>"
+    - " From: &b%sender%"
+    - " at: &b%time%"
+    - "&7Contents: %contents%"
+  hover: "&cClick to Reply!"
+  prev-page: "&e<<< Previous Page"
+  prev-page-hover: "&cClick for the previous page!"
+  next-page: "&eNext Page >>>"
+  next-page-hover: "&cClick for the next page!"
 notify:
-  received: "@prefix &eDu hast eine Nachricht von %s erhalten"
-  sent: "@prefix &eDu hast eine Nachricht an %s gesendet"
-  sent-multiple: "Mehrere Empfänger"
-  could-not-send: "@prefix &cWarnung! &eKonnte Nachricht nicht an %s senden. Du hast erst kürzlich eine gesendet. Bitte versuch es später erneut."
+  received: "@prefix &eYou received some mail from %s"
+  sent: "@prefix &eYou sent some mail to %s"
+  sent-multiple: "Multiple Recipients"
+  could-not-send: "@prefix &cWarning! &eCould not send mail to %s. You have recently sent mail. Please try again later."
 mail:
-  message: "@prefix Was soll die Nachricht sagen?"
-  sound-input: "@prefix Welchen Sound möchtest du gerne spielen? Gültige Sounds kannst du hier finden: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
-  no-space: "@prefix Du hast keinen Platz im Inventar, um dies zu beanspruchen!"
-  unknown: "Unbekannt"
-  anonymous: "Anonym"
+  message: "@prefix What would you like the message to say?"
+  sound-input: "@prefix What sound would you like to play? Find valid sounds here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
+  no-space: "@prefix You have no space in your inventory to claim this!"
+  unknown: "Unknown"
+  anonymous: "Anonymous"
   server: "Server"
 mailbox:
-  not-chest: "@prefix Deine Mailbox muss eine Truhe sein!"
-  mailbox-set: "@prefix Deine Mailbox wurde gesetzt!"
-  mailbox-removed: "@prefix Deine Mailbox wurde entfernt!"
+  not-chest: "@prefix Your mailbox cannot be this item!"
+  mailbox-set: "@prefix Your mailbox has been set!"
+  mailbox-removed: "@prefix Your mailbox has been removed!"
 help:
   - "&8[&eMailMe&8]"
-  - "&e/mail lang <Sprache> &7Sprache ändern"
-  - "&e/mail notify <true/false> &7Benachrichtigungseinstellungen ändern"
-  - "&e/mail read &7Deine Nachrichten lesen"
-  - "&e/mail send &7Eine Nachricht senden"
-  - "&e/mail text &7Nachrichten als text lesen"
-  - "&e/mail mailbox <set/remove>"
-  - "&e/mail defaultMB &7Setzt die Standart Mailbox"
-  - "&e/mailme admin send <all/playername> [Preset-ID] &7Sende eine Standardmail."
-  - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
+  - "&e/mailme lang <language> &7Switches Language"
+  - "&e/mailme notify <true/false> &7Switches notification settings"
+  - "&e/mailme read &7Read your mail"
+  - "&e/mailme send &7Send your mail"
+  - "&e/mailme text &7Read mail as text"
+  - "&e/mailme mailbox <set/remove>"
+  - "&e/mailme defaultMB &7Sets default mailbox!"
+  - "&e/mailme admin send <all/playername> [Preset-ID] &7Send a default mail."
+  - "&e/mailme admin preset <id-to-set> &7Sets a preset for admin sending"
 gui:
   choose-type-title: "MailMe"
-  read-title: "Nachricht lesen"
-  choose-player-title: "Wähle Empfänger"
-  item-input-title: "Items zum senden einfügen"
-  choose-icon-title: "Icon wählen"
+  read-title: "Read Mail"
+  choose-player-title: "Choose Recipients"
+  item-input-title: "Input Items to send"
+  choose-icon-title: "Choose Icon"
   filler:
     title: ""
     material: BLACK_STAINED_GLASS_PANE
@@ -67,147 +67,148 @@ gui:
     glow: false
     lore:
       - ""
-  search: "Schreibe den Namen des Spielers, welchen du gerne finden willst"
+  search: "Write the name of the player you'd like to find"
   send:
-    title: "&bMail senden"
+    title: "&bSend Mail"
     material: FEATHER
     amount: 1
     custom-model-data: 0
     glow: true
     lore:
-      - "&7Klicken Sie darauf"
-      - "&7öffnet den Mail Builder"
-      - "&7speisekarte!"
+      - "&7Clicking this"
+      - "&7will open up the mail builder"
+      - "&7menu!"
   mail:
-    title: "&7Von: &b@sender"
+    title: "&7From: &b@sender"
     lore:
       - ""
-      - " am: &b@time"
-      - " Typ: &b@type"
-      - "&7Gelesen: &b@read"
+      - " at: &b@time"
+      - " Type: &b@type"
+      - "&7Read: &b@read"
       - ""
-      - " Tip: &7Klicke um die Nachricht zu erhalten!"
+      - " Tip: &7Click to receive mail!"
   back-button:
-    title: "&8[&eVorige Seite&8]"
+    title: "&8[&ePrevious Page&8]"
     material: REDSTONE_TORCH
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um zur vorigen"
-      - "&7Seite zu gelangen!"
+      - "&7Click to go to"
+      - "&7the previous page!"
     glow: true
     skull-texture: ""
   forward-button:
-    title: "&8[&eNächste Seite&8]"
+    title: "&8[&eNext Page&8]"
     material: REDSTONE_TORCH
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um zur nächsten"
-      - "&7Seite zu gelangen!"
+      - "&7Click to go to"
+      - "&7the next page!"
     glow: true
     skull-texture: ""
   exit-button:
-    title: "&8[&eSeite verlassen&8]"
+    title: "&8[&eExit Page&8]"
     material: BARRIER
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um das"
-      - "&7GUI zu schliessen!"
+      - "&7Click to close"
+      - "&7the gui!"
     glow: true
     skull-texture: ""
   search-button:
-    title: "&8[&eSuchen&8]"
+    title: "&8[&eSearch&8]"
     material: BOOK
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um nach"
-      - "&7Spielername zu suchen!"
+      - "&7Click to search by"
+      - "&7player name!"
     glow: true
     skull-texture: ""
   no-results:
-    title: "&cKeine Resultate :("
+    title: "&cNo Results :("
     material: GLASS_BOTTLE
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Versuche mit einem anderen"
-      - "&7Kriterium zu suchen."
+      - "&7Try searching with a"
+      - "&7different criteria"
     glow: true
     skull-texture: ""
   choose:
     send-anonymously:
-      title: "&aAnonym senden"
+      title: "&aSend anonymously"
       material: EMERALD
       amount: 1
       custom-model-data: 0
       lore:
-        - ""
+        - "&7Click this to"
+        - "&7send your mail without any"
+        - "&7trace of who sent it!"
     message:
-      title: "&8[&eTextnachricht&8]"
+      title: "&8[&eMessage Mail&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Klicke um jemandem eine"
-        - "&7Textnachricht zu senden!"
+        - "&7Click to send someone"
+        - "&7a message mail!"
       glow: true
       skull-texture: ""
     item:
-      title: "&8[&eItem Nachricht&8]"
+      title: "&8[&eItem Mail&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Klicke um jemandem eine"
-        - "&7Item Nachricht zu senden!"
+        - "&7Click to send someone"
+        - "&7an item mail!"
       glow: true
       skull-texture: ""
     sound:
-      title: "&8[&eSound Nachricht&8]"
+      title: "&8[&eSound Mail&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Klicke um jemandem eine"
-        - "&7Sound Nachricht zu senden!"
+        - "&7Click to send someone"
+        - "&7a sound mail!"
       glow: true
       skull-texture: ""
     location:
-      title: "&8[&eOrt Nachricht&8]"
+      title: "&8[&eLocation Mail&8]"
       material: PAPER
       amount: 1
       custom-model-data: 0
       lore:
-        - "&7Klicke um jemandem eine"
-        - "&7Orts Nachricht zu senden!"
+        - "&7Click to send someone"
+        - "&7a location mail!"
       glow: true
       skull-texture: ""
   icon-custom:
-    title: "&8[&cBenutzerdefiniert&8]"
+    title: "&8[&cCustom&8]"
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke mit einem Item um es als"
-      - "&7Icon zu setzten."
-      - "&7Du wirst das Item nicht verlieren."
+      - "&7Click with item to have as icon"
+      - "&7You won't lose this item."
     glow: true
     skull-texture: ""
   remove-filter:
-    title: "&8[&dFilter entfernen&8]"
+    title: "&8[&dRemove Filter&8]"
     material: IRON_BARS
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um sämtliche Filter"
-      - "&7im Menu zu entfernen!"
+      - "&7Click to remove any filters"
+      - "&7on the menu!"
     glow: true
     skull-texture: ""
   loading:
-    title: "&cLade..."
+    title: "&cLoading..."
     material: SKELETON_SKULL
     amount: 1
     custom-model-data: 0
@@ -216,42 +217,41 @@ gui:
     glow: true
     skull-texture: ""
   continue:
-    title: "&8[&eWeiter >&8]"
+    title: "&8[&eContinue >&8]"
     material: EMERALD_BLOCK
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um zur nächsten"
-      - "&7Seite zu kommen!"
+      - "&7Click to continue to"
+      - "&7The next page!"
     glow: true
     skull-texture: ""
   text-button:
-    title: "&8[&eAls Text lesen&8]"
+    title: "&8[&eRead as Text&8]"
     material: MAP
     amount: 1
     custom-model-data: 0
     lore:
-      - "&7Klicke um deine Nachricht"
-      - "&7als Text zu lesen."
+      - "&7Click to"
+      - "&7read your mail as text"
     glow: true
     skull-texture: ""
   read-mail:
-    title: "&eNachricht"
+    title: "&eMail"
     lore:
-      - "&7Klicke um die"
-      - "&7Nachricht zu erhalten."
+      - "&7Click to"
+      - "&7receive the mail"
   are-you-sure:
-    title: "&aBist du sicher?"
+    title: "&aAre you sure?"
     material: EMERALD_BLOCK
     amount: 1
     custom-model-data: 0
     glow: true
     lore:
-      - "&7Erneuter Rechtsklick wird"
-      - "&7diese Mail löschen."
+      - "&7Right clicking again will"
+      - "&7Delete this mail"
       - ""
-      - "&7Klicke mir der linken Maustaste,"
-      - "&7um diesen Vorgang abzubrechen."
-
+      - "&7Alternatively, left click this to"
+      - "&7Cancel the operation"
 
 
