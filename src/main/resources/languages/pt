@@ -1,63 +1,66 @@
 ---
-T: "PT"
+#Cantonese translation by ChrisRak from CubeStudioHK.network
+T: ZH
 VER: 1.1
-prefix: "&8[&eMailMe&8]&r"
+prefix: '&8[&e郵件&8]&r'
 mail-types:
-  message: "Mensagem"
-  item: "Itens"
-  sound: "Som"
-  location: "Localização"
+  message: "訊息"
+  item: "份"
+  sound: "TRANSLATION NEEDED"
+  location: "地段"
 cmd:
-  lang-change: "@prefix &eIdioma alterado!"
-  notify-change: "@prefix &eConfigurações de notificação atualizadas!"
-  mail-unread: "@prefix Você tem cartas não lidos!"
-  invalid-preset-key: "@prefix &eChave predefinida inválida! Verifique seu config.yml para valores válidos"
-  vault-insufficient-funds: "@prefix &eFundos insuficientes!"
-  unknown-player: "@prefix &eJogador desconhecido ou jogador não entrou antes!"
-vault: "@prefix &6@amount &efoi removido do seu saldo"
+  lang-change: '@prefix &e語言已更新!'
+  notify-change: '@prefix &e通知設置已更新!'
+  mail-unread: '@prefix &e您有未讀郵件!'
+  invalid-preset-key: '@prefix &e預設鍵無效! 檢查您的config.yml是否為有效值'
+  vault-insufficient-funds: '@prefix &e不充足的資金!'
+  unknown-player: '@prefix &e未知的玩家或玩家從未進入過伺服!'
+vault: "@prefix &6@amount &eTranslation required!"
 text:
   format:
-    - "&8<    &eCarta   &8>"
-    - " de: &b%sender%"
-    - " em: &b%time%"
-    - "&7Conteúdo: %contents%"
-  hover: "&cClique para responder!"
-  prev-page: "&e<<< Página Anterior"
-  prev-page-hover: "&cClique para a página anterior!"
-  next-page: "&ePágina Seguinte >>>"
-  next-page-hover: "&cClique para a página seguinte!"
+    - '&8<    &e郵件    &8>'
+    - '&7發件人: &b%sender%'
+    - '&7收件時間: &b%time%'
+    - '&7內容: %contents%'
+  hover: '&c點擊回覆!'
+  prev-page: '&e<<< 上一頁'
+  prev-page-hover: '&c點擊返回上一頁!'
+  next-page: '&e下一頁 >>>'
+  next-page-hover: '&c點擊前往下一頁!'
 notify:
-  received: "@prefix &eVocê recebeu algumas cartas de %s"
-  sent: "@prefix &eVocê enviou uma carta para %s"
-  sent-multiple: "Múltiplos destinatários"
-  could-not-send: "@prefix &cAtenção! &eNão foi possível enviar carta para %s. Por favor, tente novamente mais tarde."
+  received: '@prefix &e您收到了一些由 %s 發出的郵件'
+  sent: '@prefix &e您發出郵件至 %s'
+  sent-multiple: '多個收件人'
+  could-not-send: '@prefix &c警告! &e無法將郵件發送到%s. 您最近已發送郵件. 請稍後再試.'
 mail:
-  message: "@prefix O que você gostaria que a carta dissesse?"
-  sound-input: "@prefix Que som você gostaria de tocar? Encontre sons válidos aqui: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html"
-  no-space: "@prefix Você não tem espaço em seu inventário para reivindicar isso!"
-  unknown: "Desconhecido"
-  anonymous: "Anônimo"
-  server: "Servidor"
+  message: '@prefix 您想說些什麼?'
+  sound-input: '@prefix 您想播放什麼聲音? 在這裡找到有效的聲音: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html'
+  no-space: '@prefix 你已沒有空間了!'
+  unknown: '未知'
+  anonymous: '匿名'
+  server: '伺服器'
 mailbox:
-  not-chest: "@prefix Sua caixa de correio deve ser um baú!"
-  mailbox-set: "@prefix Sua caixa de correio foi configurada!"
-  mailbox-removed: "@prefix Sua caixa de correio foi removida!"
+  not-chest: '@prefix 您的郵箱不能是這個物品!'
+  mailbox-set: '@prefix 您的郵箱已設置!'
+  mailbox-removed: '@prefix 您的郵箱已被刪除!'
 help:
-  - "&8[&eMailMe&8]"
-  - "&e/mail lang <language> &7SMuda o idioma"
-  - "&e/mail notify <true/false> &7Muda as configurações de notificação"
-  - "&e/mail read &7Leia suas cartas"
-  - "&e/mail send &7Envie sua carta"
-  - "&e/mail text &7Ler sua carta como texto"
-  - "&e/mail mailbox <set/remove>"
-  - "&e/mailme admin send <all/playername> [Preset-ID] &7Senden Sie eine Standardmail."
-  - "&e/mailme admin preset <id-to-set> &7Legt eine Voreinstellung für das Senden durch den Administrator fest"
+  - '&8[&eMailMe&8]'
+  - '&e/mailme lang <language> &7更改語言'
+  - '&e/mailme notify <true/false> &7切換通知設置'
+  - '&e/mailme read &7閱讀您的郵件'
+  - '&e/mailme send &7發送郵件'
+  - '&e/mailme text &7以文字形式閱讀郵件'
+  - '&e/mailme mailbox <set/remove>'
+  - '&e/mailme defaultMB &7設置默認郵箱!'
+  - '&e/mailme admin send <all/playername> [Preset-ID] &7發送默認郵件.'
+  - '&e/mailme admin preset <id-to-set> &7設置管理員發送的預設'
 gui:
   choose-type-title: "MailMe"
-  read-title: "Ler carta"
-  choose-player-title: "Escolha Destinatários"
-  item-input-title: "Itens de entrada para enviar"
-  choose-icon-title: "Escolha o ícone"
+  read-title: '閱讀郵件'
+  choose-player-title: '選擇收件人'
+  item-input-title: '輸入要發送的物品'
+  choose-icon-title: '選擇圖標'
+  search: '輸入您要查找的玩家名稱'
   filler:
     title: ""
     material: BLACK_STAINED_GLASS_PANE
@@ -66,187 +69,182 @@ gui:
     glow: false
     lore:
       - ""
-  search: "Escreva o nome do jogador que você gostaria de encontrar"
   send:
-    title: "&bEnviar correio"
+    title: '&b發送郵件'
     material: FEATHER
     amount: 1
-    custom-model-data: 0
     glow: true
     lore:
-      - "&7Clicando neste"
-      - "&7irá abrir o construtor de correio"
-      - "&7cardápio!"
+      - '&7點擊這個'
+      - '&7將打開郵件製作選單'
+    custom-model-data: 0
   mail:
-    title: "&7De: &b@sender"
+    title: '&7來自: &b@sender'
     lore:
-      - ""
-      - " em: &b@time"
-      - " de carta: &b@type"
-      - "&7Ler: &b@read"
-      - ""
-      - "&bDica:  para receber a carta!"
+      - ''
+      - '&7收件時間: &b@time'
+      - '&7郵件類型: &b@type'
+      - '&7閱讀: &b@read'
+      - ''
+      - '&b專家提示: &7點擊接收郵件!'
   back-button:
-    title: "&8[&ePágina Anterior&8]"
+    title: '&8[&e上一頁&8]'
     material: REDSTONE_TORCH
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para ir para"
-      - "&7a página anterior!"
+      - '&7點擊進入'
+      - '&7上一頁!'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   forward-button:
-    title: "&8[&ePágina Seguinte&8]"
+    title: '&8[&e下一頁&8]'
     material: REDSTONE_TORCH
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para ir para"
-      - "&7a página seguinte!"
+      - '&7點擊進入'
+      - '&7下一頁!'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   exit-button:
-    title: "&8[&eFechar a página&8]"
+    title: '&8[&e退出頁面&8]'
     material: BARRIER
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para fechar"
-      - "&7o gui!"
+      - '&7點擊關閉'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   search-button:
-    title: "&8[&eProcurar&8]"
+    title: '&8[&e搜尋&8]'
     material: BOOK
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para pesquisar por"
-      - "&7um jogador!"
+      - '&7點擊搜尋玩家!'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   no-results:
-    title: "&cSem resultados :("
+    title: '&c甚麼都沒有 :('
     material: GLASS_BOTTLE
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Tente pesquisar com"
-      - "&7critérios diferentes"
+      - '&7嘗試使用其他條件進行搜索'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   choose:
     send-anonymously:
-      title: "&aEnviar anonimamente"
+      title: '&a匿名發送'
       material: EMERALD
       amount: 1
-      custom-model-data: 0
       lore:
-        - ""
+        - '&7點擊這個'
+        - '&7匿名發送郵件!'
+      custom-model-data: 0
     message:
-      title: "&8[&eCarta&8]"
+      title: '&8[&e留言郵件&8]'
       material: PAPER
       amount: 1
-      custom-model-data: 0
       lore:
-        - "&7Clique para enviar a carta"
-        - "&7para alguém!"
+        - '&7點擊這個'
+        - '&7發送留言郵件!'
       glow: true
-      skull-texture: ""
+      skull-texture: ''
+      custom-model-data: 0
     item:
-      title: "&8[&eCarta de item&8]"
+      title: '&8[&e物品郵件&8]'
       material: PAPER
       amount: 1
-      custom-model-data: 0
       lore:
-        - "&7Clique para enviar a carta de item"
-        - "&7para alguém!"
+        - '&7點擊這個'
+        - '&7發送物品郵件!'
       glow: true
-      skull-texture: ""
+      skull-texture: ''
+      custom-model-data: 0
     sound:
-      title: "&8[&eCarta de som&8]"
+      title: '&8[&e聲音郵件&8]'
       material: PAPER
       amount: 1
-      custom-model-data: 0
       lore:
-        - "&7Clique para enviar a carta de som"
-        - "&7para alguém!"
+        - '&7點擊這個'
+        - '&7發送聲音郵件!'
       glow: true
-      skull-texture: ""
+      skull-texture: ''
+      custom-model-data: 0
     location:
-      title: "&8[&eCarta de localização&8]"
+      title: '&8[&e位置郵件&8]'
       material: PAPER
       amount: 1
-      custom-model-data: 0
       lore:
-        - "&7Clique para enviar a carta de localização"
-        - "&7para alguém!"
+        - '&7點擊這個'
+        - '&7發送位置郵件!'
       glow: true
-      skull-texture: ""
+      skull-texture: ''
+      custom-model-data: 0
   icon-custom:
-    title: "&8[&cPersonalizadas&8]"
+    title: '&8[&c自製&8]'
     material: YELLOW_STAINED_GLASS_PANE
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique no item para ter como ícone"
-      - "&7Você não perderá este item."
+      - '&7點擊背包中的物品來'
+      - '&7設定圖標(物品不會消失)'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   remove-filter:
-    title: "&8[&dRemover filtro&8]"
+    title: '&8[&d取消過濾器&8]'
     material: IRON_BARS
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para remover qualquer filtro"
-      - "&7do menu!"
+      - '&7點擊取消過濾器!'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   loading:
-    title: "&cCarregando..."
+    title: '&c載入中...'
     material: SKELETON_SKULL
     amount: 1
-    custom-model-data: 0
     lore:
-      - ""
+      - ''
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   continue:
-    title: "&8[&eContinuar >&8]"
+    title: '&8[&e繼續 >&8]'
     material: EMERALD_BLOCK
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para continuar para"
-      - "&7a próxima página!"
+      - '&7點擊這個'
+      - '&7前往下一頁!'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   text-button:
-    title: "&8[&eLer como texto&8]"
+    title: '&8[&e閱讀文字&8]'
     material: MAP
     amount: 1
-    custom-model-data: 0
     lore:
-      - "&7Clique para"
-      - "&7ler sua carta como texto"
+      - '&7點擊這個'
+      - '&7為郵件轉為文字形式'
     glow: true
-    skull-texture: ""
+    skull-texture: ''
+    custom-model-data: 0
   read-mail:
-    title: "&eMail"
+    title: '&e郵件'
     lore:
-      - "&7Clique para"
-      - "&7receber carta"
+      - '&7點擊這個'
+      - '&7接收郵件'
   are-you-sure:
-    title: "&aVocê tem certeza?"
+    title: '&a確定?'
     material: EMERALD_BLOCK
     amount: 1
-    custom-model-data: 0
     glow: true
     lore:
-      - "&7Clicar com o botão direito novamente"
-      - "&7Excluir este e-mail"
-      - ""
-      - "&7Como alternativa, clique aqui para"
-      - "&7Cancele a operação"
+      - '&7右鍵多一次'
+      - '&7刪除此郵件'
+      - ''
+      - '&7左鍵取消'
+      - '&7刪除此郵件'
+    custom-model-data: 0
